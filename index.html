@@ -63,7 +63,8 @@
   /* ── POSTER LIST ── */
   .poster-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2rem;}
 
-  .poster-item{border:1px solid var(--border);background:var(--bg2);overflow:hidden;}
+  .poster-item{border:1px solid var(--border);background:var(--bg2);overflow:hidden;display:flex;flex-direction:column;}
+  .poster-item .poster-toggle{margin-top:auto;}
 
   /* 포스터 헤더 — 이미지 + 제목/배지만 */
   .poster-header{
