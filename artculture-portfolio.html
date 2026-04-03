@@ -185,6 +185,8 @@
     <li><a href="#awards">수상</a></li>
     <li><a href="#career">경력</a></li>
     <li><a href="#projects">프로젝트</a></li>
+    <li><a href="#scenario">시나리오</a></li>
+    <li><a href="#journal">저널</a></li>
     <li><a href="#contact">연락처</a></li>
   </ul>
 </nav>
@@ -203,7 +205,7 @@
     </div>
     <p class="hero-eyebrow">Drama Producer · 기획 PD</p>
     <h1 class="hero-title">기획부터 제작지원 사업까지,<br>드라마를 현실로 만드는<br><em>기획 PD</em> 김윤경입니다.</h1>
-    <p class="hero-desc"></p>
+    <p class="hero-desc">미니 시리즈·미드폼·숏폼 드라마 기획·대본 개발 8편 이상,<br>KOCCA 제작지원사업 2년 연속 선정(과제책임자).<br>아이디어를 대본으로, 대본을 현실로 만드는 일을 합니다.</p>
     <div class="hero-badges">
       <div class="badge">🏆 2026 KOCCA 신진창작자 데뷔지원 선정</div>
       <div class="badge">🏆 2025 KOCCA 신진창작자 데뷔지원 선정</div>
@@ -216,7 +218,7 @@
 <div class="sw" id="awards">
   <p class="sl">Awards & Grants</p>
   <h2 class="st">수상 & 지원사업 이력</h2>
-  <div class="awards-grid">
+  <div class="awards-grid reveal">
     <div class="award-card">
       <p class="award-year">2026 · KOCCA</p>
       <p class="award-name">신진창작자 데뷔지원 선정</p>
@@ -240,7 +242,7 @@
 <div class="sw" id="career">
   <p class="sl">Career</p>
   <h2 class="st">경력 <span style="font-size:0.9rem;color:var(--muted);font-family:'Noto Sans KR';">총 3년 6개월</span></h2>
-  <div class=">
+  <div class="reveal">
     <div class="career-item">
       <div>
         <p class="career-company">스튜디오달</p>
@@ -279,7 +281,7 @@
 <div class="sw" id="skills">
   <p class="sl">Skills</p>
   <h2 class="st">역량</h2>
-  <div class="skills-grid">
+  <div class="skills-grid reveal">
     <div>
       <p class="sg-label">기획 · 개발</p>
       <p class="si">드라마 기획안 작성</p>
@@ -290,14 +292,15 @@
     <div>
       <p class="sg-label">프로젝트 관리</p>
       <p class="si">정부지원사업 지원 및 운영</p>
-      <p class="si">작가 계약 및 일정 관리</p>
-      <p class="si">기획팀·작가 회의 운영</p>
-      <p class="si">제작사·플랫폼 커뮤니케이션</p>
+      <p class="si">작가 발굴 및 계약</p>
+      <p class="si">프로젝트 일정 관리</p>
+      <p class="si">제작사·플랫폼·작가 커뮤니케이션</p>
     </div>
     <div>
       <p class="sg-label">툴 · AI</p>
       <p class="si">미드저니 (AI 이미지 생성)</p>
-      <p class="si">ChatGPT / Gemini / Claude code</p>
+      <p class="si">ChatGPT / Gemini / Claude code </p>
+      <p class="si"> Premier (영상 편집)</p>
       <p class="si">Notion (프로젝트 관리)</p>
     </div>
   </div>
@@ -310,7 +313,7 @@
   <h2 class="st">프로젝트</h2>
   <p style="font-size:0.82rem;color:var(--muted);margin-top:-1.5rem;margin-bottom:2rem;">작품을 클릭하면 상세 정보를 볼 수 있습니다.</p>
 
-  <div class="poster-list">
+  <div class="poster-list reveal">
 
     <!-- 전자두뇌 정과장 -->
     <div class="poster-item" id="pi-jung">
@@ -492,9 +495,7 @@
   </div>
 </div>
 
-<div class="sd"></div>
 
-<script>
 
 <script>
   const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.08});

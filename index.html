@@ -530,41 +530,6 @@
 <div class="sd"></div>
 
 <script>
-  // 저널 로드
-  fetch('https://api.github.com/repos/kyk9972/Yungyeong/contents/posts')
-    .then(r => r.json())
-    .then(files => {
-      const list = document.getElementById('journal-list');
-      const mdFiles = files.filter(f => f.name.endsWith('.md')).reverse();
-      if (!mdFiles.length) { list.innerHTML = '<p style="color:var(--muted)">아직 글이 없습니다.</p>'; return; }
-      list.innerHTML = '';
-      mdFiles.forEach(file => {
-        const name = file.name.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
-        const date = file.name.match(/^(\d{4}-\d{2}-\d{2})/) ? file.name.match(/^(\d{4}-\d{2}-\d{2})/)[1] : '';
-        const div = document.createElement('div');
-        div.style.cssText = 'padding:1.5rem 0;border-bottom:1px solid var(--border);cursor:pointer;';
-        div.innerHTML = `<p style="font-size:0.72rem;color:var(--gold);letter-spacing:0.14em;margin-bottom:0.4rem;">${date}</p><p style="font-size:1rem;color:var(--cream);">${name}</p><div class="journal-body" style="display:none;margin-top:1rem;font-size:0.88rem;color:var(--text);line-height:1.9;white-space:pre-wrap;"></div>`;
-        div.addEventListener('click', () => {
-          const body = div.querySelector('.journal-body');
-          if (body.style.display === 'none') {
-            if (!body.dataset.loaded) {
-              fetch(file.download_url).then(r=>r.text()).then(txt=>{
-                body.textContent = txt.replace(/^---[\s\S]*?---\n/, '');
-                body.dataset.loaded = '1';
-                body.style.display = 'block';
-              });
-            } else { body.style.display = 'block'; }
-          } else { body.style.display = 'none'; }
-        });
-        list.appendChild(div);
-      });
-    })
-    .catch(() => {
-      document.getElementById('journal-list').innerHTML = '<p style="color:var(--muted)">저널을 불러올 수 없습니다.</p>';
-    });
-</script>
-
-<script>
   const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
