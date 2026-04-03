@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김윤경 | 콘텐츠 PM 포트폴리오</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf8f4;
+  --bg2: #f3f0e8;
+  --cream: #f0ebe0;
+  --ink: #1a1714;
+  --ink2: #3a3530;
+  --muted: #7a7268;
+  --accent: #8b6f47;
+  --accent2: #c8a96e;
+  --border: #e0d9cc;
+  --border2: #d0c8b8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink2); font-family:'Noto Sans KR',sans-serif; font-weight:300; line-height:1.8; overflow-x:hidden; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; justify-content:space-between; align-items:center; padding:1.2rem 4rem; background:rgba(250,248,244,0.94); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+.nav-logo { font-family:'DM Serif Display',serif; font-size:1.1rem; color:var(--accent); text-decoration:none; letter-spacing:0.02em; }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { color:var(--muted); text-decoration:none; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; transition:color 0.2s; }
+.nav-links a:hover { color:var(--accent); }
+
+/* HERO */
+.hero { min-height:100vh; display:flex; align-items:center; padding:9rem 4rem 5rem; position:relative; overflow:hidden; }
+.hero-rule { position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--accent2) 0%, var(--accent) 50%, transparent 100%); }
+.hero-inner { max-width:1100px; margin:0 auto; width:100%; display:grid; grid-template-columns:1fr 380px; gap:6rem; align-items:center; }
+.hero-eyebrow { font-size:0.7rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--accent); margin-bottom:1.8rem; opacity:0; animation:fadeUp 0.8s ease forwards 0.1s; }
+.hero-title { font-family:'Noto Serif KR',serif; font-size:clamp(2.4rem,4vw,3.6rem); font-weight:300; line-height:1.3; color:var(--ink); margin-bottom:1.6rem; opacity:0; animation:fadeUp 0.8s ease forwards 0.25s; }
+.hero-title em { font-style:italic; color:var(--accent); font-family:'DM Serif Display',serif; }
+.hero-sub { font-size:0.95rem; color:var(--muted); line-height:2; margin-bottom:2.8rem; max-width:480px; opacity:0; animation:fadeUp 0.8s ease forwards 0.45s; }
+.hero-meta { display:flex; flex-direction:column; gap:0.7rem; opacity:0; animation:fadeUp 0.8s ease forwards 0.6s; }
+.hero-meta-row { display:flex; align-items:baseline; gap:0.8rem; font-size:0.82rem; }
+.hml { font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent2); width:80px; flex-shrink:0; }
+.hmv { color:var(--ink2); }
+.hero-stats { display:flex; flex-direction:column; gap:1.2rem; opacity:0; animation:fadeUp 0.8s ease forwards 0.5s; }
+.stat-card { background:var(--bg2); border:1px solid var(--border); padding:1.8rem 2rem; position:relative; overflow:hidden; }
+.stat-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--accent2); }
+.stat-num { font-family:'DM Serif Display',serif; font-size:2.4rem; color:var(--accent); line-height:1; margin-bottom:0.3rem; }
+.stat-label { font-size:0.78rem; color:var(--muted); line-height:1.5; }
+
+/* DIVIDER */
+.divider { max-width:1100px; margin:0 auto; height:1px; background:var(--border); }
+
+/* SECTION */
+.sw { max-width:1100px; margin:0 auto; padding:6rem 4rem; }
+.sl { font-size:0.67rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; }
+.st { font-family:'Noto Serif KR',serif; font-size:clamp(1.6rem,2.6vw,2.2rem); font-weight:300; color:var(--ink); margin-bottom:3rem; padding-bottom:1.2rem; border-bottom:1px solid var(--border); }
+
+/* APPROACH */
+.approach-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+.approach-card { padding:2rem; border:1px solid var(--border); background:var(--bg); transition:border-color 0.25s, transform 0.25s; }
+.approach-card:hover { border-color:var(--accent2); transform:translateY(-3px); }
+.approach-num { font-family:'DM Serif Display',serif; font-size:2rem; color:var(--border2); line-height:1; margin-bottom:1rem; }
+.approach-title { font-size:0.95rem; color:var(--ink); font-weight:400; margin-bottom:0.6rem; }
+.approach-body { font-size:0.82rem; color:var(--muted); line-height:1.9; }
+
+/* PROJECTS */
+.project-list { display:flex; flex-direction:column; gap:0; }
+.project-item { display:grid; grid-template-columns:260px 1fr; gap:0; border-top:1px solid var(--border); transition:background 0.2s; }
+.project-item:last-child { border-bottom:1px solid var(--border); }
+.project-item:hover { background:var(--bg2); }
+.project-left { padding:2.4rem 2rem 2.4rem 0; border-right:1px solid var(--border); }
+.project-badge { display:inline-block; padding:0.2rem 0.65rem; border:1px solid var(--accent2); font-size:0.65rem; letter-spacing:0.12em; color:var(--accent); margin-bottom:0.9rem; }
+.project-title { font-family:'Noto Serif KR',serif; font-size:1.05rem; color:var(--ink); font-weight:400; margin-bottom:0.4rem; line-height:1.4; }
+.project-period { font-size:0.75rem; color:var(--muted); margin-bottom:0.5rem; }
+.project-company { font-size:0.75rem; color:var(--accent); }
+.project-right { padding:2.4rem 0 2.4rem 2.8rem; }
+.project-role { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:0.8rem; }
+.project-desc { font-size:0.87rem; color:var(--ink2); line-height:1.85; margin-bottom:1.2rem; }
+.project-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.2rem; }
+.ptag { font-size:0.7rem; padding:0.15rem 0.55rem; background:var(--bg2); border:1px solid var(--border); color:var(--muted); }
+.project-result { display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--accent); font-weight:400; }
+.project-result::before { content:''; display:inline-block; width:16px; height:1px; background:var(--accent2); }
+
+/* SKILLS */
+.skills-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; }
+.skill-group { padding:2rem; border:1px solid var(--border); }
+.skill-group-title { font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; }
+.skill-list { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+.skill-list li { font-size:0.85rem; color:var(--ink2); padding-left:1rem; position:relative; }
+.skill-list li::before { content:'—'; position:absolute; left:0; color:var(--accent2); font-size:0.7rem; top:0.12rem; }
+
+/* ACHIEVEMENT */
+.achievement-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin-bottom:3rem; }
+.ach-card { padding:1.6rem; border:1px solid var(--border); background:var(--bg2); text-align:center; }
+.ach-num { font-family:'DM Serif Display',serif; font-size:2rem; color:var(--accent); line-height:1; margin-bottom:0.3rem; }
+.ach-label { font-size:0.75rem; color:var(--muted); line-height:1.6; }
+
+/* CONTACT */
+.contact-inner { text-align:center; }
+.contact-inner .st { border:none; text-align:center; }
+.contact-body { font-size:0.92rem; color:var(--muted); margin-bottom:2rem; line-height:2; }
+.contact-email { font-family:'DM Serif Display',serif; font-size:1.4rem; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent2); padding-bottom:2px; transition:opacity 0.2s; }
+.contact-email:hover { opacity:0.7; }
+
+/* FOOTER */
+footer { padding:2rem 4rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+.footer-left { font-size:0.72rem; color:var(--muted); }
+.footer-right { font-family:'DM Serif Display',serif; font-size:0.9rem; color:var(--accent2); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+@media (max-width:900px) {
+  nav { padding:1rem 1.8rem; }
+  .nav-links { gap:1.2rem; }
+  .hero { padding:8rem 1.8rem 4rem; }
+  .hero-inner { grid-template-columns:1fr; gap:3rem; }
+  .hero-stats { flex-direction:row; flex-wrap:wrap; }
+  .stat-card { flex:1; min-width:140px; }
+  .sw { padding:4rem 1.8rem; }
+  .approach-grid { grid-template-columns:1fr; }
+  .project-item { grid-template-columns:1fr; }
+  .project-left { border-right:none; border-bottom:1px solid var(--border); padding:1.8rem 0; }
+  .project-right { padding:1.8rem 0; }
+  .skills-grid { grid-template-columns:1fr; }
+  footer { flex-direction:column; gap:0.5rem; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">YK</a>
+  <ul class="nav-links">
+    <li><a href="#approach">철학</a></li>
+    <li><a href="#projects">프로젝트</a></li>
+    <li><a href="#skills">역량</a></li>
+    <li><a href="#contact">연락처</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-rule"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Content PM · Portfolio</p>
+      <h1 class="hero-title">이야기를<br>기획하고,<br><em>끝까지</em> 책임집니다</h1>
+      <p class="hero-sub">3년간 숏폼·미드폼 드라마 12개 프로젝트에서 아이템 기획부터 플랫폼 배포까지 전 과정을 이끌었습니다. 사람의 마음은 작품이 아니라 그 안의 이야기에 먼저 닿는다는 것을 믿습니다.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-row"><span class="hml">이름</span><span class="hmv">김윤경</span></div>
+        <div class="hero-meta-row"><span class="hml">직무</span><span class="hmv">기획 PD → 콘텐츠 PM</span></div>
+        <div class="hero-meta-row"><span class="hml">경력</span><span class="hmv">3년 5개월 (스타트업 2곳)</span></div>
+        <div class="hero-meta-row"><span class="hml">연락</span><span class="hmv">010-6415-6261</span></div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">2회</div>
+        <div class="stat-label">일본 플랫폼 Kanta<br>인기순위 1위 기록</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12개</div>
+        <div class="stat-label">직접 기획·관리한<br>드라마 프로젝트</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">당선</div>
+        <div class="stat-label">2025 KOCCA<br>신진 창작자 제작 지원</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- APPROACH -->
+<section class="sw reveal" id="approach">
+  <p class="sl">Philosophy</p>
+  <h2 class="st">콘텐츠 PM으로서의 접근</h2>
+  <div class="approach-grid">
+    <div class="approach-card">
+      <div class="approach-num">01</div>
+      <div class="approach-title">보는 사람의 입장에서 기획한다</div>
+      <div class="approach-body">좋은 이야기인가보다 왜 지금 이 사람에게 필요한가를 먼저 묻습니다. 시청자가 반응하는 지점을 장르·플랫폼 데이터로 분석하고, 그 위에서 기획을 시작합니다.</div>
+    </div>
+    <div class="approach-card">
+      <div class="approach-num">02</div>
+      <div class="approach-title">기획부터 배포까지 끝을 본다</div>
+      <div class="approach-body">아이템 기획, 시놉 구성, 기획안 작성, 대본 개발, 작가 관리, 외부 배포, 정부 지원 신청까지 중간에 넘기지 않습니다. 전 과정을 책임지는 PM 방식으로 일합니다.</div>
+    </div>
+    <div class="approach-card">
+      <div class="approach-num">03</div>
+      <div class="approach-title">구조가 없는 곳에서 구조를 만든다</div>
+      <div class="approach-body">두 직장 모두 스타트업이었습니다. 매뉴얼 없이 IP 발굴 프로세스, 커뮤니케이션 체계, 기획안 포맷을 직접 설계하며 일했습니다. 작은 팀에서 빠르게 적응합니다.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section class="sw reveal" id="projects">
+  <p class="sl">Projects</p>
+  <h2 class="st">주요 프로젝트</h2>
+  <div class="project-list">
+
+    <div class="project-item">
+      <div class="project-left">
+        <span class="project-badge">숏폼 · 일본 타겟</span>
+        <div class="project-title">숏폼 드라마 4편<br><span style="font-size:0.82rem;color:var(--muted);">더 게임 오브 데스 외 3편</span></div>
+        <div class="project-period">2024.07 — 2024.10</div>
+        <div class="project-company">스튜디오 달</div>
+      </div>
+      <div class="project-right">
+        <div class="project-role">기획 PD · 대본 개발 · 작가 관리</div>
+        <p class="project-desc">일본 플랫폼 Kanta를 타겟으로 한 숏폼 드라마 4편을 동시에 기획·개발했습니다. 플랫폼 인기 작품 순위를 장르별로 분석하고, 일본 시청자가 반응하는 소재와 서사 구조를 조사해 기획에 반영했습니다. 데스물·로코·복수물 등 장르 다양성을 확보하며 프로젝트 포트폴리오를 구성했습니다.</p>
+        <div class="project-tags"><span class="ptag">장르 분석</span><span class="ptag">일본 시장 조사</span><span class="ptag">대본 개발</span><span class="ptag">작가 관리</span></div>
+        <div class="project-result">일본 플랫폼 Kanta 방영 (2025.03)</div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-left">
+        <span class="project-badge">숏폼 · Kanta 1위</span>
+        <div class="project-title">전자두뇌 정과장</div>
+        <div class="project-period">2024.11 — 2025.04</div>
+        <div class="project-company">스튜디오 달</div>
+      </div>
+      <div class="project-right">
+        <div class="project-role">기획 PD · 전체 기획 총괄</div>
+        <p class="project-desc">히어로·코미디·액션 장르의 숏폼 드라마. 아이템 기획부터 전체 시놉·줄거리 작성, 외부 배포용 기획안 작성, 대본 개발까지 전 과정을 담당했습니다. "어느 회차에서 다음 화 결제가 일어나는가"를 분석해 서사 구조에 반영했습니다. 주연 정준하, 에이티즈 윤호.</p>
+        <div class="project-tags"><span class="ptag">아이템 기획</span><span class="ptag">시놉 구성</span><span class="ptag">기획안 작성</span><span class="ptag">결제 전환 분석</span></div>
+        <div class="project-result">Kanta 방영 후 인기순위 1위 (2025.07)</div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-left">
+        <span class="project-badge">숏폼 · KOCCA · Kanta 1위</span>
+        <div class="project-title">레이디보스 리턴</div>
+        <div class="project-period">2025.03 — 2025.07</div>
+        <div class="project-company">스튜디오 달</div>
+      </div>
+      <div class="project-right">
+        <div class="project-role">기획 PD · KOCCA 과제 책임자</div>
+        <p class="project-desc">회귀·복수 장르 숏폼 드라마. 아이템 기획부터 대본 개발까지 전 과정을 담당하는 동시에, 2025 콘텐츠 진흥원 신진 창작자 제작 지원 과제 책임자로 지원서 작성과 2차 PT를 이끌어 당선을 이끌었습니다. 공개 첫날 Kanta 인기순위 1위 기록. 주연 곽시양, 이엘리야.</p>
+        <div class="project-tags"><span class="ptag">전체 기획 총괄</span><span class="ptag">KOCCA 지원서</span><span class="ptag">2차 PT</span><span class="ptag">대본 개발</span></div>
+        <div class="project-result">KOCCA 당선 · Kanta 인기순위 1위 (2025.11)</div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-left">
+        <span class="project-badge">미드폼 · 원작 각색</span>
+        <div class="project-title">아주르 스프링</div>
+        <div class="project-period">2025.04 — 2025.11</div>
+        <div class="project-company">스튜디오 달</div>
+      </div>
+      <div class="project-right">
+        <div class="project-role">기획 PD · 원작 각색 총괄</div>
+        <p class="project-desc">청춘·힐링·로맨스 장르의 미드폼 드라마(30분×6화). 원작 각색, 전체 캐릭터·줄거리 구상, 페이퍼 작성, 대본 개발까지 담당했습니다. 숏폼보다 긴 호흡의 서사 구조 설계와 캐릭터 빌딩에 집중한 프로젝트입니다. 주연 레드벨벳 예리, 강상준. 제작 완료, 편성 논의 중.</p>
+        <div class="project-tags"><span class="ptag">원작 각색</span><span class="ptag">캐릭터 설계</span><span class="ptag">미드폼 구성</span></div>
+        <div class="project-result">제작 완료 · 편성 논의 중</div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-left">
+        <span class="project-badge">IP 발굴 · 계약 체결</span>
+        <div class="project-title">원작 IP 발굴 및 계약</div>
+        <div class="project-period">2022 — 2023</div>
+        <div class="project-company">베티앤크리에이터스</div>
+      </div>
+      <div class="project-right">
+        <div class="project-role">기획 PD · IP 발굴 담당</div>
+        <p class="project-desc">드라마·영화화 가능한 원작 IP를 발굴하는 월간 기획 회의를 주도했습니다. 원작의 장단점·줄거리·개선안을 포함한 기획안을 작성하고 브리핑했습니다. 제안한 기획안이 승인되어 2023년 6월 한국 소설 원작 계약 체결을 이끌었습니다.</p>
+        <div class="project-tags"><span class="ptag">IP 발굴</span><span class="ptag">기획안 작성</span><span class="ptag">원작 분석</span><span class="ptag">계약 체결</span></div>
+        <div class="project-result">한국 소설 원작 계약 체결 (2023.06)</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section class="sw reveal">
+  <p class="sl">Achievements</p>
+  <h2 class="st">주요 성과</h2>
+  <div class="achievement-row">
+    <div class="ach-card">
+      <div class="ach-num">×2</div>
+      <div class="ach-label">Kanta 인기순위 1위<br>정과장 · 레이디보스 리턴</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-num">당선</div>
+      <div class="ach-label">2025 KOCCA<br>신진 창작자 제작 지원</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-num">완료</div>
+      <div class="ach-label">해외 OTT 편성<br>AI 애니메이션 프로젝트</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-num">수상</div>
+      <div class="ach-label">2019 SBS 웹드라마 공모전<br>우수상 (SBS 문화재단)</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="sw reveal" id="skills">
+  <p class="sl">Skills</p>
+  <h2 class="st">역량</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">콘텐츠 기획</div>
+      <ul class="skill-list">
+        <li>아이템 기획 및 오리지널 IP 개발</li>
+        <li>전체 시놉·줄거리·캐릭터 구성</li>
+        <li>원작 IP 발굴 및 각색 기획</li>
+        <li>배우 소속사·플랫폼 배포용 기획안 작성</li>
+        <li>대본 개발 및 작가 피드백</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">프로젝트 매니징</div>
+      <ul class="skill-list">
+        <li>기획~배포 전 과정 총괄 관리</li>
+        <li>작가 계약·일정·컨디션 관리</li>
+        <li>KOCCA 지원서 작성 및 PT</li>
+        <li>회의 조율·회의록 작성·공유</li>
+        <li>스타트업 환경 프로세스 설계</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">데이터 & 리서치</div>
+      <ul class="skill-list">
+        <li>플랫폼 인기 작품 장르 분석</li>
+        <li>일본 콘텐츠 시장 수요 조사</li>
+        <li>결제 전환 포인트 분석 및 기획 반영</li>
+        <li>외부 기획안·대본 리뷰 및 리포트 작성</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">커뮤니케이션</div>
+      <ul class="skill-list">
+        <li>작가·감독·편집자 외부 크리에이터 조율</li>
+        <li>배우 소속사·OTT 플랫폼 대외 커뮤니케이션</li>
+        <li>경희대학교 언론정보학과 졸업 (3.45)</li>
+        <li>2019 SBS 웹드라마 공모전 우수상</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="sw reveal" id="contact">
+  <div class="contact-inner">
+    <p class="sl" style="text-align:center;">Contact</p>
+    <h2 class="st">함께 만들고 싶습니다</h2>
+    <p class="contact-body">기획부터 배포까지 처음과 끝을 책임지는 콘텐츠 PM으로 합류하고 싶습니다.</p>
+    <a class="contact-email" href="mailto:kyk9972@gmail.com">kyk9972@gmail.com</a>
+    <p style="margin-top:1rem;font-size:0.78rem;color:var(--muted);">010-6415-6261</p>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-left">© 2026 김윤경 · 콘텐츠 PM 포트폴리오</span>
+  <span class="footer-right">YK</span>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => obs.observe(r));
+</script>
+
+</body>
+</html>
