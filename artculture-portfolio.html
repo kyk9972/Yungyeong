@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>김윤경 | 기획 PD 포트폴리오</title>
+<title>김윤경 | 콘텐츠 PM 포트폴리오</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -184,9 +184,7 @@
   <ul class="nav-links">
     <li><a href="#awards">수상</a></li>
     <li><a href="#career">경력</a></li>
-    <li><a href="#projects">프로젝트</a></li>
-    <li><a href="#scenario">시나리오</a></li>
-    <li><a href="#journal">저널</a></li>
+    <li><a href="#skills">역량</a></li><li><a href="#projects">프로젝트</a></li>
     <li><a href="#contact">연락처</a></li>
   </ul>
 </nav>
@@ -203,9 +201,9 @@
       <span class="pib-divider">|</span>
       <span class="pib-item">경희대학교 언론정보학과</span>
     </div>
-    <p class="hero-eyebrow">Drama Producer · 기획 PD</p>
+    <p class="hero-eyebrow">Content PM · 기획 PD</p>
     <h1 class="hero-title">기획부터 제작지원 사업까지,<br>드라마를 현실로 만드는<br><em>기획 PD</em> 김윤경입니다.</h1>
-    <p class="hero-desc">미니 시리즈·미드폼·숏폼 드라마 기획·대본 개발 8편 이상,<br>KOCCA 제작지원사업 2년 연속 선정(과제책임자).<br>아이디어를 대본으로, 대본을 현실로 만드는 일을 합니다.</p>
+    <p class="hero-desc"></p>
     <div class="hero-badges">
       <div class="badge">🏆 2026 KOCCA 신진창작자 데뷔지원 선정</div>
       <div class="badge">🏆 2025 KOCCA 신진창작자 데뷔지원 선정</div>
@@ -496,73 +494,7 @@
 
 <div class="sd"></div>
 
-<div class="sw" id="scenario">
-  <p class="sl">Scenario & Original IP</p>
-  <h2 class="st">오리지널 시나리오</h2>
-  <div class="scn-list reveal">
-    <div>
-      <div class="scn-card" onclick="toggleScn('s1',this)">
-        <div class="scn-num">01</div>
-        <div><p class="scn-type">단막극</p><p class="scn-title">한강에서 악어 잡는 법</p></div>
-      </div>
-      <div class="scn-detail" id="detail-s1"><p class="dtxt">세상과 꿈에 버림받은 두 청춘이 극한의 취업난 속, 무심코 뱉은 거짓말을 현실로 만들기 위해 고군분투하는 청춘 성장 드라마</p><a href="한강에서 악어를 잡는 법.pdf" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.4rem 1rem;border:1px solid rgba(200,169,110,0.5);color:#c8a96e;font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;">대본 보기 ▶</a></div>
-    </div>
-    <div>
-      <div class="scn-card" onclick="toggleScn('s2',this)">
-        <div class="scn-num">02</div>
-        <div><p class="scn-type">단막극</p><p class="scn-title">재벌집 며느리는 상남자</p></div>
-      </div>
-      <div class="scn-detail" id="detail-s2"><p class="dtxt">상남자 형사 무식이 재벌가 며느리로 위장해 시집살이를 뚫고 비리를 파헤치는 코믹 액션 드라마</p><a href="재벌집 며느리는 상남자.pdf" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.4rem 1rem;border:1px solid rgba(200,169,110,0.5);color:#c8a96e;font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;">대본 보기 ▶</a></div>
-    </div>
-  </div>
-</div>
-
-<div class="sd"></div>
-
-<div class="sw" id="journal">
-  <p class="sl">Journal</p>
-  <h2 class="st">저널</h2>
-  <div id="journal-list" class="reveal">
-    <p style="color:var(--muted);font-size:0.85rem;">불러오는 중...</p>
-  </div>
-</div>
-
-<div class="sd"></div>
-
 <script>
-  // 저널 로드
-  fetch('https://api.github.com/repos/kyk9972/Yungyeong/contents/posts')
-    .then(r => r.json())
-    .then(files => {
-      const list = document.getElementById('journal-list');
-      const mdFiles = files.filter(f => f.name.endsWith('.md')).reverse();
-      if (!mdFiles.length) { list.innerHTML = '<p style="color:var(--muted)">아직 글이 없습니다.</p>'; return; }
-      list.innerHTML = '';
-      mdFiles.forEach(file => {
-        const name = file.name.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
-        const date = file.name.match(/^(\d{4}-\d{2}-\d{2})/) ? file.name.match(/^(\d{4}-\d{2}-\d{2})/)[1] : '';
-        const div = document.createElement('div');
-        div.style.cssText = 'padding:1.5rem 0;border-bottom:1px solid var(--border);cursor:pointer;';
-        div.innerHTML = `<p style="font-size:0.72rem;color:var(--gold);letter-spacing:0.14em;margin-bottom:0.4rem;">${date}</p><p style="font-size:1rem;color:var(--cream);">${name}</p><div class="journal-body" style="display:none;margin-top:1rem;font-size:0.88rem;color:var(--text);line-height:1.9;white-space:pre-wrap;"></div>`;
-        div.addEventListener('click', () => {
-          const body = div.querySelector('.journal-body');
-          if (body.style.display === 'none') {
-            if (!body.dataset.loaded) {
-              fetch(file.download_url).then(r=>r.text()).then(txt=>{
-                body.textContent = txt.replace(/^---[\s\S]*?---\n/, '');
-                body.dataset.loaded = '1';
-                body.style.display = 'block';
-              });
-            } else { body.style.display = 'block'; }
-          } else { body.style.display = 'none'; }
-        });
-        list.appendChild(div);
-      });
-    })
-    .catch(() => {
-      document.getElementById('journal-list').innerHTML = '<p style="color:var(--muted)">저널을 불러올 수 없습니다.</p>';
-    });
-</script>
 
 <script>
   const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.08});
