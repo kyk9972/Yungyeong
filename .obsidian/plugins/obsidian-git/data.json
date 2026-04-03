@@ -1,0 +1,18 @@
+{
+  "commitMessage": "저널 업데이트: {{date}}",
+  "autoSaveInterval": 5,
+  "autoPullInterval": 0,
+  "autoPushOnCommit": true,
+  "pullBeforePush": true,
+  "disablePopups": false,
+  "listChangedFilesInMessageBody": false,
+  "showStatusBar": true,
+  "updateSubmodules": false,
+  "syncMethod": "merge",
+  "customMessageOnAutoBackup": false,
+  "autoBackupAfterFileChange": true,
+  "treeStructure": false,
+  "refreshSourceControl": true,
+  "basePath": "",
+  "showedMobileNotice": true
+}
