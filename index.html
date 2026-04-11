@@ -7,22 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#0c0b09;--bg2:#141310;--bg3:#1a1815;
-    --cream:#f0ebe0;--gold:#c8a96e;--gold-light:#e2c98a;
-    --text:#cec9be;--muted:#b8b2a8;--border:#252320;--border2:#2e2b26;
+    --bg:#f5f0e8;--bg2:#ede7db;--bg3:#e4ddd0;
+    --cream:#1c1916;--gold:#8a6020;--gold-light:#a37428;
+    --text:#3a342c;--muted:#7a7060;--border:#d8d0c0;--border2:#ccc3b0;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.75;overflow-x:hidden;}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(12,11,9,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(245,240,232,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
   .nav-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--gold);text-decoration:none;}
   .nav-links{display:flex;gap:2.2rem;list-style:none;}
   .nav-links a{color:var(--muted);text-decoration:none;font-size:0.73rem;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.25s;}
   .nav-links a:hover{color:var(--gold);}
 
   .hero{min-height:100vh;display:flex;align-items:center;padding:9rem 4rem 5rem;position:relative;overflow:hidden;}
-  .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(200,169,110,0.07) 0%,transparent 70%);}
+  .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(138,96,32,0.06) 0%,transparent 70%);}
   .hero-inner{max-width:1100px;margin:0 auto;width:100%;}
   .profile-info-bar{display:flex;flex-wrap:wrap;align-items:center;gap:0.4rem 0;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.05s;}
   .pib-name{font-family:'Noto Serif KR',serif;font-size:1.5rem;color:var(--cream);font-weight:400;margin-right:0.4rem;}
@@ -91,7 +91,7 @@
   /* 이미지 없는 카드용 */
   .poster-img-placeholder{
     width:100%;height:320px;
-    background:var(--bg3);
+    background:var(--bg3);border:1px solid var(--border);
     display:flex;align-items:center;justify-content:center;
     font-size:4rem;opacity:0.2;
   }
@@ -146,7 +146,7 @@
   .scn-card:hover{background:var(--bg3);}
   .scn-card::after{content:'+';position:absolute;right:2rem;color:var(--gold);font-size:1.1rem;transition:transform 0.3s;}
   .scn-card.open::after{transform:rotate(45deg);}
-  .scn-num{font-family:'DM Serif Display',serif;font-size:3rem;color:var(--border2);line-height:1;min-width:2.5rem;}
+  .scn-num{font-family:'DM Serif Display',serif;font-size:3rem;color:#c8bfaf;line-height:1;min-width:2.5rem;}
   .scn-type{font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;}
   .scn-title{font-family:'Noto Serif KR',serif;font-size:1.15rem;color:var(--cream);font-weight:300;}
   .scn-detail{display:none;background:var(--bg3);border-top:1px solid var(--border);padding:1.8rem 2.5rem 1.8rem calc(2.5rem + 4.5rem);}
