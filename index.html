@@ -24,7 +24,7 @@
   .hero{min-height:100vh;display:flex;align-items:center;padding:9rem 4rem 5rem;position:relative;overflow:hidden;}
   .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(124,77,171,0.06) 0%,transparent 70%);}
   .hero-inner{max-width:1100px;margin:0 auto;width:100%;}
-  .profile-info-bar{display:flex;flex-wrap:wrap;align-items:center;gap:0.4rem 0;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.05s;}
+  .profile-info-bar{display:flex;align-items:center;gap:1.2rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.05s;} .pib-right{display:flex;flex-direction:column;gap:0.3rem;}
   .pib-name{font-family:'Noto Serif KR',serif;font-size:1.5rem;color:var(--cream);font-weight:400;margin-right:0.4rem;}
   .pib-divider{color:var(--border2);margin:0 0.6rem;}
   .pib-item{font-size:0.82rem;color:var(--muted);}
@@ -229,14 +229,11 @@
   <div class="hero-inner">
     <div class="profile-info-bar">
       <span class="pib-name">김윤경</span>
-      <span class="pib-divider">|</span>
-      <span class="pib-item">1995.06.30</span>
-      <span class="pib-divider">|</span>
-      <span class="pib-item"><a href="tel:010-6415-6261">010-6415-6261</a></span>
-      <span class="pib-divider">|</span>
-      <span class="pib-item"><a href="mailto:kyk9972@hanmail.net">kyk9972@hanmail.net</a></span>
+      <div class="pib-right">
+        <span class="pib-item">1995.06.30 <span class="pib-divider">|</span> <a href="tel:010-6415-6261">010-6415-6261</a> <span class="pib-divider">|</span> <a href="mailto:kyk9972@hanmail.net">kyk9972@hanmail.net</a></span>
+        <span class="pib-item">경희대학교 언론정보학과 졸업</span>
+      </div>
     </div>
-    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:2.5rem;margin-top:-1.8rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.05s;">경희대학교 언론정보학과 졸업</p>
     <p class="hero-eyebrow">Drama Producer · 기획 PD</p>
     <h1 class="hero-title">기획부터 제작지원 사업까지,<br>드라마를 현실로 만드는<br><em>기획 PD</em> 김윤경입니다.</h1>
     <p class="hero-desc">미니 시리즈·미드폼·숏폼 드라마 기획·대본 개발 8편 이상,<br>KOCCA 제작지원사업 2년 연속 선정(과제책임자).<br>아이디어를 대본으로, 대본을 실제 작품으로 만드는 일을 합니다.</p>
