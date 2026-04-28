@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>김윤경 | 기획 PD 포트폴리오</title>
+<title>김윤경 | 기획 PD · AI 크리에이터</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#faf7f2;--bg2:#f3f0f8;--bg3:#ebe6f4;
-    --cream:#1c1916;--gold:#7c4dab;--gold-light:#9d6fd4;
-    --text:#3a342c;--muted:#7a7060;--border:#d8d0c0;--border2:#ccc3b0;
+    --bg:#0a0a0a;--bg2:#111111;--bg3:#181818;
+    --cream:#f0ebe0;--gold:#c8a96e;--gold-light:#e2c98a;
+    --text:#cec9be;--muted:#9a9590;--border:#222222;--border2:#2a2a2a;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.75;overflow-x:hidden;}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(250,247,242,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(10,10,10,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
   .nav-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--gold);text-decoration:none;}
   .nav-links{display:flex;gap:2.2rem;list-style:none;}
   .nav-links a{color:var(--muted);text-decoration:none;font-size:0.73rem;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.25s;}
   .nav-links a:hover{color:var(--gold);}
 
   .hero{min-height:100vh;display:flex;align-items:center;padding:9rem 4rem 5rem;position:relative;overflow:hidden;}
-  .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(124,77,171,0.06) 0%,transparent 70%);}
+  .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(200,169,110,0.07) 0%,transparent 70%);}
   .hero-inner{max-width:1100px;margin:0 auto;width:100%;}
   .profile-info-bar{display:flex;align-items:center;gap:1.2rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.05s;} .pib-right{display:flex;flex-direction:column;gap:0.3rem;}
   .pib-name{font-family:'Noto Serif KR',serif;font-size:1.5rem;color:var(--cream);font-weight:400;margin-right:0.4rem;}
@@ -34,7 +34,7 @@
   .hero-title em{font-style:italic;color:var(--gold);font-family:'DM Serif Display',serif;}
   .hero-desc{font-size:0.95rem;color:var(--muted);max-width:520px;line-height:2;margin-bottom:3rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.5s;}
   .hero-badges{display:flex;flex-wrap:wrap;gap:0.8rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.7s;}
-  .badge{display:inline-flex;align-items:center;gap:0.4rem;padding:0.55rem 1.1rem;border:1px solid rgba(124,77,171,0.5);font-size:0.76rem;color:var(--gold-light);background:rgba(124,77,171,0.05);}
+  .badge{display:inline-flex;align-items:center;gap:0.4rem;padding:0.55rem 1.1rem;border:1px solid rgba(200,169,110,0.5);font-size:0.76rem;color:var(--gold-light);background:rgba(200,169,110,0.05);}
 
   .sw{max-width:1100px;margin:0 auto;padding:6rem 4rem;}
   .sd{max-width:1100px;margin:0 auto;height:1px;background:var(--border);}
@@ -103,7 +103,7 @@
   }
   .poster-badges-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.7rem;}
   .pbadge{display:inline-flex;align-items:center;gap:0.3rem;padding:0.2rem 0.6rem;font-size:0.68rem;font-weight:500;backdrop-filter:blur(4px);}
-  .pbadge.gold{background:rgba(124,77,171,0.2);color:var(--gold-light);border:1px solid rgba(124,77,171,0.4);}
+  .pbadge.gold{background:rgba(200,169,110,0.2);color:var(--gold-light);border:1px solid rgba(200,169,110,0.4);}
   .pbadge.silver{background:rgba(255,255,255,0.07);color:var(--muted);border:1px solid var(--border2);}
   .poster-name{font-family:'Noto Serif KR',serif;font-size:1.3rem;color:var(--cream);font-weight:300;margin-bottom:0.5rem;}
   .poster-genre{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
@@ -220,6 +220,7 @@
     <li><a href="#projects">프로젝트</a></li>
     <li><a href="#ppt">PPT</a></li>
     <li><a href="#scenario">시나리오</a></li>
+    <li><a href="#aiworks">AI Works</a></li>
     <li><a href="#contact">연락처</a></li>
   </ul>
 </nav>
@@ -234,9 +235,9 @@
         <span class="pib-item">경희대학교 언론정보학과 졸업</span>
       </div>
     </div>
-    <p class="hero-eyebrow">Drama Producer · 기획 PD</p>
-    <h1 class="hero-title">기획부터 제작지원 사업까지,<br>드라마를 현실로 만드는<br><em>기획 PD</em> 김윤경입니다.</h1>
-    <p class="hero-desc">미니 시리즈·미드폼·숏폼 드라마 기획·대본 개발 8편 이상,<br>KOCCA 제작지원사업 2년 연속 선정(과제책임자).<br>아이디어를 대본으로, 대본을 실제 작품으로 만드는 일을 합니다.</p>
+    <p class="hero-eyebrow">Drama Producer · 기획 PD · AI Creator</p>
+    <h1 class="hero-title">이야기를 기획하고,<br>AI로 새로운 방식으로 풀어내는<br><em>기획 PD · AI 크리에이터</em> 김윤경입니다.</h1>
+    <p class="hero-desc">미니 시리즈·미드폼·숏폼 드라마 기획·대본 개발 8편 이상,<br>KOCCA 제작지원사업 2년 연속 선정(과제책임자).<br>기획과 AI를 연결해 콘텐츠의 새로운 가능성을 탐구합니다.</p>
     <div class="hero-badges">
       <div class="badge">🏆 2026 KOCCA 신진창작자 데뷔지원 선정</div>
       <div class="badge">🏆 2025 KOCCA 신진창작자 데뷔지원 선정</div>
@@ -569,6 +570,53 @@
   </div>
 </div>
 
+<div class="sd"></div>
+
+<div class="sw" id="aiworks">
+  <p class="sl">AI Works</p>
+  <h2 class="st">AI 창작 작업</h2>
+  <p style="font-size:0.82rem;color:var(--muted);margin-top:-1.5rem;margin-bottom:2rem;">각 작업을 클릭하면 구상 과정과 씬리스트, 느낀 점을 볼 수 있습니다.</p>
+  <div class="poster-list reveal">
+
+    <!-- AI Work 카드 템플릿 — 아래 복사해서 추가 -->
+    <div class="poster-item" id="aiw-01">
+      <div class="poster-header" onclick="togglePoster('aiw-01')">
+        <div class="poster-img-placeholder">✦</div>
+        <div class="poster-info-bar">
+          <div class="poster-badges-row">
+            <span class="pbadge gold">AI Created</span>
+            <span class="pbadge silver">Short Form</span>
+          </div>
+          <p class="poster-name">작업 제목</p>
+          <p class="poster-genre">Genre · Tool</p>
+        </div>
+      </div>
+      <div class="poster-toggle" onclick="togglePoster('aiw-01')">
+        <span>상세 보기</span><span class="arrow">▶</span>
+      </div>
+      <div class="poster-detail">
+        <div class="poster-detail-inner">
+          <p class="dtl">구상</p>
+          <p class="dtxt">이 작업을 시작하게 된 계기와 처음 떠올린 아이디어를 적어주세요.</p>
+          <p class="dtl">씬리스트</p>
+          <p class="dtxt">씬별 구성을 간략하게 정리해주세요.</p>
+          <p class="dtl">쓰면서 느꼈던 점</p>
+          <p class="dtxt">작업하는 과정에서 느낀 점, 배운 것, 어려웠던 부분을 적어주세요.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="sd"></div>
+
+<footer id="contact">
+  <p class="fn">YK</p>
+  <p class="fi">
+    <a href="tel:010-6415-6261">010-6415-6261</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="mailto:kyk9972@hanmail.net">kyk9972@hanmail.net</a>
+  </p>
+</footer>
 
 <div class="sd"></div>
 
