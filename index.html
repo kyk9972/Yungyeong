@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>김윤경 | 기획 PD · AI 크리에이터</title>
+<title>김윤경 | 기획자 · AI 크리에이터</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -208,6 +208,20 @@
   .lb-counter{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.78rem;color:var(--muted);letter-spacing:0.12em;}
   @media(max-width:768px){.ppt-grid{grid-template-columns:1fr;}}
 
+  /* ── AI WORKS PROCESS ── */
+  .aiw-section{margin-bottom:2rem;}
+  .aiw-section:last-child{margin-bottom:0;}
+  .aiw-num{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--border2);line-height:1;margin-bottom:0.3rem;}
+  .aiw-flow{display:flex;flex-wrap:wrap;align-items:center;gap:0.4rem;margin-top:0.8rem;}
+  .flow-step{padding:0.3rem 0.8rem;border:1px solid var(--border2);font-size:0.72rem;color:var(--text);letter-spacing:0.05em;}
+  .flow-arrow{color:var(--gold);font-size:0.8rem;}
+  .aiw-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.8rem;}
+  .aiw-tag{padding:0.18rem 0.65rem;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.3);font-size:0.68rem;color:var(--gold-light);letter-spacing:0.06em;}
+  .aiw-status{display:inline-block;margin-top:1rem;padding:0.2rem 0.7rem;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;}
+  .aiw-status.done{background:rgba(200,169,110,0.15);color:var(--gold);border:1px solid rgba(200,169,110,0.4);}
+  .aiw-status.wip{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border2);}
+  .aiw-meta{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:1.8rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+
 </style>
 </head>
 <body>
@@ -235,8 +249,8 @@
         <span class="pib-item">경희대학교 언론정보학과 졸업</span>
       </div>
     </div>
-    <p class="hero-eyebrow">Drama Producer · 기획 PD · AI Creator</p>
-    <h1 class="hero-title">이야기를 기획하고,<br>AI로 새로운 방식으로 풀어내는<br><em>기획 PD · AI 크리에이터</em> 김윤경입니다.</h1>
+    <p class="hero-eyebrow">Content Planner · 기획자 · AI Creator</p>
+    <h1 class="hero-title">이야기를 기획하고,<br>AI로 새로운 방식으로 풀어내는<br><em>기획자 · AI 크리에이터</em> 김윤경입니다.</h1>
     <p class="hero-desc">미니 시리즈·미드폼·숏폼 드라마 기획·대본 개발 8편 이상,<br>KOCCA 제작지원사업 2년 연속 선정(과제책임자).<br>기획과 AI를 연결해 콘텐츠의 새로운 가능성을 탐구합니다.</p>
     <div class="hero-badges">
       <div class="badge">🏆 2026 KOCCA 신진창작자 데뷔지원 선정</div>
@@ -596,12 +610,46 @@
       </div>
       <div class="poster-detail">
         <div class="poster-detail-inner">
-          <p class="dtl">구상</p>
-          <p class="dtxt">이 작업을 시작하게 된 계기와 처음 떠올린 아이디어를 적어주세요.</p>
-          <p class="dtl">씬리스트</p>
-          <p class="dtxt">씬별 구성을 간략하게 정리해주세요.</p>
-          <p class="dtl">쓰면서 느꼈던 점</p>
-          <p class="dtxt">작업하는 과정에서 느낀 점, 배운 것, 어려웠던 부분을 적어주세요.</p>
+          <p class="aiw-meta">2026.__ &nbsp;·&nbsp; GPT Image 2, Kling 3.0 &nbsp;·&nbsp; <span class="aiw-status wip">In Progress</span></p>
+
+          <div class="aiw-section">
+            <p class="aiw-num">01</p>
+            <p class="dtl">구상</p>
+            <p class="dtxt">이 작업을 시작하게 된 계기와 처음 떠올린 아이디어를 적어주세요.</p>
+            <div class="aiw-tags">
+              <span class="aiw-tag">장르</span>
+              <span class="aiw-tag">분위기</span>
+              <span class="aiw-tag">레퍼런스</span>
+            </div>
+          </div>
+
+          <div class="aiw-section">
+            <p class="aiw-num">02</p>
+            <p class="dtl">워크플로우</p>
+            <div class="aiw-flow">
+              <span class="flow-step">구상</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">프롬프트 작성</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">이미지 생성</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">영상 변환</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">편집 · 완성</span>
+            </div>
+          </div>
+
+          <div class="aiw-section">
+            <p class="aiw-num">03</p>
+            <p class="dtl">씬리스트</p>
+            <p class="dtxt">씬별 구성을 간략하게 정리해주세요.</p>
+          </div>
+
+          <div class="aiw-section">
+            <p class="aiw-num">04</p>
+            <p class="dtl">PROCESS, THOUGHTS</p>
+            <p class="dtxt">작업하는 과정에서 느낀 점, 배운 것, 어려웠던 부분을 적어주세요.</p>
+          </div>
         </div>
       </div>
     </div>
