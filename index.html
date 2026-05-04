@@ -233,9 +233,8 @@
   .img-grid-4{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.8rem;}
   .img-wrap{overflow:hidden;border-radius:3px;background:#111;}
   .img-wrap-land{aspect-ratio:16/9;}
-  .img-wrap-port{aspect-ratio:3/4;}
+  .img-wrap-sq{aspect-ratio:1/1;}
   .img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.3s;}
-  .img-wrap-port img{object-fit:contain;}
   .img-wrap img:hover{opacity:0.85;}
   .img-caption{font-size:0.6rem;color:var(--muted);text-align:center;margin-top:0.25rem;letter-spacing:0.06em;}
   .bonus-clip video{width:100%;display:block;border-radius:3px;margin-top:0.5rem;}
@@ -681,15 +680,15 @@
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);margin-bottom:0.7rem;">특정 인물 사진을 레퍼런스로 주인공 개성 부여 · 왼쪽 눈 밑 점으로 캐릭터 고정<br>32살 먼저 확정 후 앳된 버전의 21살 생성<br>영화 캡처 + 화풍 레퍼런스로 영화 캐릭터 재현</p>
                 <p class="img-sublabel">주인공</p>
                 <div class="img-grid-2">
-                  <div><div class="img-wrap img-wrap-port"><img src="images/캐릭터최종.png" alt="32살 주인공"></div><p class="img-caption">32살 ver</p></div>
-                  <div><div class="img-wrap img-wrap-port"><img src="images/21살주인공.png" alt="21살 주인공"></div><p class="img-caption">21살 ver</p></div>
+                  <div><div class="img-wrap img-wrap-sq"><img src="images/캐릭터최종.png" alt="32살 주인공"></div><p class="img-caption">32살 ver</p></div>
+                  <div><div class="img-wrap img-wrap-sq"><img src="images/21살주인공.png" alt="21살 주인공"></div><p class="img-caption">21살 ver</p></div>
                 </div>
                 <p class="img-sublabel">영화 캐릭터</p>
                 <div class="img-grid-4">
-                  <div><div class="img-wrap img-wrap-port"><img src="images/올드보이.png" alt="올드보이"></div><p class="img-caption">영화 올드보이</p></div>
-                  <div><div class="img-wrap img-wrap-port"><img src="images/견우.png" alt="엽기적인 그녀"></div><p class="img-caption">엽기적인 그녀</p></div>
-                  <div><div class="img-wrap img-wrap-port"><img src="images/전우치.png" alt="영화 전우치"></div><p class="img-caption">영화 전우치</p></div>
-                  <div><div class="img-wrap img-wrap-port"><img src="images/한강괴물.png" alt="영화 괴물"></div><p class="img-caption">영화 괴물</p></div>
+                  <div><div class="img-wrap img-wrap-land"><img src="images/올드보이.png" alt="올드보이"></div><p class="img-caption">영화 올드보이</p></div>
+                  <div><div class="img-wrap img-wrap-land"><img src="images/견우.png" alt="엽기적인 그녀"></div><p class="img-caption">엽기적인 그녀</p></div>
+                  <div><div class="img-wrap img-wrap-land"><img src="images/전우치.png" alt="영화 전우치"></div><p class="img-caption">영화 전우치</p></div>
+                  <div><div class="img-wrap img-wrap-land"><img src="images/한강괴물.png" alt="영화 괴물"></div><p class="img-caption">영화 괴물</p></div>
                 </div>
 
                 <!-- LOCATION -->
@@ -706,7 +705,7 @@
               <div class="bonus-clip" style="border-left:2px solid rgba(200,169,110,0.3);padding:0.85rem 1rem;background:rgba(200,169,110,0.02);margin-top:0.7rem;">
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:0.3rem;">미사용 클립</p>
                 <p style="font-size:0.73rem;color:var(--muted);margin-bottom:0.5rem;">본 영상에 미포함 — 올드보이 만두씬</p>
-                <video controls preload="none">
+                <video controls preload="none" style="width:100%;aspect-ratio:16/9;display:block;border-radius:3px;">
                   <source src="images/올드보이만두씬.mp4" type="video/mp4">
                 </video>
               </div>
