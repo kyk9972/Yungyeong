@@ -589,6 +589,114 @@
   <p style="font-size:0.82rem;color:var(--muted);margin-top:-1.5rem;margin-bottom:2rem;">각 작업을 클릭하면 구상 과정과 씬리스트, 느낀 점을 볼 수 있습니다.</p>
   <div class="poster-list reveal">
 
+    <!-- AI Work: 네이버 웹툰 대운동회 기획안 -->
+    <div class="poster-item" id="aiw-naver">
+      <div class="poster-header" onclick="togglePoster('aiw-naver')">
+        <div class="poster-img-wrap">
+          <iframe src="https://www.youtube.com/embed/T5T1x9yysBs" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="width:100%;height:100%;display:block;"></iframe>
+        </div>
+        <div class="poster-info-bar">
+          <div class="poster-badges-row">
+            <span class="pbadge gold">AI 기획안</span>
+            <span class="pbadge silver">Teaser</span>
+          </div>
+          <p class="poster-name">네이버 웹툰 운동회</p>
+          <p class="poster-genre">ChatGPT Image · Kling · DaVinci Resolve · Suno</p>
+        </div>
+      </div>
+      <div class="poster-toggle" onclick="togglePoster('aiw-naver')">
+        <span>상세 보기</span><span class="arrow">▶</span>
+      </div>
+      <div class="poster-detail">
+        <div class="poster-detail-inner">
+          <p class="aiw-meta">2026.05 &nbsp;·&nbsp; ChatGPT Image · Kling · DaVinci Resolve · Suno &nbsp;·&nbsp; <span class="aiw-status done">Completed</span></p>
+
+          <div style="margin-bottom:1.8rem;">
+            <a href="AI Video Creator 기획안_김윤경.pdf" target="_blank" style="display:inline-block;padding:0.5rem 1.2rem;border:1px solid rgba(200,169,110,0.5);color:var(--gold);font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;">기획안 전문 보기 ▶</a>
+          </div>
+
+          <div class="aiw-section">
+            <p class="aiw-num">01</p>
+            <p class="dtl">기획 · 컨셉</p>
+            <p class="dtxt" style="font-style:italic;color:var(--cream);line-height:2;">
+              네이버 웹툰에 연재 중인 캐릭터들이 한자리에 모여<br>
+              팬이라면 누구나 상상했을 장면을 AI로 구현한다.<br>
+              — 네이버 웹툰 운동회 (RT 1분 18초)
+            </p>
+            <div class="aiw-tags" style="margin-top:1rem;">
+              <span class="aiw-tag">네이버 웹툰</span>
+              <span class="aiw-tag">2D·3D 통합</span>
+              <span class="aiw-tag">팬 영상</span>
+              <span class="aiw-tag">1분 18초</span>
+            </div>
+
+            <p class="dtl">기법 및 도구</p>
+            <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
+              웹툰 스타일 유지를 위해 2D·3D를 통합한 방식 채택<br>
+              ChatGPT / GPT Image 2로 2D 웹툰 캐릭터를 3D 렌더링으로 변환<br>
+              씬별 3D 캐릭터 통합 → Kling으로 동작 및 카메라 무빙 구현<br>
+              포토샵으로 캐릭터·배경 합성 및 보정
+            </p>
+          </div>
+
+          <div class="aiw-section">
+            <p class="aiw-num">02</p>
+            <p class="dtl">파이프라인</p>
+            <div class="aiw-flow">
+              <span class="flow-step">기획</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">이미지 생성</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">영상 제작</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">음악 제작</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">편집</span>
+            </div>
+            <div style="margin-top:1.2rem;display:flex;flex-direction:column;gap:0.7rem;">
+              <div style="border-left:2px solid rgba(200,169,110,0.6);padding:0.85rem 1rem;background:rgba(200,169,110,0.03);">
+                <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">이미지 생성 &nbsp;—&nbsp; ChatGPT Image (GPT Image 2) · 포토샵</p>
+                <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
+                  웹툰 원화 레퍼런스 기반 2D → 3D 변환<br>
+                  씬별 배경·캐릭터 이미지 생성<br>
+                  포토샵으로 합성 및 보정
+                </p>
+              </div>
+              <div style="border-left:2px solid rgba(200,169,110,0.6);padding:0.85rem 1rem;background:rgba(200,169,110,0.03);">
+                <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">영상 제작 &nbsp;—&nbsp; Kling</p>
+                <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
+                  캐릭터 동작 및 카메라 무빙 구현<br>
+                  씬별 연기·앵글 지시어 적용
+                </p>
+              </div>
+              <div style="border-left:2px solid rgba(200,169,110,0.6);padding:0.85rem 1rem;background:rgba(200,169,110,0.03);">
+                <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">음악 &amp; 효과음 &nbsp;—&nbsp; Suno · Freesound.org</p>
+                <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
+                  운동회 분위기에 맞는 BGM 제작<br>
+                  효과음: Freesound.org
+                </p>
+              </div>
+              <div style="border-left:2px solid rgba(200,169,110,0.6);padding:0.85rem 1rem;background:rgba(200,169,110,0.03);">
+                <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">편집 &nbsp;—&nbsp; DaVinci Resolve</p>
+                <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
+                  씬별 타임라인 배치 (총 1분 18초)<br>
+                  트랜지션 · BGM 싱크 편집
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="aiw-section">
+            <p class="aiw-num">03</p>
+            <p class="dtl">씬리스트</p>
+            <p style="font-size:0.73rem;color:var(--muted);margin-bottom:0.8rem;">전체 씬리스트 및 연출 플랜은 기획안 PDF에서 확인할 수 있습니다.</p>
+            <a href="AI Video Creator 기획안_김윤경.pdf" target="_blank" style="display:inline-block;padding:0.4rem 1rem;border:1px solid rgba(200,169,110,0.4);color:var(--gold);font-size:0.73rem;text-decoration:none;letter-spacing:0.08em;">씬리스트 전체 보기 ▶</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <!-- AI Work: Dream of Soul -->
     <div class="poster-item" id="aiw-dos">
       <div class="poster-header" onclick="togglePoster('aiw-dos')">
