@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 영상 제작 파이프라인</title>
+<style>
+:root{--bg:#0f0f0f;--sf:#1a1a1a;--sf2:#242424;--bd:#333;--ac:#6366f1;--ach:#818cf8;--tx:#e5e5e5;--mu:#888;--ok:#22c55e;--wn:#f59e0b;--er:#ef4444}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;font-size:14px}
+.hdr{background:var(--sf);border-bottom:1px solid var(--bd);padding:13px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.hdr h1{font-size:17px;font-weight:700;color:var(--ach)}
+/* API bar */
+.apibar{background:var(--sf);border-bottom:1px solid var(--bd);padding:10px 24px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.akey{display:flex;align-items:center;gap:8px;flex:1;min-width:260px}
+.akey label{font-size:11px;color:var(--mu);white-space:nowrap;line-height:1.4}
+.akey input{flex:1;background:var(--sf2);border:1px solid var(--bd);color:var(--tx);padding:7px 10px;border-radius:6px;font-size:12px}
+.ast{font-size:11px;white-space:nowrap}
+/* Tabs */
+.tabs{display:flex;background:var(--sf);border-bottom:1px solid var(--bd);padding:0 20px;overflow-x:auto;gap:2px}
+.tb{padding:12px 17px;background:none;border:none;color:var(--mu);cursor:pointer;font-size:13px;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s}
+.tb:hover{color:var(--tx)}.tb.on{color:var(--ach);border-bottom-color:var(--ac)}
+.tc{display:none;padding:22px;max-width:1100px;margin:0 auto}.tc.on{display:block}
+/* Cards */
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:17px;margin-bottom:13px}
+.ct{font-size:11px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;margin-bottom:11px}
+label{display:block;font-size:12px;color:var(--mu);margin-bottom:5px}
+textarea,input[type=text],input[type=number],input[type=password],select{
+  width:100%;background:var(--sf2);border:1px solid var(--bd);color:var(--tx);
+  padding:8px 10px;border-radius:6px;font-size:13px;font-family:inherit;resize:vertical}
+textarea:focus,input:focus,select:focus{outline:none;border-color:var(--ac)}
+/* Buttons */
+.btn{padding:8px 15px;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;transition:.15s;display:inline-flex;align-items:center;gap:5px}
+.bp{background:var(--ac);color:#fff}.bp:hover{background:var(--ach)}.bp:disabled{opacity:.4;cursor:not-allowed}
+.bs{background:var(--sf2);color:var(--tx);border:1px solid var(--bd)}.bs:hover{border-color:var(--ac);color:var(--ach)}
+.bd2{background:transparent;color:var(--er);border:1px solid var(--er);padding:4px 8px;font-size:12px}.bd2:hover{background:var(--er);color:#fff}
+.bsm{padding:5px 11px;font-size:12px}
+/* Layout */
+.row{display:flex;gap:13px;flex-wrap:wrap}.col{flex:1;min-width:170px}
+.acts{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:13px}
+/* Spinner */
+.spin{display:inline-block;width:13px;height:13px;border:2px solid rgba(99,102,241,.3);border-top-color:var(--ac);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+/* Alerts */
+.alert{padding:9px 13px;border-radius:6px;font-size:12px;margin-bottom:11px}
+.ai{background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3)}
+.ae{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:#fca5a5}
+.as{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#86efac}
+/* Scene table */
+.stw{overflow-x:auto}
+.st{width:100%;border-collapse:collapse;font-size:12px}
+.st th{background:var(--sf2);padding:8px 7px;text-align:left;border-bottom:1px solid var(--bd);white-space:nowrap;color:var(--mu);font-weight:500}
+.st td{padding:5px 6px;border-bottom:1px solid var(--bd);vertical-align:middle}
+.st tr:hover td{background:var(--sf2)}
+.st input,.st select{background:transparent;border:1px solid transparent;padding:4px 5px;width:100%}
+.st input:focus,.st select:focus{background:var(--sf2);border-color:var(--ac);border-radius:4px}
+/* Prompt box */
+.pb{background:var(--sf2);border:1px solid var(--bd);border-radius:8px;padding:12px 56px 12px 12px;font-family:'Courier New',monospace;font-size:12px;line-height:1.65;white-space:pre-wrap;word-break:break-word;position:relative;min-height:50px}
+.cpb{position:absolute;top:7px;right:7px;padding:3px 8px;background:var(--sf);border:1px solid var(--bd);color:var(--mu);border-radius:4px;cursor:pointer;font-size:11px}
+.cpb:hover{color:var(--ach);border-color:var(--ac)}
+.genimg{width:100%;border-radius:8px;border:1px solid var(--bd);margin-top:11px;display:block}
+/* Important cuts */
+.locg{margin-bottom:17px}
+.loch{font-size:12px;font-weight:600;color:var(--wn);padding:5px 0;border-bottom:1px solid var(--bd);margin-bottom:7px;display:flex;align-items:center;gap:7px}
+.cutcard{background:var(--sf2);border:1px solid var(--bd);border-radius:7px;padding:9px 13px;display:flex;align-items:flex-start;gap:9px;margin-bottom:6px}
+.obadge{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:50%;background:var(--ac);color:#fff;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.sbadge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600;background:var(--sf);border:1px solid var(--bd)}
+/* Sub tabs */
+.stabs{display:flex;gap:7px;margin-bottom:15px}
+.stb{padding:6px 14px;background:var(--sf2);border:1px solid var(--bd);color:var(--mu);border-radius:6px;cursor:pointer;font-size:12px;transition:.15s}
+.stb.on{background:var(--ac);border-color:var(--ac);color:#fff}
+/* Upload */
+.uarea{border:2px dashed var(--bd);border-radius:8px;padding:24px;text-align:center;cursor:pointer;transition:.15s}
+.uarea:hover{border-color:var(--ac)}
+/* Cut list */
+.kcl{display:flex;flex-direction:column;gap:4px;max-height:260px;overflow-y:auto;padding:5px;background:var(--sf2);border-radius:6px;border:1px solid var(--bd)}
+.kci{display:flex;align-items:flex-start;gap:7px;padding:6px 8px;border-radius:5px;cursor:pointer;transition:background .12s;font-size:12px;border:1px solid transparent}
+.kci:hover{background:var(--sf)}.kci.on{background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.4)}
+/* Char list */
+.chitems{display:flex;flex-direction:column;gap:7px}
+.chitem{display:flex;gap:7px;align-items:flex-start}.chitem textarea{flex:1;min-height:52px}
+/* Tags */
+.ptag{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
+.ptag-c{background:rgba(99,102,241,.2);color:var(--ach)}
+.ptag-o{background:rgba(34,197,94,.15);color:#86efac}
+.ptag-h{background:rgba(251,113,133,.15);color:#fda4af}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>🎬 AI 영상 제작 파이프라인</h1>
+  <div style="display:flex;gap:8px;font-size:11px">
+    <span class="ptag ptag-c">Claude</span>
+    <span class="ptag ptag-o">GPT Image 2</span>
+    <span class="ptag ptag-h">Higgsfield</span>
+  </div>
+</div>
+
+<div class="apibar">
+  <div class="akey">
+    <label>🟣 Anthropic API Key<br><span style="font-size:10px">console.anthropic.com · 시나리오·씬리스트·프롬프트</span></label>
+    <input type="password" id="claudeKey" placeholder="sk-ant-..." />
+    <span class="ast" id="cSt" style="color:var(--mu)">미설정</span>
+  </div>
+  <div class="akey">
+    <label>🟢 OpenAI API Key<br><span style="font-size:10px">platform.openai.com · GPT Image 2 이미지 생성</span></label>
+    <input type="password" id="openaiKey" placeholder="sk-..." />
+    <span class="ast" id="oSt" style="color:var(--mu)">미설정</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tb on">1. 시나리오</button>
+  <button class="tb">2. 씬리스트</button>
+  <button class="tb">3. 중요컷 선별</button>
+  <button class="tb">4. 이미지 생성</button>
+  <button class="tb">5. 캐릭터 합성</button>
+  <button class="tb">6. Higgsfield</button>
+</div>
+
+<!-- TAB 1 -->
+<div class="tc on" id="tab0">
+  <div class="card">
+    <div class="ct">로그라인</div>
+    <textarea id="logline" rows="2" placeholder="핵심 갈등과 주제를 담은 한 문장"></textarea>
+  </div>
+  <div class="card">
+    <div class="ct" style="margin-bottom:13px">캐릭터 정보</div>
+    <div class="chitems" id="charList"></div>
+    <div class="acts"><button class="btn bs bsm" onclick="addChar()">+ 캐릭터 추가</button></div>
+  </div>
+  <div class="card">
+    <div class="ct">시놉시스</div>
+    <textarea id="synopsis" rows="5" placeholder="전체 줄거리를 단락으로 정리"></textarea>
+  </div>
+  <div class="acts">
+    <button class="btn bp" id="scenBtn" onclick="genScenario()">Claude로 시나리오 생성</button>
+    <span class="ptag ptag-c">Claude</span>
+  </div>
+  <div class="card" style="margin-top:13px">
+    <div class="ct">생성된 시나리오</div>
+    <textarea id="scenOut" rows="18" placeholder="시나리오가 여기 생성됩니다."></textarea>
+    <div class="acts">
+      <button class="btn bs bsm" onclick="copyEl('scenOut')">복사</button>
+      <button class="btn bs bsm" onclick="toTab(1,()=>{ $('sceneIn').value=S.scenario })">→ 씬리스트로</button>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2 -->
+<div class="tc" id="tab1">
+  <div class="card">
+    <div class="ct">시나리오</div>
+    <textarea id="sceneIn" rows="7" placeholder="시나리오를 붙여넣거나 1단계에서 가져오세요."></textarea>
+  </div>
+  <div class="acts">
+    <button class="btn bp" id="slBtn" onclick="genSceneList()">Claude로 씬리스트 생성</button>
+    <span class="ptag ptag-c">Claude</span>
+    <button class="btn bs" onclick="addSceneRow()">+ 행 추가</button>
+    <button class="btn bs" onclick="exportCSV()">CSV 내보내기</button>
+  </div>
+  <div class="card" style="margin-top:13px">
+    <div class="ct">씬리스트</div>
+    <div class="stw">
+      <table class="st"><thead><tr>
+        <th>씬</th><th>컷</th><th>장소</th><th>등장인물</th>
+        <th>샷사이즈</th><th>앵글</th><th>카메라무빙</th>
+        <th style="min-width:200px">내용</th><th></th>
+      </tr></thead>
+      <tbody id="stBody">
+        <tr><td colspan="9" style="text-align:center;padding:18px;color:var(--mu)">씬리스트가 여기 표시됩니다.</td></tr>
+      </tbody></table>
+    </div>
+    <div class="acts"><button class="btn bs bsm" onclick="toTab(2,renderCutsTab)">→ 중요컷 선별로</button></div>
+  </div>
+</div>
+
+<!-- TAB 3 -->
+<div class="tc" id="tab2">
+  <div class="card">
+    <div class="ct">중요컷 AI 선별 + 촬영순서 최적화</div>
+    <p style="font-size:12px;color:var(--mu);margin-bottom:13px">AI가 핵심 컷을 선별하고, 같은 장소 묶기 + 와이드→클로즈업 순으로 최적화합니다.</p>
+    <div class="acts">
+      <button class="btn bp" id="impBtn" onclick="selectImportant()">AI 중요컷 선별</button>
+      <span class="ptag ptag-c">Claude</span>
+      <button class="btn bs" onclick="useAllCuts()">전체 컷 사용 (수동 최적화)</button>
+    </div>
+  </div>
+  <div id="cutsResult"></div>
+</div>
+
+<!-- TAB 4 -->
+<div class="tc" id="tab3">
+  <div class="stabs">
+    <button class="stb on" onclick="switchSub('char',this)">4-1. 캐릭터 이미지</button>
+    <button class="stb" onclick="switchSub('bg',this)">4-2. 배경 이미지</button>
+  </div>
+
+  <div id="subChar">
+    <div class="card">
+      <div class="ct">공통 스타일 설정</div>
+      <div class="row">
+        <div class="col"><label>그림체</label><input type="text" id="drawStyle" placeholder="지브리 스타일, 웹툰, 실사 3D..." /></div>
+        <div class="col"><label>타입</label>
+          <select id="charTypeVal"><option>2D 일러스트</option><option>3D 렌더링</option><option>실사 (Realistic)</option></select>
+        </div>
+      </div>
+      <div style="margin-top:10px"><label>레퍼런스 설명</label>
+        <textarea id="styleRef" rows="2" placeholder="색감, 질감, 참고 작품 스타일 등..."></textarea>
+      </div>
+    </div>
+    <div id="charPromptCards"></div>
+    <div class="acts">
+      <button class="btn bp" id="cpBtn" onclick="genAllCharPrompts()">전체 캐릭터 프롬프트+이미지 생성</button>
+      <span class="ptag ptag-c">Claude 프롬프트</span><span class="ptag ptag-o">GPT Image 2</span>
+    </div>
+  </div>
+
+  <div id="subBg" style="display:none">
+    <div id="bgPromptCards"></div>
+    <div class="acts">
+      <button class="btn bp" id="bpBtn" onclick="genAllBgPrompts()">전체 배경 프롬프트+이미지 생성</button>
+      <span class="ptag ptag-c">Claude 프롬프트</span><span class="ptag ptag-o">GPT Image 2</span>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5 -->
+<div class="tc" id="tab4">
+  <div class="card">
+    <div class="ct">캐릭터 합성 프롬프트</div>
+    <p style="font-size:12px;color:var(--mu);margin-bottom:13px">"첫번째 사진 배경 위에 캐릭터들을 배치해줘" 형식으로 합성 프롬프트 생성 후 GPT Image 2로 이미지 생성</p>
+    <div class="acts"><button class="btn bp" onclick="genAllComposite()">전체 합성 생성</button>
+      <span class="ptag ptag-c">Claude 프롬프트</span><span class="ptag ptag-o">GPT Image 2</span>
+    </div>
+  </div>
+  <div id="compositeList"></div>
+</div>
+
+<!-- TAB 6 Higgsfield -->
+<div class="tc" id="tab5">
+  <div class="row" style="align-items:flex-start">
+    <div style="flex:0 0 320px;min-width:260px">
+      <div class="card">
+        <div class="ct">스타트 프레임</div>
+        <div class="uarea" onclick="$('sfInput').click()">
+          <input type="file" id="sfInput" accept="image/*" style="display:none" onchange="loadFrame(this)" />
+          <div id="sfPreview"><div style="font-size:26px;margin-bottom:5px">🖼️</div>
+            <div style="font-size:12px;color:var(--mu)">클릭하여 업로드</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct">컷 선택</div>
+        <div class="kcl" id="kcList"><div style="color:var(--mu);font-size:12px;text-align:center;padding:14px">씬리스트를 먼저 생성해주세요</div></div>
+      </div>
+      <div class="card">
+        <div class="ct">설정</div>
+        <div class="row">
+          <div class="col"><label>영상 길이 (초)</label><input type="number" id="kDur" value="5" min="1" max="60" /></div>
+          <div class="col"><label>영상 비율</label>
+            <select id="kRatio"><option>16:9</option><option>9:16</option><option>1:1</option><option>4:3</option></select>
+          </div>
+        </div>
+        <div style="margin-top:10px"><label>분위기 / 스타일 (선택)</label>
+          <textarea id="kExtra" rows="2" placeholder="예: cinematic, slow motion, dramatic lighting..."></textarea>
+        </div>
+      </div>
+      <div class="acts">
+        <button class="btn bp" style="width:100%" id="kBtn" onclick="genHiggsfield()">Higgsfield 프롬프트 생성</button>
+        <span class="ptag ptag-c">Claude</span>
+      </div>
+    </div>
+    <div style="flex:1;min-width:260px">
+      <div class="card">
+        <div class="ct">생성된 Higgsfield 프롬프트 <span class="ptag ptag-h" style="margin-left:6px">Higgsfield 입력용</span></div>
+        <div id="kResult" style="color:var(--mu);font-size:13px">왼쪽에서 컷을 선택하고 생성 버튼을 누르세요.</div>
+      </div>
+      <div class="card" id="hfTipsCard">
+        <div class="ct">Higgsfield 프롬프트 가이드</div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.8">
+          • 스타트 프레임 이미지 업로드 후 프롬프트 생성<br>
+          • 캐릭터명 앞에 <strong style="color:var(--ach)">@</strong> 붙이기<br>
+          • 샷사이즈 · 앵글 · 카메라무빙 포함<br>
+          • 이미지에 이미 있는 내용은 생략<br>
+          • 한국어로 생성됨
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const S={
+  claudeKey:'', openaiKey:'',
+  scenario:'', sceneList:[],
+  chars:[], importantCuts:[], optimizedGroups:{},
+  charPrompts:{}, charImages:{},
+  bgPrompts:{}, bgImages:{},
+  selectedKling:null, startFrameB64:null
+};
+const SHOTS=['ELS','EWS','LS','WS','FS','MLS','MS','MCU','CU','ECU'];
+const $=id=>document.getElementById(id);
+const esc=s=>!s?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+function toast(msg){
+  const t=document.createElement('div');
+  t.style.cssText='position:fixed;bottom:20px;right:20px;background:#333;color:#fff;padding:8px 15px;border-radius:7px;font-size:13px;z-index:9999;opacity:0;transition:opacity .25s';
+  t.textContent=msg;document.body.appendChild(t);
+  requestAnimationFrame(()=>t.style.opacity='1');
+  setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),300)},2000);
+}
+function copyEl(id){const e=$(id);if(!e)return;navigator.clipboard.writeText(e.value||e.textContent);toast('복사됨!');}
+function copyText(txt){navigator.clipboard.writeText(txt);toast('복사됨!');}
+function loading(id,on){
+  const b=$(id);if(!b)return;
+  if(on){b.disabled=true;if(!b.dataset.orig)b.dataset.orig=b.textContent;b.innerHTML=b.dataset.orig+'<span class="spin"></span>'}
+  else{b.disabled=false;b.innerHTML=b.dataset.orig||b.textContent}
+}
+function download(name,content,type='text/csv'){
+  const b=new Blob([content],{type}),u=URL.createObjectURL(b),a=document.createElement('a');
+  a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);
+}
+function extractJSON(txt){
+  const cm=txt.match(/```(?:json)?\s*([\s\S]*?)```/);if(cm)return cm[1].trim();
+  const jm=txt.match(/\{[\s\S]*\}/);return jm?jm[0]:txt;
+}
+
+// ── API Keys ──
+function updSt(key,stId,val){
+  if(key==='claude') S.claudeKey=val; else S.openaiKey=val;
+  const ok=val.length>10;
+  $(stId).textContent=ok?'✓ 설정됨':'미설정';
+  $(stId).style.color=ok?'#86efac':'var(--mu)';
+}
+['input','change','paste'].forEach(ev=>{
+  $('claudeKey').addEventListener(ev,function(){setTimeout(()=>updSt('claude','cSt',this.value),0)});
+  $('openaiKey').addEventListener(ev,function(){setTimeout(()=>updSt('openai','oSt',this.value),0)});
+});
+
+// ── Claude API ──
+async function claude(system, userMsg){
+  if(!S.claudeKey){alert('Anthropic API Key를 입력해주세요.\nconsole.anthropic.com에서 발급');throw new Error('no key')}
+  const r=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'x-api-key':S.claudeKey,
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    },
+    body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:8192,system,messages:[{role:'user',content:userMsg}]})
+  });
+  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||'Claude API 오류')}
+  return (await r.json()).content[0].text;
+}
+
+// ── GPT Image 2 ──
+async function genImage(prompt){
+  if(!S.openaiKey){alert('OpenAI API Key를 입력해주세요.');throw new Error('no openai key')}
+  const r=await fetch('https://api.openai.com/v1/images/generations',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+S.openaiKey},
+    body:JSON.stringify({model:'gpt-image-1',prompt,n:1,size:'1024x1024'})
+  });
+  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||'Image API 오류')}
+  const d=await r.json(),item=d.data[0];
+  return item.url||(item.b64_json?'data:image/png;base64,'+item.b64_json:null);
+}
+
+// ── Tabs ──
+function toTab(n,cb){
+  document.querySelectorAll('.tb').forEach((b,i)=>b.classList.toggle('on',i===n));
+  document.querySelectorAll('.tc').forEach((c,i)=>c.classList.toggle('on',i===n));
+  if(n===2)renderCutsTab();
+  if(n===3)renderImgTab();
+  if(n===4)renderCompositeTab();
+  if(n===5)renderHiggsfieldTab();
+  if(cb)cb();
+}
+document.querySelectorAll('.tb').forEach((b,i)=>b.addEventListener('click',()=>toTab(i)));
+function switchSub(which,btn){
+  document.querySelectorAll('.stb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  $('subChar').style.display=which==='char'?'block':'none';
+  $('subBg').style.display=which==='bg'?'block':'none';
+}
+
+// ── Characters ──
+function addChar(name='',desc=''){S.chars.push({name,desc});renderChars();}
+function removeChar(i){S.chars.splice(i,1);renderChars();}
+function renderChars(){
+  const el=$('charList');el.innerHTML='';
+  S.chars.forEach((c,i)=>{
+    const d=document.createElement('div');d.className='chitem';
+    d.innerHTML=`<div style="flex:1">
+      <input type="text" placeholder="캐릭터 이름" value="${esc(c.name)}" style="margin-bottom:6px" oninput="S.chars[${i}].name=this.value" />
+      <textarea rows="2" placeholder="나이, 성격, 외모, 역할 등..." oninput="S.chars[${i}].desc=this.value">${esc(c.desc)}</textarea>
+    </div>
+    <button class="btn bd2" onclick="removeChar(${i})">✕</button>`;
+    el.appendChild(d);
+  });
+}
+addChar('','');
+
+// ── TAB 1 시나리오 ──
+async function genScenario(){
+  const ll=$('logline').value.trim(),sy=$('synopsis').value.trim();
+  if(!ll||!sy){alert('로그라인과 시놉시스를 입력해주세요.');return}
+  const charsTxt=S.chars.filter(c=>c.name).map(c=>`- ${c.name}: ${c.desc}`).join('\n');
+  loading('scenBtn',true);
+  try{
+    const r=await claude(
+      `전문 시나리오 작가. 한국 표준 형식으로 작성.\n형식:\n- S#번호 씬제목 (INT./EXT. 장소 - 낮/밤)\n- 지문은 현재형\n- 대사: 캐릭터명 들여쓰기 후 기재\n- 씬 전환 지시어 포함 (CUT TO:, FADE IN: 등)\n- 최소 5개 씬 이상`,
+      `로그라인: ${ll}\n\n캐릭터:\n${charsTxt||'없음'}\n\n시놉시스:\n${sy}\n\n완성도 높은 시나리오를 작성해주세요.`
+    );
+    $('scenOut').value=r;S.scenario=r;
+  }catch(e){alert('오류: '+e.message)}
+  loading('scenBtn',false);
+}
+
+// ── TAB 2 씬리스트 ──
+async function genSceneList(){
+  const sc=$('sceneIn').value.trim();
+  if(!sc){alert('시나리오를 입력해주세요.');return}
+  loading('slBtn',true);
+  try{
+    const r=await claude(
+      `영화 스크립트 수퍼바이저. 씬리스트를 JSON으로만 반환. 마크다운 없이 JSON만.\n형식: {"scenes":[{"scene":1,"cut":1,"location":"카페 내부","characters":["민준"],"shotSize":"FS","angle":"아이레벨","cameraMoving":"고정","description":"장면 설명"}]}\n샷사이즈: ELS/LS/FS/MS/CU/ECU\n앵글: 아이레벨/로우앵글/하이앵글/버즈아이뷰/더치앵글\n카메라무빙: 고정/패닝/틸팅/달리/트래킹/핸드헬드/줌인/줌아웃/크레인\n각 씬당 3~5컷`,
+      `다음 시나리오로 씬리스트 JSON 생성:\n\n${sc}`
+    );
+    S.sceneList=JSON.parse(extractJSON(r)).scenes||[];
+    renderST(S.sceneList);
+  }catch(e){alert('오류: '+e.message);console.error(e)}
+  loading('slBtn',false);
+}
+
+function renderST(scenes){
+  const tb=$('stBody');tb.innerHTML='';
+  scenes.forEach((s,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><input type="number" value="${s.scene}" oninput="S.sceneList[${i}].scene=+this.value" style="width:38px" /></td>
+      <td><input type="number" value="${s.cut}" oninput="S.sceneList[${i}].cut=+this.value" style="width:38px" /></td>
+      <td><input type="text" value="${esc(s.location)}" oninput="S.sceneList[${i}].location=this.value" style="min-width:85px" /></td>
+      <td><input type="text" value="${esc((s.characters||[]).join(', '))}" oninput="S.sceneList[${i}].characters=this.value.split(',').map(x=>x.trim()).filter(Boolean)" style="min-width:85px" /></td>
+      <td><select onchange="S.sceneList[${i}].shotSize=this.value">${['ELS','LS','FS','MS','CU','ECU'].map(v=>`<option ${s.shotSize===v?'selected':''}>${v}</option>`).join('')}</select></td>
+      <td><select onchange="S.sceneList[${i}].angle=this.value">${['아이레벨','로우앵글','하이앵글','버즈아이뷰','더치앵글'].map(v=>`<option ${s.angle===v?'selected':''}>${v}</option>`).join('')}</select></td>
+      <td><select onchange="S.sceneList[${i}].cameraMoving=this.value">${['고정','패닝','틸팅','달리','트래킹','핸드헬드','줌인','줌아웃','크레인'].map(v=>`<option ${s.cameraMoving===v?'selected':''}>${v}</option>`).join('')}</select></td>
+      <td><input type="text" value="${esc(s.description)}" oninput="S.sceneList[${i}].description=this.value" style="min-width:200px" /></td>
+      <td><button class="btn bd2" onclick="delRow(${i})">✕</button></td>`;
+    tb.appendChild(tr);
+  });
+}
+function addSceneRow(){
+  const last=S.sceneList[S.sceneList.length-1]||{scene:1,cut:0};
+  S.sceneList.push({scene:last.scene,cut:last.cut+1,location:'',characters:[],shotSize:'MS',angle:'아이레벨',cameraMoving:'고정',description:''});
+  renderST(S.sceneList);
+}
+function delRow(i){S.sceneList.splice(i,1);renderST(S.sceneList);}
+function exportCSV(){
+  const h=['씬','컷','장소','등장인물','샷사이즈','앵글','카메라무빙','내용'];
+  const rows=S.sceneList.map(s=>[s.scene,s.cut,s.location,(s.characters||[]).join('/'),s.shotSize,s.angle,s.cameraMoving,s.description]);
+  download('씬리스트.csv',[h,...rows].map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n'));
+}
+
+// ── TAB 3 중요컷 ──
+async function selectImportant(){
+  if(!S.sceneList.length){alert('씬리스트를 먼저 생성해주세요.');return}
+  loading('impBtn',true);
+  try{
+    const desc=S.sceneList.map((s,i)=>`[${i}] S${s.scene}C${s.cut}-${s.location}|${s.shotSize}|${s.angle}|${(s.characters||[]).join(',')}|${s.description}`).join('\n');
+    const r=await claude(
+      `영화 촬영감독. 씬리스트에서 핵심컷 선별. JSON만 반환: {"importantIndices":[0,2,5]}\n선별기준: 스토리 전환점, 감정 핵심, 시각 임팩트, 각 씬 대표컷. 전체의 40~60% 선별.`,
+      `씬리스트:\n${desc}\n\n중요컷 인덱스를 JSON으로만 반환.`
+    );
+    const idx=new Set(JSON.parse(extractJSON(r)).importantIndices||[]);
+    S.importantCuts=S.sceneList.filter((_,i)=>idx.has(i));
+    S.optimizedGroups=optimizeOrder(S.importantCuts);
+    renderCutsTab();
+  }catch(e){alert('오류: '+e.message)}
+  loading('impBtn',false);
+}
+function useAllCuts(){
+  if(!S.sceneList.length){alert('씬리스트를 먼저 생성해주세요.');return}
+  S.importantCuts=[...S.sceneList];S.optimizedGroups=optimizeOrder(S.importantCuts);renderCutsTab();
+}
+function optimizeOrder(cuts){
+  const g={};
+  cuts.forEach(c=>{const l=c.location||'미정';if(!g[l])g[l]=[];g[l].push(c)});
+  Object.values(g).forEach(arr=>arr.sort((a,b)=>{
+    const ai=SHOTS.indexOf(a.shotSize),bi=SHOTS.indexOf(b.shotSize);
+    return(ai<0?99:ai)-(bi<0?99:bi);
+  }));
+  return g;
+}
+function renderCutsTab(){
+  const el=$('cutsResult');
+  if(!S.importantCuts.length){el.innerHTML='<div class="alert ai">위 버튼을 눌러 중요컷을 선별해주세요.</div>';return}
+  let h=`<div class="alert as">총 ${S.importantCuts.length}개 선별 → ${Object.keys(S.optimizedGroups).length}개 장소 그룹화</div>`;
+  let n=1;
+  Object.entries(S.optimizedGroups).forEach(([loc,cuts])=>{
+    h+=`<div class="locg"><div class="loch">📍 ${esc(loc)} <span style="color:var(--mu);font-weight:400">${cuts.length}컷</span></div>`;
+    cuts.forEach(c=>{
+      h+=`<div class="cutcard"><div class="obadge">${n++}</div>
+        <div style="flex:1;font-size:12px">
+          <strong style="color:var(--ach)">S${c.scene}C${c.cut}</strong>
+          <span class="sbadge" style="margin:0 6px">${c.shotSize}</span>${esc(c.angle)} · ${esc(c.cameraMoving)}
+          <div style="color:var(--mu);margin-top:3px">${esc(c.description)}</div>
+          ${(c.characters||[]).length?`<div style="color:var(--mu);font-size:11px;margin-top:2px">등장: ${esc(c.characters.join(', '))}</div>`:''}
+        </div></div>`;
+    });
+    h+='</div>';
+  });
+  el.innerHTML=h;
+}
+
+// ── TAB 4 이미지 ──
+function renderImgTab(){renderCharCards();renderBgCards();}
+
+function renderCharCards(){
+  const el=$('charPromptCards');
+  const chars=S.chars.filter(c=>c.name);
+  if(!chars.length){el.innerHTML='<div class="alert ai">1단계에서 캐릭터를 먼저 추가해주세요.</div>';return}
+  el.innerHTML=chars.map((c,i)=>{
+    const p=S.charPrompts[c.name]||'',img=S.charImages[c.name]||'';
+    return`<div class="card">
+      <div class="ct">${esc(c.name)}</div>
+      <p style="font-size:11px;color:var(--mu);margin-bottom:7px">${esc(c.desc)}</p>
+      <div style="font-size:11px;color:var(--mu);margin-bottom:9px">고정: <span style="color:var(--ach)">FS샷 · 흰색 배경 · 정면</span></div>
+      <div id="cp_${i}">${p?`<div class="pb">${esc(p)}<button class="cpb" onclick="copyText(S.charPrompts[S.chars.filter(c=>c.name)[${i}].name])">복사</button></div>`:'<div style="color:var(--mu);font-size:12px">프롬프트가 여기 표시됩니다.</div>'}</div>
+      ${img?`<img src="${img}" class="genimg" />`:''}
+      <div class="acts">
+        <button class="btn bs bsm" onclick="genOneCharPrompt(${i})">프롬프트만 생성</button>
+        <button class="btn bp bsm" onclick="genOneCharFull(${i})">프롬프트+이미지 생성</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function genOneCharPrompt(i){
+  const chars=S.chars.filter(c=>c.name);const c=chars[i];if(!c)return;
+  const style=$('drawStyle').value,type=$('charTypeVal').value,ref=$('styleRef').value;
+  const r=await claude(
+    `AI 이미지 프롬프트 전문가. GPT Image 2용 영어 프롬프트 생성.\n필수: Full Shot(머리~발끝), pure white background, facing forward, ${type} style, detailed appearance.`,
+    `캐릭터: ${c.name}\n설명: ${c.desc}\n그림체: ${style||'없음'}\n타입: ${type}\n레퍼런스: ${ref||'없음'}\n\n150단어 내외 영어 프롬프트.`
+  );
+  S.charPrompts[c.name]=r;renderCharCards();
+}
+async function genOneCharFull(i){
+  try{await genOneCharPrompt(i);const chars=S.chars.filter(c=>c.name);const c=chars[i];
+    if(!c||!S.charPrompts[c.name])return;
+    const url=await genImage(S.charPrompts[c.name]);
+    if(url){S.charImages[c.name]=url;renderCharCards();}
+  }catch(e){alert('오류: '+e.message)}
+}
+async function genAllCharPrompts(){
+  const chars=S.chars.filter(c=>c.name);if(!chars.length){alert('캐릭터를 먼저 추가해주세요.');return}
+  loading('cpBtn',true);for(let i=0;i<chars.length;i++) await genOneCharFull(i);loading('cpBtn',false);
+}
+
+function renderBgCards(){
+  const el=$('bgPromptCards');
+  const locs=[...new Set(S.sceneList.map(s=>s.location).filter(Boolean))];
+  if(!locs.length){el.innerHTML='<div class="alert ai">씬리스트를 먼저 생성해주세요.</div>';return}
+  el.innerHTML=locs.map((loc,i)=>{
+    const p=S.bgPrompts[loc]||'',img=S.bgImages[loc]||'';
+    return`<div class="card">
+      <div class="ct">📍 ${esc(loc)}</div>
+      <div class="row" style="margin-bottom:10px">
+        <div class="col"><label>시간대</label>
+          <select id="bt_${i}"><option>낮 (Day)</option><option>밤 (Night)</option><option>새벽 (Dawn)</option><option>저녁 (Dusk)</option><option>실내 조명</option></select>
+        </div>
+        <div class="col"><label>분위기</label><input type="text" id="bm_${i}" placeholder="아늑한, 긴장감 있는, 로맨틱한..." /></div>
+      </div>
+      <div style="font-size:11px;color:var(--mu);margin-bottom:9px">고정: <span style="color:var(--ach)">EXL샷 · 공간 전체 · 인물 없음</span></div>
+      <div id="bp_${i}">${p?`<div class="pb">${esc(p)}<button class="cpb" onclick="copyText(S.bgPrompts[${JSON.stringify(loc)}])">복사</button></div>`:'<div style="color:var(--mu);font-size:12px">프롬프트가 여기 표시됩니다.</div>'}</div>
+      ${img?`<img src="${img}" class="genimg" />`:''}
+      <div class="acts">
+        <button class="btn bs bsm" onclick="genOneBgPrompt(${i})">프롬프트만 생성</button>
+        <button class="btn bp bsm" onclick="genOneBgFull(${i})">프롬프트+이미지 생성</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+async function genOneBgPrompt(i){
+  const locs=[...new Set(S.sceneList.map(s=>s.location).filter(Boolean))];
+  const loc=locs[i];if(!loc)return;
+  const time=($(`bt_${i}`)||{}).value||'낮',mood=($(`bm_${i}`)||{}).value||'';
+  const r=await claude(
+    `AI 이미지 프롬프트 전문가. GPT Image 2용 영어 배경 프롬프트 생성.\n필수: Extreme Long Shot (ELS), no characters, full environment visible, wide-angle.`,
+    `장소: ${loc}\n시간대: ${time}\n분위기: ${mood||'없음'}\n\n150단어 내외 영어 프롬프트.`
+  );
+  S.bgPrompts[loc]=r;renderBgCards();
+}
+async function genOneBgFull(i){
+  try{await genOneBgPrompt(i);
+    const locs=[...new Set(S.sceneList.map(s=>s.location).filter(Boolean))];const loc=locs[i];
+    if(!loc||!S.bgPrompts[loc])return;
+    const url=await genImage(S.bgPrompts[loc]);
+    if(url){S.bgImages[loc]=url;renderBgCards();}
+  }catch(e){alert('오류: '+e.message)}
+}
+async function genAllBgPrompts(){
+  const locs=[...new Set(S.sceneList.map(s=>s.location).filter(Boolean))];
+  if(!locs.length){alert('씬리스트를 먼저 생성해주세요.');return}
+  loading('bpBtn',true);for(let i=0;i<locs.length;i++) await genOneBgFull(i);loading('bpBtn',false);
+}
+
+// ── TAB 5 합성 ──
+function renderCompositeTab(){
+  const el=$('compositeList');
+  const locs=[...new Set(S.sceneList.map(s=>s.location).filter(Boolean))];
+  if(!locs.length){el.innerHTML='<div class="alert ai">씬리스트를 먼저 생성해주세요.</div>';return}
+  el.innerHTML=locs.map((loc,i)=>{
+    const chars=[...new Set(S.sceneList.filter(s=>s.location===loc).flatMap(c=>c.characters||[]).filter(Boolean))];
+    const hasBg=!!S.bgImages[loc],hasC=chars.some(n=>S.charImages[n]);
+    return`<div class="card">
+      <div class="ct">📍 ${esc(loc)}</div>
+      <div style="font-size:12px;color:var(--mu);margin-bottom:7px">등장: ${esc(chars.join(', '))||'없음'}</div>
+      <div style="font-size:11px;margin-bottom:10px">
+        ${hasBg?'<span style="color:#86efac">✓ 배경 이미지 있음</span>':'<span style="color:var(--wn)">⚠ 배경 이미지 없음</span>'}
+        &nbsp;${hasC?'<span style="color:#86efac">✓ 캐릭터 이미지 있음</span>':'<span style="color:var(--wn)">⚠ 캐릭터 이미지 없음</span>'}
+      </div>
+      <div id="cr_${i}"><div style="color:var(--mu);font-size:12px">아래 버튼으로 생성하세요.</div></div>
+      <div class="acts">
+        <button class="btn bs bsm" onclick="genOneCompPrompt(${i})">프롬프트만 생성</button>
+        <button class="btn bp bsm" onclick="genOneCompFull(${i})">프롬프트+이미지 생성</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+async function genOneCompPrompt(i){
+  const locs=[...new Set(S.sceneList.map(s=>s.location).filter(Boolean))];
+  const loc=locs[i];if(!loc)return;
+  const chars=[...new Set(S.sceneList.filter(s=>s.location===loc).flatMap(c=>c.characters||[]).filter(Boolean))];
+  const charInfo=chars.map(n=>{const c=S.chars.find(x=>x.name===n);return`- ${n}${c?': '+c.desc:''}`}).join('\n');
+  const el=$(`cr_${i}`);
+  const r=await claude(
+    `AI 이미지 합성 프롬프트 전문가.\n"첫번째 사진 배경 위에 캐릭터들을 배치해줘" 형식으로 한국어 작성.\n- 각 캐릭터의 위치(좌/중/우, 앞/뒤), 포즈, 크기 구체적으로 지정\n- 조명/그림자 지시 포함`,
+    `장소: ${loc}\n등장 캐릭터: ${chars.join(', ')||'없음'}\n캐릭터 정보:\n${charInfo||'없음'}\n\n한국어로 합성 프롬프트 작성.`
+  );
+  el._compText=r;
+  el.innerHTML=`<div class="pb">${esc(r)}<button class="cpb" onclick="copyText(document.getElementById('cr_${i}')._compText)">복사</button></div>`;
+}
+async function genOneCompFull(i){
+  try{await genOneCompPrompt(i);
+    const el=$(`cr_${i}`);const prompt=el._compText;if(!prompt)return;
+    const url=await genImage(prompt);
+    if(url){const pb=el.querySelector('.pb');if(pb)pb.insertAdjacentHTML('afterend',`<img src="${url}" class="genimg" />`);}
+  }catch(e){alert('오류: '+e.message)}
+}
+async function genAllComposite(){
+  const locs=[...new Set(S.sceneList.map(s=>s.location).filter(Boolean))];
+  for(let i=0;i<locs.length;i++) await genOneCompFull(i);
+}
+
+// ── TAB 6 Higgsfield ──
+function renderHiggsfieldTab(){
+  const el=$('kcList');
+  const cuts=S.importantCuts.length?S.importantCuts:S.sceneList;
+  if(!cuts.length){el.innerHTML='<div style="color:var(--mu);font-size:12px;text-align:center;padding:14px">씬리스트를 먼저 생성해주세요</div>';return}
+  el.innerHTML=cuts.map((c,i)=>`
+    <div class="kci ${S.selectedKling===i?'on':''}" onclick="selCut(${i})">
+      <div><strong>S${c.scene}C${c.cut}</strong>
+        <span class="sbadge" style="margin:0 5px">${c.shotSize}</span>
+        <span style="color:var(--mu);font-size:11px">${esc(c.location)}</span>
+        <div style="font-size:11px;color:var(--mu);margin-top:2px">${esc((c.description||'').substring(0,42))}${(c.description||'').length>42?'...':''}</div>
+      </div>
+    </div>`).join('');
+}
+function selCut(i){S.selectedKling=i;renderHiggsfieldTab();}
+function loadFrame(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{S.startFrameB64=e.target.result;$('sfPreview').innerHTML=`<img src="${e.target.result}" style="max-width:100%;max-height:180px;border-radius:6px" />`};
+  r.readAsDataURL(f);
+}
+
+async function genHiggsfield(){
+  const cuts=S.importantCuts.length?S.importantCuts:S.sceneList;
+  if(S.selectedKling===null||!cuts[S.selectedKling]){alert('컷을 선택해주세요.');return}
+  const c=cuts[S.selectedKling],dur=$('kDur').value,ratio=$('kRatio').value,extra=$('kExtra').value;
+  loading('kBtn',true);
+  try{
+    const charM=(c.characters||[]).map(n=>`@${n}`).join(', ');
+    const r=await claude(
+      `Higgsfield AI 비디오 프롬프트 전문가.\n규칙:\n- 반드시 한국어로 작성\n- 형식: [샷사이즈] [앵글] [카메라무빙], 장면 묘사, [X초]\n- 캐릭터명 앞에 @ 붙이기\n- 스타트 프레임 이미지에 이미 있는 내용은 생략\n- 카메라 움직임과 피사체 동작을 구체적으로 묘사\n- 영화적 분위기와 감정 포함\n- 3~5문장 이내로 간결하게\n- 초 수 반드시 포함`,
+      `씬 정보:\n- 장소: ${c.location}\n- 샷사이즈: ${c.shotSize}\n- 앵글: ${c.angle}\n- 카메라무빙: ${c.cameraMoving}\n- 등장인물: ${charM||'없음'}\n- 내용: ${c.description}\n- 영상 길이: ${dur}초\n- 비율: ${ratio}\n- 스타일/분위기: ${extra||'없음'}\n${S.startFrameB64?'- 스타트 프레임 이미지 있음 (이미 있는 내용 생략)':''}\n\nHighsfield 프롬프트를 한국어로 작성.`
+    );
+    const re=$('kResult');
+    re._ktext=r;
+    re.innerHTML=`<div class="pb">${esc(r)}<button class="cpb" onclick="copyText(document.getElementById('kResult')._ktext)">복사</button></div>
+      <div style="margin-top:11px;font-size:11px;color:var(--mu)">S${c.scene}C${c.cut} · ${c.shotSize} · ${c.angle} · ${c.cameraMoving} · ${dur}초 · ${ratio}</div>`;
+  }catch(e){$('kResult').innerHTML=`<div class="alert ae">오류: ${esc(e.message)}</div>`}
+  loading('kBtn',false);
+}
+</script>
+</body>
+</html>
