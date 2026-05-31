@@ -681,26 +681,24 @@
   <rect x="504" y="294" width="144" height="36" rx="6" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
   <text x="576" y="317" text-anchor="middle" style="font-size:12px;fill:#712B13;font-weight:500">유튜브 공개</text>
 </svg>
-          <div id="pipe-detail" style="display:none;margin-bottom:1.2rem;padding:0.85rem 1rem;border-left:2px solid var(--gold);background:rgba(200,169,110,0.04);font-size:0.73rem;line-height:1.85;color:var(--muted);">
-            <div id="pipe-step-1"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">기획</span><br>네이버 웹툰 10개 IP 선정 · 스포츠 중계 컨셉 기획<br>ChatGPT로 시나리오 및 씬리스트 작성</div>
-            <div id="pipe-step-2" style="display:none"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">이미지 생성</span><br>웹툰 원화 레퍼런스 기반 2D → 3D 변환<br>GPT Image 2로 씬별 배경·캐릭터 이미지 생성</div>
-            <div id="pipe-step-3" style="display:none"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">캐릭터 합성</span><br>씬별 3D 캐릭터·배경 통합<br>Photoshop으로 합성 및 보정</div>
-            <div id="pipe-step-4" style="display:none"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">영상 생성</span><br>Kling AI로 동작 및 카메라 무빙 구현<br>한국어 프롬프트 · @start_frame 형식 · 샷/앵글/초수 명시</div>
-            <div id="pipe-step-5" style="display:none"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">편집</span><br>DaVinci Resolve로 씬별 타임라인 배치 (총 1분 1초)<br>BGM(Suno) · SFX(ElevenLabs · Freesound) 싱크</div>
-          </div>
           <script>
           (function(){
             var active = 0;
+            var sectionMap = {1:'aiw-naver-s1', 2:'aiw-naver-s2', 3:'aiw-naver-s3'};
             window.showPipeStep = function(n) {
-              document.querySelectorAll('[id^="pipe-step-"]').forEach(function(el){ el.style.display='none'; });
               document.querySelectorAll('[id^="pipe-hl-"]').forEach(function(el){ el.setAttribute('opacity','0'); });
-              var detail = document.getElementById('pipe-detail');
-              if (active === n) { detail.style.display='none'; active=0; return; }
+              Object.values(sectionMap).forEach(function(id){
+                var el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+              });
+              if (active === n) { active = 0; return; }
               active = n;
-              detail.style.display = 'block';
-              document.getElementById('pipe-step-'+n).style.display = 'block';
               var hl = document.getElementById('pipe-hl-'+n);
               if (hl) hl.setAttribute('opacity','1');
+              if (sectionMap[n]) {
+                var sec = document.getElementById(sectionMap[n]);
+                if (sec) sec.style.display = 'block';
+              }
             };
           })();
           </script>
