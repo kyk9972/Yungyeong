@@ -610,7 +610,7 @@
         <div class="poster-detail-inner">
           <p class="aiw-meta">2026.05 &nbsp;·&nbsp; ChatGPT Image · Kling · DaVinci Resolve · Suno &nbsp;·&nbsp; <span class="aiw-status done">Completed</span></p>
 
-          <svg width="100%" viewBox="0 0 680 340" role="img" style="margin-bottom:16px">
+          <svg width="100%" viewBox="0 0 680 340" role="img" style="margin-bottom:8px">
   <title>네이버 웹툰 대운동회 AI 제작 파이프라인</title>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -622,25 +622,40 @@
   <text x="336" y="38" text-anchor="middle" style="font-size:11px;fill:#888;font-weight:500">03</text>
   <text x="468" y="38" text-anchor="middle" style="font-size:11px;fill:#888;font-weight:500">04</text>
   <text x="600" y="38" text-anchor="middle" style="font-size:11px;fill:#888;font-weight:500">05</text>
-  <rect x="24" y="48" width="96" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
-  <text x="72" y="72" text-anchor="middle" style="font-size:13px;fill:#3C3489;font-weight:500">기획</text>
-  <text x="72" y="90" text-anchor="middle" style="font-size:11px;fill:#534AB7">시나리오 · 씬리스트</text>
+  <g onclick="showPipeStep(1)" style="cursor:pointer">
+    <rect x="24" y="48" width="96" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+    <rect id="pipe-hl-1" x="24" y="48" width="96" height="56" rx="8" fill="none" stroke="#534AB7" stroke-width="2.5" opacity="0"/>
+    <text x="72" y="72" text-anchor="middle" style="font-size:13px;fill:#3C3489;font-weight:500">기획</text>
+    <text x="72" y="90" text-anchor="middle" style="font-size:11px;fill:#534AB7">시나리오 · 씬리스트</text>
+  </g>
   <line x1="120" y1="76" x2="156" y2="76" stroke="#888" stroke-width="1" marker-end="url(#arrow)"/>
-  <rect x="156" y="48" width="96" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
-  <text x="204" y="72" text-anchor="middle" style="font-size:13px;fill:#085041;font-weight:500">이미지 생성</text>
-  <text x="204" y="90" text-anchor="middle" style="font-size:11px;fill:#0F6E56">GPT Image 2</text>
+  <g onclick="showPipeStep(2)" style="cursor:pointer">
+    <rect x="156" y="48" width="96" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+    <rect id="pipe-hl-2" x="156" y="48" width="96" height="56" rx="8" fill="none" stroke="#0F6E56" stroke-width="2.5" opacity="0"/>
+    <text x="204" y="72" text-anchor="middle" style="font-size:13px;fill:#085041;font-weight:500">이미지 생성</text>
+    <text x="204" y="90" text-anchor="middle" style="font-size:11px;fill:#0F6E56">GPT Image 2</text>
+  </g>
   <line x1="252" y1="76" x2="288" y2="76" stroke="#888" stroke-width="1" marker-end="url(#arrow)"/>
-  <rect x="288" y="48" width="96" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
-  <text x="336" y="72" text-anchor="middle" style="font-size:13px;fill:#085041;font-weight:500">캐릭터 합성</text>
-  <text x="336" y="90" text-anchor="middle" style="font-size:11px;fill:#0F6E56">Photoshop</text>
+  <g onclick="showPipeStep(3)" style="cursor:pointer">
+    <rect x="288" y="48" width="96" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+    <rect id="pipe-hl-3" x="288" y="48" width="96" height="56" rx="8" fill="none" stroke="#0F6E56" stroke-width="2.5" opacity="0"/>
+    <text x="336" y="72" text-anchor="middle" style="font-size:13px;fill:#085041;font-weight:500">캐릭터 합성</text>
+    <text x="336" y="90" text-anchor="middle" style="font-size:11px;fill:#0F6E56">Photoshop</text>
+  </g>
   <line x1="384" y1="76" x2="420" y2="76" stroke="#888" stroke-width="1" marker-end="url(#arrow)"/>
-  <rect x="420" y="48" width="96" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
-  <text x="468" y="72" text-anchor="middle" style="font-size:13px;fill:#633806;font-weight:500">영상 생성</text>
-  <text x="468" y="90" text-anchor="middle" style="font-size:11px;fill:#854F0B">Kling AI</text>
+  <g onclick="showPipeStep(4)" style="cursor:pointer">
+    <rect x="420" y="48" width="96" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+    <rect id="pipe-hl-4" x="420" y="48" width="96" height="56" rx="8" fill="none" stroke="#854F0B" stroke-width="2.5" opacity="0"/>
+    <text x="468" y="72" text-anchor="middle" style="font-size:13px;fill:#633806;font-weight:500">영상 생성</text>
+    <text x="468" y="90" text-anchor="middle" style="font-size:11px;fill:#854F0B">Kling AI</text>
+  </g>
   <line x1="516" y1="76" x2="552" y2="76" stroke="#888" stroke-width="1" marker-end="url(#arrow)"/>
-  <rect x="552" y="48" width="96" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
-  <text x="600" y="72" text-anchor="middle" style="font-size:13px;fill:#712B13;font-weight:500">편집</text>
-  <text x="600" y="90" text-anchor="middle" style="font-size:11px;fill:#993C1D">DaVinci Resolve</text>
+  <g onclick="showPipeStep(5)" style="cursor:pointer">
+    <rect x="552" y="48" width="96" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+    <rect id="pipe-hl-5" x="552" y="48" width="96" height="56" rx="8" fill="none" stroke="#993C1D" stroke-width="2.5" opacity="0"/>
+    <text x="600" y="72" text-anchor="middle" style="font-size:13px;fill:#712B13;font-weight:500">편집</text>
+    <text x="600" y="90" text-anchor="middle" style="font-size:11px;fill:#993C1D">DaVinci Resolve</text>
+  </g>
   <line x1="24" y1="128" x2="648" y2="128" stroke="#ddd" stroke-width="0.5"/>
   <text x="24" y="152" style="font-size:11px;fill:#888;font-weight:500">핵심 기법</text>
   <rect x="24" y="164" width="188" height="72" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
@@ -666,6 +681,29 @@
   <rect x="504" y="294" width="144" height="36" rx="6" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
   <text x="576" y="317" text-anchor="middle" style="font-size:12px;fill:#712B13;font-weight:500">유튜브 공개</text>
 </svg>
+          <div id="pipe-detail" style="display:none;margin-bottom:1.2rem;padding:0.85rem 1rem;border-left:2px solid var(--gold);background:rgba(200,169,110,0.04);font-size:0.73rem;line-height:1.85;color:var(--muted);">
+            <div id="pipe-step-1"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">기획</span><br>네이버 웹툰 10개 IP 선정 · 스포츠 중계 컨셉 기획<br>ChatGPT로 시나리오 및 씬리스트 작성</div>
+            <div id="pipe-step-2" style="display:none"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">이미지 생성</span><br>웹툰 원화 레퍼런스 기반 2D → 3D 변환<br>GPT Image 2로 씬별 배경·캐릭터 이미지 생성</div>
+            <div id="pipe-step-3" style="display:none"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">캐릭터 합성</span><br>씬별 3D 캐릭터·배경 통합<br>Photoshop으로 합성 및 보정</div>
+            <div id="pipe-step-4" style="display:none"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">영상 생성</span><br>Kling AI로 동작 및 카메라 무빙 구현<br>한국어 프롬프트 · @start_frame 형식 · 샷/앵글/초수 명시</div>
+            <div id="pipe-step-5" style="display:none"><span style="font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);">편집</span><br>DaVinci Resolve로 씬별 타임라인 배치 (총 1분 1초)<br>BGM(Suno) · SFX(ElevenLabs · Freesound) 싱크</div>
+          </div>
+          <script>
+          (function(){
+            var active = 0;
+            window.showPipeStep = function(n) {
+              document.querySelectorAll('[id^="pipe-step-"]').forEach(function(el){ el.style.display='none'; });
+              document.querySelectorAll('[id^="pipe-hl-"]').forEach(function(el){ el.setAttribute('opacity','0'); });
+              var detail = document.getElementById('pipe-detail');
+              if (active === n) { detail.style.display='none'; active=0; return; }
+              active = n;
+              detail.style.display = 'block';
+              document.getElementById('pipe-step-'+n).style.display = 'block';
+              var hl = document.getElementById('pipe-hl-'+n);
+              if (hl) hl.setAttribute('opacity','1');
+            };
+          })();
+          </script>
 
           <div style="margin-bottom:1.8rem;">
             <a href="AI Video Creator 기획안_김윤경.pdf" target="_blank" style="display:inline-block;padding:0.5rem 1.2rem;border:1px solid rgba(200,169,110,0.5);color:var(--gold);font-size:0.76rem;text-decoration:none;letter-spacing:0.1em;">기획안 전문 보기 ▶</a>
