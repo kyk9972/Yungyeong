@@ -662,7 +662,7 @@
                 </div>
                 <div style="flex:1;min-width:130px;padding:0.7rem;background:rgba(133,79,11,0.07);border:1px solid rgba(133,79,11,0.2);border-radius:6px;">
                   <p style="font-size:0.7rem;color:#C88020;font-weight:500;margin-bottom:0.3rem;">Kling 프롬프트 규칙</p>
-                  <p style="font-size:0.67rem;color:var(--muted);line-height:1.7;">한국어 · @start_frame 형식<br>샷/앵글/카메라무빙</p>
+                  <p style="font-size:0.67rem;color:var(--muted);line-height:1.7;">@start_frame, @element 기능 활용<br>고정 화풍, 캐릭터, 배경 이미지 먼저 생성<br>고정 이미지 각기 다른 샷/앵글로 여러 버전 추출<br>이미지 생성 후 포토샵으로 수정</p>
                 </div>
               </div>
             </div>
@@ -680,7 +680,7 @@
             </div>
             <div id="pcard-3" style="display:none;padding:1.1rem 1.2rem;border:1px solid rgba(133,79,11,0.25);border-radius:8px;background:rgba(133,79,11,0.04);margin-bottom:0.5rem;">
               <p style="font-size:0.67rem;letter-spacing:0.12em;color:var(--gold);margin-bottom:0.4rem;">씬리스트 기반 영상화</p>
-              <p style="font-size:0.71rem;line-height:1.85;color:var(--muted);">씬별 3D 캐릭터 통합 → Kling으로 동작 및 카메라 무빙 구현<br>한국어 프롬프트 · @start_frame 형식<br>샷/앵글/카메라무빙 설정</p>
+              <p style="font-size:0.71rem;line-height:1.85;color:var(--muted);">씬별 3D 캐릭터 통합 → Kling으로 동작 및 카메라 무빙 구현<br>프롬프트에서 샷/앵글/카메라무빙 지정</p>
             </div>
 
             <!-- 04 음악 제작 -->
@@ -714,7 +714,7 @@
             </div>
             <div id="pcard-5" style="display:none;padding:1.1rem 1.2rem;border:1px solid rgba(153,60,29,0.25);border-radius:8px;background:rgba(153,60,29,0.04);margin-bottom:0.5rem;">
               <p style="font-size:0.67rem;letter-spacing:0.12em;color:var(--gold);margin-bottom:0.4rem;">편집</p>
-              <p style="font-size:0.71rem;line-height:1.85;color:var(--muted);">DaVinci Resolve로 씬별 타임라인 배치 (총 1분 1초)<br>트랜지션 · BGM 싱크 편집</p>
+              <p style="font-size:0.71rem;line-height:1.85;color:var(--muted);">DaVinci Resolve로 영상 제작과 동시에 편집<br>메인컷 먼저 생성 후 서브컷 생성<br>트랜지션 · BGM 싱크 편집</p>
             </div>
 
           </div>
@@ -748,16 +748,16 @@
             </p>
             <div class="aiw-tags" style="margin-top:1rem;">
               <span class="aiw-tag">네이버 웹툰</span>
-              <span class="aiw-tag">3D</span>
-              <span class="aiw-tag">매드무비</span>
+              <span class="aiw-tag">3D 애니메이션</span>
+              <span class="aiw-tag">팬무비</span>
               <span class="aiw-tag">1분 1초</span>
             </div>
 
             <p class="dtl">기법 및 도구</p>
             <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
               웹툰 스타일 유지를 위해 3D 방식 채택<br>
-              ChatGPT / GPT Image 2로 2D 웹툰 캐릭터를 3D 렌더링으로 변환<br>
-              씬별 3D 캐릭터 통합 → Kling으로 동작 및 카메라 무빙 구현<br>
+              GPT Image 2로 2D 웹툰 캐릭터를 3D 렌더링으로 변환<br>
+              Kling으로 동작 및 카메라 무빙 구현<br>
               포토샵으로 캐릭터·배경 합성 및 보정
             </p>
           </div>
@@ -781,28 +781,28 @@
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">이미지 생성 &nbsp;—&nbsp; ChatGPT Image (GPT Image 2) · 포토샵</p>
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
                   웹툰 원화 레퍼런스 기반 2D → 3D 변환<br>
-                  씬별 배경·캐릭터 이미지 생성<br>
-                  포토샵으로 합성 및 보정
+                  고정 배경·캐릭터·화풍 이미지 생성<br>
+                  고정 이미지 생성 후 포토샵으로 수정 및 합성
                 </p>
               </div>
               <div style="border-left:2px solid rgba(200,169,110,0.6);padding:0.85rem 1rem;background:rgba(200,169,110,0.03);">
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">영상 제작 &nbsp;—&nbsp; Kling</p>
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
                   캐릭터 동작 및 카메라 무빙 구현<br>
-                  씬별 연기·앵글 지시어 적용
+                  컷별 샷/앵글/카메라 앵글 지정 
                 </p>
               </div>
               <div style="border-left:2px solid rgba(200,169,110,0.6);padding:0.85rem 1rem;background:rgba(200,169,110,0.03);">
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">음악 &amp; 효과음 &nbsp;—&nbsp; Suno · Freesound.org</p>
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
-                  운동회 분위기에 맞는 BGM 제작<br>
+                  운동회 분위기에 맞는 밴드 음악 제작<br>
                   효과음: Freesound.org
                 </p>
               </div>
               <div style="border-left:2px solid rgba(200,169,110,0.6);padding:0.85rem 1rem;background:rgba(200,169,110,0.03);">
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">편집 &nbsp;—&nbsp; DaVinci Resolve</p>
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
-                  씬별 타임라인 배치 (총 1분 1초)<br>
+                  영상 제작과 동시에 편집<br>
                   트랜지션 · BGM 싱크 편집
                 </p>
               </div>
@@ -932,7 +932,7 @@
                 </div>
                 <div style="border:1px solid var(--border);padding:0.9rem;font-size:0.73rem;line-height:1.85;">
                   <p style="color:var(--gold);font-size:0.63rem;letter-spacing:0.18em;margin-bottom:0.6rem;">21살</p>
-                  동일 인물, 앳된 인상<br>단발머리<br>블라우스 + 샤랄라한 치마<br><span style="color:var(--muted);">서울에 대한 기대로 상기된 표정</span>
+                  동일 인물, 앳된 인상<br>단발머리<br>블라우스 + 샤랄라한 치마<br><span style="color:var(--muted);">서울과 꿈에 대한 기대로 상기된 표정</span>
                 </div>
               </div>
               <p style="font-size:0.67rem;letter-spacing:0.12em;color:var(--gold);margin-bottom:0.7rem;">씬 구성</p>
@@ -984,7 +984,7 @@
               <p class="img-section-label" style="margin-top:1.4rem;">Location</p>
               <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);margin-bottom:0.7rem;">화풍 레퍼런스 기반 씬별 배경 생성</p>
               <div class="img-grid-2">
-                <div><div class="img-wrap img-wrap-land"><img src="images/신도림역.png" alt="신도림역"></div><p class="img-caption">신도림역</p></div>
+                <div><div class="img-wrap img-wrap-land"><img src="images/신도림역.png" alt="신도림역"></div><p class="img-caption">신도림역(엽기적인 그녀)</p></div>
                 <div><div class="img-wrap img-wrap-land"><img src="images/대학로.png" alt="대학로"></div><p class="img-caption">대학로</p></div>
               </div>
               <div class="bonus-clip" style="border-left:2px solid rgba(200,169,110,0.3);padding:0.85rem 1rem;background:rgba(200,169,110,0.02);margin-top:0.7rem;">
