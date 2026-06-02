@@ -1141,6 +1141,82 @@
 
 <div class="sd"></div>
 
+<div class="sw" id="comfyui">
+  <p class="sl">ComfyUI Workflow</p>
+  <h2 class="st">노드 기반 이미지 생성 워크플로우</h2>
+  <p style="font-size:0.82rem;color:var(--muted);margin-top:-1.5rem;margin-bottom:2rem;">ComfyUI의 노드 구조를 직접 설계·연결하며 Stable Diffusion 이미지 생성 파이프라인을 구축한 작업입니다.</p>
+
+  <div class="poster-list reveal" id="comfyui">
+
+    <div class="poster-item" id="cfy-01">
+      <div class="poster-header" onclick="togglePoster('cfy-01')">
+        <div class="poster-img-wrap">
+          <img src="images/comfyui-workflow.png" alt="ComfyUI 워크플로우 스크린샷" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="poster-info-bar">
+          <div class="poster-badges-row">
+            <span class="pbadge gold">ComfyUI</span>
+            <span class="pbadge silver">Stable Diffusion</span>
+          </div>
+          <p class="poster-name">기본 txt2img 워크플로우</p>
+          <p class="poster-genre">ComfyUI · DreamShaper · KSampler · VAE Decode</p>
+        </div>
+      </div>
+      <div class="poster-toggle" onclick="togglePoster('cfy-01')">
+        <span>상세 보기</span><span class="arrow">▶</span>
+      </div>
+      <div class="poster-detail">
+        <div class="poster-detail-inner">
+          <p class="aiw-meta">2026.06 &nbsp;·&nbsp; ComfyUI · Stable Diffusion · DreamShaper &nbsp;·&nbsp; <span class="aiw-status done">Completed</span></p>
+
+          <div class="aiw-section">
+            <p class="aiw-num">01</p>
+            <p class="dtl">워크플로우 구조</p>
+            <p class="dtxt">Load Checkpoint → CLIP Encode × 2 → KSampler → VAE Decode → Save Image 순으로 노드를 직접 연결해 txt2img 파이프라인을 구성했습니다. Positive/Negative 프롬프트를 분리 입력해 원하는 결과를 제어합니다.</p>
+            <div class="comfy-img-full">
+              <img src="images/comfyui-structure.png" alt="워크플로우 구조 다이어그램">
+            </div>
+          </div>
+
+          <div class="aiw-section">
+            <p class="aiw-num">02</p>
+            <p class="dtl">노드별 역할</p>
+            <p class="dtxt">각 노드가 파이프라인에서 수행하는 역할을 분석하고 파라미터(Steps, CFG, Sampler)가 이미지 품질에 미치는 영향을 직접 실험하며 파악했습니다.</p>
+            <div class="comfy-img-full">
+              <img src="images/comfyui-nodes.png" alt="노드별 역할 이해">
+            </div>
+          </div>
+
+          <div class="aiw-section">
+            <p class="aiw-num">03</p>
+            <p class="dtl">사용 설정값</p>
+            <div class="aiw-flow">
+              <span class="flow-step">Model: DreamShaper</span>
+              <span class="flow-arrow">·</span>
+              <span class="flow-step">Steps: 20</span>
+              <span class="flow-arrow">·</span>
+              <span class="flow-step">CFG: 8.0</span>
+              <span class="flow-arrow">·</span>
+              <span class="flow-step">Sampler: euler</span>
+              <span class="flow-arrow">·</span>
+              <span class="flow-step">512 × 512</span>
+            </div>
+          </div>
+
+          <div class="aiw-section">
+            <p class="aiw-num">04</p>
+            <p class="dtl">PROCESS, THOUGHTS</p>
+            <p class="dtxt">GUI 기반 AI 툴과 달리 노드 하나하나를 연결하며 이미지 생성 원리를 직접 체감할 수 있었습니다. 잠재 공간(latent space) 개념과 VAE 디코딩 흐름이 시각적으로 명확하게 보여 AI 생성 구조에 대한 이해가 깊어졌습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="sd"></div>
+
 
 <footer id="contact">
   <p class="fn">YK</p>
