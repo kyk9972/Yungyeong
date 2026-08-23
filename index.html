@@ -8,7 +8,7 @@
 <style>
   :root {
     --bg:#ffffff;--bg2:#ffffff;--bg3:#f5f2ec;
-    --cream:#28231e;--gold:#ad7900;--gold-light:#865d00;
+    --cream:#28231e;--gold:#2563eb;--gold-light:#1d4ed8;
     --text:#464038;--muted:#716b63;--border:#e0d9cf;--border2:#cec5b9;
     --tx:#28231e;
   }
@@ -23,7 +23,7 @@
   .nav-links a:hover{color:var(--gold);}
 
   .hero{min-height:100vh;display:flex;align-items:center;padding:9rem 4rem 5rem;position:relative;overflow:hidden;}
-  .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(225,185,0,0.14) 0%,transparent 70%);}
+  .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(37,99,235,0.12) 0%,transparent 70%);}
   .hero-inner{max-width:1100px;margin:0 auto;width:100%;}
   .profile-info-bar{display:flex;align-items:center;gap:1.2rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.05s;} .pib-right{display:flex;flex-direction:column;gap:0.3rem;}
   .pib-name{font-family:'Noto Serif KR',serif;font-size:1.5rem;color:var(--cream);font-weight:400;margin-right:0.4rem;}
@@ -35,7 +35,7 @@
   .hero-title em{font-style:italic;color:var(--gold);font-family:'DM Serif Display',serif;}
   .hero-desc{font-size:0.95rem;color:var(--muted);max-width:520px;line-height:2;margin-bottom:3rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.5s;}
   .hero-badges{display:flex;flex-wrap:wrap;gap:0.8rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.7s;}
-  .badge{display:inline-flex;align-items:center;gap:0.4rem;padding:0.55rem 1.1rem;border:1px solid rgba(225,185,0,0.5);font-size:0.76rem;color:var(--gold-light);background:rgba(225,185,0,0.05);}
+  .badge{display:inline-flex;align-items:center;gap:0.4rem;padding:0.55rem 1.1rem;border:1px solid rgba(37,99,235,0.5);font-size:0.76rem;color:var(--gold-light);background:rgba(37,99,235,0.05);}
 
   .sw{max-width:1100px;margin:0 auto;padding:6rem 4rem;}
   .sd{max-width:1100px;margin:0 auto;height:1px;background:var(--border);}
@@ -114,7 +114,7 @@
   }
   .poster-badges-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.7rem;}
   .pbadge{display:inline-flex;align-items:center;gap:0.3rem;padding:0.2rem 0.6rem;font-size:0.68rem;font-weight:500;backdrop-filter:blur(4px);}
-  .pbadge.gold{background:rgba(225,185,0,0.2);color:var(--gold-light);border:1px solid rgba(225,185,0,0.4);}
+  .pbadge.gold{background:rgba(37,99,235,0.2);color:var(--gold-light);border:1px solid rgba(37,99,235,0.4);}
   .pbadge.silver{background:rgba(255,255,255,0.07);color:var(--muted);border:1px solid var(--border2);}
   .poster-name{font-family:'Noto Serif KR',serif;font-size:1.3rem;color:var(--cream);font-weight:300;margin-bottom:0.5rem;}
   .poster-genre{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
@@ -157,7 +157,7 @@
   .scn-card:hover{background:var(--bg3);}
   .scn-card::after{content:'+';position:absolute;right:2rem;color:var(--gold);font-size:1.1rem;transition:transform 0.3s;}
   .scn-card.open::after{transform:rotate(45deg);}
-  .scn-num{font-family:'DM Serif Display',serif;font-size:3rem;color:#b78a00;line-height:1;min-width:2.5rem;}
+  .scn-num{font-family:'DM Serif Display',serif;font-size:3rem;color:#3b82f6;line-height:1;min-width:2.5rem;}
   .scn-type{font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;}
   .scn-title{font-family:'Noto Serif KR',serif;font-size:1.15rem;color:var(--cream);font-weight:300;}
   .scn-detail{display:none;background:var(--bg3);border-top:1px solid var(--border);padding:1.8rem 2.5rem 1.8rem calc(2.5rem + 4.5rem);}
@@ -227,9 +227,9 @@
   .flow-step{padding:0.3rem 0.8rem;border:1px solid var(--border2);font-size:0.72rem;color:var(--text);letter-spacing:0.05em;}
   .flow-arrow{color:var(--gold);font-size:0.8rem;}
   .aiw-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.8rem;}
-  .aiw-tag{padding:0.18rem 0.65rem;background:rgba(225,185,0,0.1);border:1px solid rgba(225,185,0,0.3);font-size:0.68rem;color:var(--gold-light);letter-spacing:0.06em;}
+  .aiw-tag{padding:0.18rem 0.65rem;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.3);font-size:0.68rem;color:var(--gold-light);letter-spacing:0.06em;}
   .aiw-status{display:inline-block;margin-top:1rem;padding:0.2rem 0.7rem;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;}
-  .aiw-status.done{background:rgba(225,185,0,0.15);color:var(--gold);border:1px solid rgba(225,185,0,0.4);}
+  .aiw-status.done{background:rgba(37,99,235,0.15);color:var(--gold);border:1px solid rgba(37,99,235,0.4);}
   .aiw-status.wip{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border2);}
   .aiw-meta{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:1.8rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
 
@@ -284,7 +284,7 @@
   .cfy-param-key{font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);}
   .cfy-param-val{font-size:0.82rem;color:var(--cream);font-weight:500;}
 
-  .cfy-thoughts{border-left:3px solid var(--gold);padding:1.1rem 1.4rem;background:rgba(225,185,0,0.04);}
+  .cfy-thoughts{border-left:3px solid var(--gold);padding:1.1rem 1.4rem;background:rgba(37,99,235,0.04);}
   .cfy-thoughts p{font-size:0.82rem;color:var(--muted);line-height:1.9;}
   .cfy-meta{font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
 </style>
@@ -685,7 +685,7 @@
               <div id="pipe-arr-1" style="color:var(--muted);font-size:1.2rem;transition:transform 0.2s;">›</div>
             </div>
             <div id="pcard-1" style="display:none;padding:1.1rem 1.2rem;border:1px solid rgba(83,74,183,0.25);border-radius:8px;background:rgba(83,74,183,0.04);margin-bottom:0.5rem;">
-              <div style="margin-bottom:0.9rem;"><a href="[기획안] 제 1회 네이버 웹툰 대운동회.pdf" target="_blank" style="display:inline-block;padding:0.4rem 1rem;border:1px solid rgba(225,185,0,0.5);color:var(--gold);font-size:0.72rem;text-decoration:none;letter-spacing:0.08em;">기획안 전문 보기 ▶</a></div>
+              <div style="margin-bottom:0.9rem;"><a href="[기획안] 제 1회 네이버 웹툰 대운동회.pdf" target="_blank" style="display:inline-block;padding:0.4rem 1rem;border:1px solid rgba(37,99,235,0.5);color:var(--gold);font-size:0.72rem;text-decoration:none;letter-spacing:0.08em;">기획안 전문 보기 ▶</a></div>
               <p style="font-size:0.8rem;font-style:italic;color:var(--cream);line-height:2;margin-bottom:0.8rem;">네이버 웹툰에 연재 중인 캐릭터들이 한자리에 모여<br>팬이라면 누구나 상상했을 장면을 AI로 구현한다.<br>— 네이버 웹툰 운동회 (RT 1분 1초)</p>
               <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.9rem;">
                 <span style="font-size:0.65rem;padding:0.18rem 0.55rem;border:1px solid var(--border2);color:var(--muted);border-radius:4px;">네이버 웹툰</span>
@@ -831,7 +831,7 @@
               <span class="flow-step">편집</span>
             </div>
             <div style="margin-top:1.2rem;display:flex;flex-direction:column;gap:0.7rem;">
-              <div style="border-left:2px solid rgba(225,185,0,0.6);padding:0.85rem 1rem;background:rgba(225,185,0,0.03);">
+              <div style="border-left:2px solid rgba(37,99,235,0.6);padding:0.85rem 1rem;background:rgba(37,99,235,0.03);">
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">이미지 생성 &nbsp;—&nbsp; ChatGPT Image (GPT Image 2) · 포토샵</p>
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
                   웹툰 원화 레퍼런스 기반 2D → 3D 변환<br>
@@ -839,21 +839,21 @@
                   고정 이미지 생성 후 포토샵으로 수정 및 합성
                 </p>
               </div>
-              <div style="border-left:2px solid rgba(225,185,0,0.6);padding:0.85rem 1rem;background:rgba(225,185,0,0.03);">
+              <div style="border-left:2px solid rgba(37,99,235,0.6);padding:0.85rem 1rem;background:rgba(37,99,235,0.03);">
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">영상 제작 &nbsp;—&nbsp; Kling</p>
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
                   캐릭터 동작 및 카메라 무빙 구현<br>
                   컷별 샷/앵글/카메라 앵글 지정 
                 </p>
               </div>
-              <div style="border-left:2px solid rgba(225,185,0,0.6);padding:0.85rem 1rem;background:rgba(225,185,0,0.03);">
+              <div style="border-left:2px solid rgba(37,99,235,0.6);padding:0.85rem 1rem;background:rgba(37,99,235,0.03);">
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">음악 &amp; 효과음 &nbsp;—&nbsp; Suno · Freesound.org</p>
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
                   운동회 분위기에 맞는 밴드 음악 제작<br>
                   효과음: Freesound.org
                 </p>
               </div>
-              <div style="border-left:2px solid rgba(225,185,0,0.6);padding:0.85rem 1rem;background:rgba(225,185,0,0.03);">
+              <div style="border-left:2px solid rgba(37,99,235,0.6);padding:0.85rem 1rem;background:rgba(37,99,235,0.03);">
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">편집 &nbsp;—&nbsp; DaVinci Resolve</p>
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
                   영상 제작과 동시에 편집<br>
@@ -1042,7 +1042,7 @@
                 <div><div class="img-wrap img-wrap-land"><img src="images/신도림역.png" alt="신도림역"></div><p class="img-caption">신도림역(엽기적인 그녀)</p></div>
                 <div><div class="img-wrap img-wrap-land"><img src="images/대학로.png" alt="대학로"></div><p class="img-caption">대학로</p></div>
               </div>
-              <div class="bonus-clip" style="border-left:2px solid rgba(225,185,0,0.3);padding:0.85rem 1rem;background:rgba(225,185,0,0.02);margin-top:0.7rem;">
+              <div class="bonus-clip" style="border-left:2px solid rgba(37,99,235,0.3);padding:0.85rem 1rem;background:rgba(37,99,235,0.02);margin-top:0.7rem;">
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:0.3rem;">미사용 클립</p>
                 <p style="font-size:0.73rem;color:var(--muted);margin-bottom:0.5rem;">본 영상에 미포함 — 올드보이 만두씬</p>
                 <video controls preload="none" style="width:100%;aspect-ratio:16/9;display:block;border-radius:3px;">
