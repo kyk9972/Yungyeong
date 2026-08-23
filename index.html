@@ -14,7 +14,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.75;overflow-x:hidden;}
+  body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:400;line-height:1.75;overflow-x:hidden;}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
   .nav-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--gold);text-decoration:none;}
@@ -31,7 +31,7 @@
   .pib-item{font-size:0.82rem;color:var(--muted);}
   .pib-item a{color:var(--gold);text-decoration:none;}
   .hero-eyebrow{font-size:0.72rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.1s;}
-  .hero-title{font-family:'Noto Serif KR',serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:300;line-height:1.35;color:var(--cream);margin-bottom:2rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.3s;}
+  .hero-title{font-family:'Noto Serif KR',serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:400;line-height:1.35;color:var(--cream);margin-bottom:2rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.3s;}
   .hero-title em{font-style:italic;color:var(--gold);font-family:'DM Serif Display',serif;}
   .hero-desc{font-size:0.95rem;color:var(--muted);max-width:520px;line-height:2;margin-bottom:3rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.5s;}
   .hero-badges{display:flex;flex-wrap:wrap;gap:0.8rem;opacity:0;animation:fadeUp 0.9s ease forwards 0.7s;}
@@ -40,7 +40,7 @@
   .sw{max-width:1100px;margin:0 auto;padding:6rem 4rem;}
   .sd{max-width:1100px;margin:0 auto;height:1px;background:var(--border);}
   .sl{font-size:0.68rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;font-weight:600;}
-  .st{font-family:'Noto Serif KR',serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:300;color:var(--cream);margin-bottom:3rem;padding-bottom:1.4rem;border-bottom:1px solid var(--border);}
+  .st{font-family:'Noto Serif KR',serif;font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:400;color:var(--cream);margin-bottom:3rem;padding-bottom:1.4rem;border-bottom:1px solid var(--border);}
 
   .awards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;}
   .award-card{padding:1.8rem 2rem;border:1px solid var(--border);border-left:2px solid var(--gold);background:var(--bg2);transition:transform 0.3s;}
@@ -116,7 +116,7 @@
   .pbadge{display:inline-flex;align-items:center;gap:0.3rem;padding:0.2rem 0.6rem;font-size:0.68rem;font-weight:500;backdrop-filter:blur(4px);}
   .pbadge.gold{background:rgba(37,99,235,0.2);color:var(--gold-light);border:1px solid rgba(37,99,235,0.4);}
   .pbadge.silver{background:rgba(255,255,255,0.07);color:var(--muted);border:1px solid var(--border2);}
-  .poster-name{font-family:'Noto Serif KR',serif;font-size:1.3rem;color:var(--cream);font-weight:300;margin-bottom:0.5rem;}
+  .poster-name{font-family:'Noto Serif KR',serif;font-size:1.3rem;color:var(--cream);font-weight:400;margin-bottom:0.5rem;}
   .poster-genre{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);}
 
   .poster-toggle{
@@ -138,7 +138,7 @@
     transition:max-height 0.5s ease;
     border-top:none;
   }
-  .poster-item.open .poster-detail{max-height:4000px;}
+  .poster-item.open .poster-detail{max-height:7000px;}
   .poster-detail-inner{padding:2rem 1.8rem 2rem;}
   .dtl{font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem;margin-top:1.4rem;}
   .dtl:first-child{margin-top:0;}
@@ -159,7 +159,7 @@
   .scn-card.open::after{transform:rotate(45deg);}
   .scn-num{font-family:'DM Serif Display',serif;font-size:3rem;color:#3b82f6;line-height:1;min-width:2.5rem;}
   .scn-type{font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;}
-  .scn-title{font-family:'Noto Serif KR',serif;font-size:1.15rem;color:var(--cream);font-weight:300;}
+  .scn-title{font-family:'Noto Serif KR',serif;font-size:1.15rem;color:var(--cream);font-weight:400;}
   .scn-detail{display:none;background:var(--bg3);border-top:1px solid var(--border);padding:1.8rem 2.5rem 1.8rem calc(2.5rem + 4.5rem);}
   .scn-detail.open{display:block;}
 
@@ -657,12 +657,40 @@
       </div>
       <div class="poster-detail">
         <div class="poster-detail-inner">
-          <p class="aiw-meta">2026 &nbsp;·&nbsp; Got · GPT Image 2 · Photoshop · GPT · Seedance · Suno · ElevenLabs · Premiere Pro &nbsp;·&nbsp; <span class="aiw-status wip">In Progress</span></p>
+              <p class="aiw-meta">2026 &nbsp;·&nbsp; GPT · GPT Image 2 · Photoshop · GPT · Seedance · Suno · ElevenLabs · Premiere Pro &nbsp;·&nbsp; <span class="aiw-status wip">In Progress</span></p>
 
           <div class="aiw-section">
             <p class="aiw-num">01</p>
             <p class="dtl">기획</p>
-            <div class="aiw-tags"><span class="aiw-tag">Got</span></div>
+            <div class="dmeta" style="margin-top:0.8rem;">
+              <div class="dmeta-row"><span class="dmeta-label">RT</span><span class="dmeta-val">10분</span></div>
+              <div class="dmeta-row"><span class="dmeta-label">장르</span><span class="dmeta-val">성장 · 코미디</span></div>
+            </div>
+                  <div class="aiw-tags"><span class="aiw-tag">GPT</span></div>
+
+            <p class="dtl">로그라인</p>
+            <p class="dtxt italic">남들과 다른 얼굴 때문에 은둔하던 여자가 갑자기 찾아온 남자아이를 통해 세상을 다시 보는 이야기.</p>
+
+            <p class="dtl">기획의도</p>
+            <p class="dtxt">우리는 모두 ‘인간’이라는 같은 종이지만, 모두 다른 DNA를 가졌다. 그래서 필연적으로 인간은 모두 같아질 수 없다.<br><br>하지만 우리는 ‘다른 사람’이 되는 것을 두려워하며, 남들과 같아지려고 노력한다. 아마 사회에서 배제되기를 두려워하기 때문일 것이다.<br><br>그러나 아무리 애쓴다고 한들 남들과 똑같아질 수는 없다. 애초에 완전히 같은 사람은 존재하지 않기 때문이다.<br><br>&lt;별종&gt;에서는 ‘별종’, ‘비정상’, ‘괴물’이라는 말을 듣고 자라온 박세이를 통해, 우리가 그토록 두려워했던 ‘다름’이 사실 인간에게 당연한 이야기임을 알려주고 싶다.</p>
+
+            <p class="dtl">캐릭터</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0.7rem;">
+              <div style="padding:1rem;border:1px solid var(--border);background:var(--bg3);">
+                <p style="font-size:0.72rem;letter-spacing:0.12em;color:var(--gold);margin-bottom:0.5rem;">세이 · 30세 · 여</p>
+                <p class="dtxt" style="font-size:0.78rem;">흉측한 얼굴 때문에 ‘비정상’, ‘괴물’, ‘별종’이라는 말을 듣고 세상에 몸과 마음을 닫은 여자.<br><br>트라우마 때문에 사람을 무서워하고 오로지 식물 키우기에만 열중한다.</p>
+              </div>
+              <div style="padding:1rem;border:1px solid var(--border);background:var(--bg3);">
+                <p style="font-size:0.72rem;letter-spacing:0.12em;color:var(--gold);margin-bottom:0.5rem;">정민 · 9세 · 남</p>
+                <p class="dtxt" style="font-size:0.78rem;">매일 사고만 치는 말괄량이 미운 9살. 호기심이 많아 새로운 것을 보면 무조건 시도해 봐야 한다.<br><br>또래 남자아이보다 더 거침없고 본능대로 하는 경향이 있다. 제일 좋아하는 것은 곤충 채집. 최근 세이의 집에서 최애 곤충을 발견한 후, 제멋대로 드나들고 있다.</p>
+              </div>
+            </div>
+
+            <p class="dtl">시놉시스</p>
+            <p class="dtxt">흉측한 얼굴 때문에 긴 세월 동안 집 밖에 나가지 않던 세이. 그녀에게 유일한 위안은 집 안에서 키우는 식물뿐이었다.<br><br>그러던 어느 날, 축구공 하나가 창문을 깨고 날아와 세이의 식물들을 엉망으로 만든다. 축구공의 주인인 정민은 제멋대로 세이의 집에 들어와 사과도 없이 곤충만 잔뜩 채집해간다.<br><br>그리고 다음 날부터 뻔질나게 세이의 집에 쳐들어오기 시작하는데… 세이는 과연 말괄량이 정민으로부터 무사히 일상을 지킬 수 있을까?</p>
+
+            <p class="dtl">줄거리</p>
+            <p class="dtxt">아이들과 가족들이 대다수인 밝은 동네에 유일하게 어두운 집. 온갖 식물과 덩굴로 엮여 있어 집인지 구분이 안 될 정도다. 그 집의 주인 박세이 역시 집과 비슷하다. 다만 얼굴이 더 괴상할 뿐.<br><br>울퉁불퉁한 바위 얼굴에 파래처럼 축 늘어진 초록 머리. 누가 봐도 깜짝 놀랄 얼굴이다. 그녀의 집은 식물원인지 집인지 헷갈릴 정도로 식물로 가득하고, 평범하지 않은 신기한 식물들이 세이에게는 보물이다.<br><br>어느 날, 긴 세월 동안 아무 소리도 나지 않던 집에 쨍그랑! 소리가 들린다. 축구공이 창문을 깨고 집 안으로 들어왔고, 식물들은 엉망으로 망가진다.<br><br>세이가 패닉에 빠져 있을 때 초인종과 쾅쾅 두드리는 소리가 들린다. 곧이어 정민이 벌컥 창문을 열고 들어오고, 세이는 순식간에 얼굴을 들킨다. 세이가 뒤로 가서 어떡하지 고민하는 사이 정민은 최애 곤충을 발견하고, 잡으려다 식물들을 더 망치고 만다. 세이는 소리를 듣고 대충 얼굴을 가린 채 화를 내며 정민을 쫓아낸다.<br><br>다음 날, 대충 수습을 한 세이가 한숨 돌릴 때 정민이 또 문을 쾅쾅 두드린다. 세이가 문을 열어주지 않자 정민은 창문으로 들어와 또 곤충을 잡느라 집안을 들쑤신다. 다음 날, 그 다음 날도 계속된다.<br><br>갖은 방법을 쓰던 세이는 어쩔 수 없이 포기하고 왜 이러냐고 묻는다. 정민은 곤충통을 보여주고, 세이는 아이의 상기된 표정을 본 뒤 어쩔 수 없이 허락해준다.<br><br>탐탁지 않은 표정으로 아이를 보던 세이는 어느새 아이와 가까워지고, 아이를 기다리게 된다. 정민이 자신이 가장 좋아하는 곤충을 선물로 주자 세이는 아이가 정말 사랑스러워진다. 그런데 정민의 얼굴이 곤충으로 변한다.<br><br>세이는 그런 정민을 보고 기겁해 얼굴을 가린다. 정민은 답답한지 벗고, 서로 벗네 안 벗네 하다가 정민이 밖으로 도망가버린다. 세이는 정민을 쫓는다.<br><br>드디어 정민을 잡은 세이는 정민의 얼굴을 다시 가린다. 정민은 갸우뚱하며 사람들을 가리킨다. 세이가 엉겁결에 고개를 드는데, 도넛·목각·아이폰·회오리·닭강정 모양 등 다양한 얼굴의 사람들이 보인다.<br><br>정신이 팔린 세이의 손을 정민은 해맑게 이끌고 간다. 얼결에 사람들 속에 섞여든 세이는 자신이 이상하지 않다는 것을 느낀다. 어느새 긴장이 풀린 세이는 얼굴을 가린 천을 끌어내리고 정민의 손을 꽉 잡는다.<br><br>세이의 손을 잡고 폴짝폴짝 뛰는 정민, 그 모습을 보며 미소 짓는 세이. 두 사람의 뒷모습이 사람들 속에서 멀어지며 엔딩.</p>
           </div>
 
           <div class="aiw-section">
