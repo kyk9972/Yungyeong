@@ -219,6 +219,17 @@
   .lb-counter{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.78rem;color:var(--muted);letter-spacing:0.12em;}
   @media(max-width:768px){.ppt-grid{grid-template-columns:1fr;}}
 
+  /* KOCCA project materials */
+  .kocca-roles{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem;}
+  .kocca-role{padding:.28rem .58rem;border:1px solid var(--border2);font-size:.67rem;color:var(--gold);}
+  .kocca-cover{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#fff;margin:1.1rem 0;border:0;}
+  .kocca-file-button{display:inline-flex;align-items:center;margin-top:1.2rem;padding:.72rem .9rem;border:1px solid var(--gold);background:transparent;color:var(--cream);font-size:.64rem;letter-spacing:.1em;cursor:pointer;}
+  .kocca-viewer{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(11,11,10,.82);}
+  .kocca-viewer.is-open{display:flex;}.kocca-viewer-panel{position:relative;width:min(960px,100%);max-height:92vh;background:#fff;padding:1rem;overflow:auto;}
+  .kocca-viewer img{display:block;width:100%;height:auto;background:#fff;}.kocca-viewer-meta{display:flex;justify-content:space-between;align-items:center;color:#222;padding:.7rem .1rem 0;font-size:.68rem;letter-spacing:.08em;}
+  .kocca-viewer-controls{display:flex;gap:.45rem;}.kocca-viewer button{border:1px solid #bbb;background:#fff;color:#222;padding:.45rem .65rem;cursor:pointer;}.kocca-viewer-close{position:absolute;right:1rem;top:1rem;z-index:1;}
+  @media(max-width:600px){.kocca-viewer{padding:.6rem;}.kocca-viewer-panel{padding:.55rem;}.kocca-cover{margin:.9rem 0;}}
+
   /* ── AI WORKS PROCESS ── */
   .aiw-section{margin-bottom:2rem;}
   .aiw-section:last-child{margin-bottom:0;}
@@ -1003,6 +1014,44 @@ document.getElementById('ppt').after(aiDivider,aiWorks);
 const shortDrama=document.getElementById('shortdrama');
 const shortDramaDivider=shortDrama.previousElementSibling;
 aiWorks.after(shortDramaDivider,shortDrama);
+
+// Replace the legacy PPT gallery with the KOCCA project section.
+const awards=document.getElementById('awards');
+if(awards){
+  const beforeAwards=awards.previousElementSibling;
+  const afterAwards=awards.nextElementSibling;
+  awards.remove();
+  if(beforeAwards && beforeAwards.classList.contains('sd')) beforeAwards.remove();
+  if(afterAwards && afterAwards.classList.contains('sd')) afterAwards.remove();
+  document.querySelector('a[href="#awards"]')?.parentElement.remove();
+}
+const ppt=document.getElementById('ppt');
+ppt.innerHTML='<p class="sl">KOCCA PROJECTS</p><h2 class="st">한국콘텐츠진흥원 제작지원</h2><div class="awards-grid reveal"><article class="award-card"><p class="award-year">2025</p><p class="award-name">레이디보스 리턴</p><p class="award-sub">KOCCA 신진창작자 데뷔지원 선정<br>과제책임자</p><div class="kocca-roles"><span class="kocca-role">지원서 작성</span><span class="kocca-role">작품 경쟁력 정리</span><span class="kocca-role">PT</span><span class="kocca-role">제작 계획</span><span class="kocca-role">예산 계획</span><span class="kocca-role">유통 전략</span><span class="kocca-role">마케팅 전략</span><span class="kocca-role">IP 확장 전략</span></div></article><article class="award-card"><p class="award-year">2026</p><p class="award-name">제국의 여왕은 침노가 필요해</p><p class="award-sub">KOCCA 신진창작자 데뷔지원 선정<br>과제책임자</p><div class="kocca-roles"><span class="kocca-role">지원서 작성</span><span class="kocca-role">작품 경쟁력 정리</span><span class="kocca-role">PT</span><span class="kocca-role">제작 계획</span><span class="kocca-role">예산 계획</span><span class="kocca-role">유통 전략</span><span class="kocca-role">마케팅 전략</span><span class="kocca-role">IP 확장 전략</span></div></article></div>';
+document.querySelector('a[href="#ppt"]')?.replaceChildren('KOCCA');
+const koccaProjects=[
+  {card:ppt.querySelectorAll('.award-card')[0],cover:'images/kocca/2025-cover.png',title:'레이디보스 리턴',files:[
+    {src:'images/kocca/2025-application-form.png',label:'1차 지원서 · 사업신청서'},
+    {src:'images/kocca/2025-production-plan.png',label:'1차 지원서 · 제작계획서'},
+    {src:'images/kocca/2025-presentation-overview.png',label:'2차 발표자료 · 구성 미리보기'}]},
+  {card:ppt.querySelectorAll('.award-card')[1],cover:'images/kocca/2026-cover.png',title:'제국의 여왕은 침노가 필요해',files:[
+    {src:'images/kocca/2026-application-form.png',label:'1차 지원서 · 사업신청서'},
+    {src:'images/kocca/2026-production-plan.png',label:'1차 지원서 · 제작계획서'},
+    {src:'images/kocca/2026-work-content.png',label:'1차 지원서 · 작품 기획안'},
+    {src:'images/kocca/2026-presentation-overview.png',label:'2차 발표자료 · 구성 미리보기'}]}
+];
+const viewer=document.createElement('div');
+viewer.className='kocca-viewer';
+viewer.innerHTML='<div class="kocca-viewer-panel"><button class="kocca-viewer-close" aria-label="자료 닫기">×</button><img alt="기획 자료"><div class="kocca-viewer-meta"><span></span><div class="kocca-viewer-controls"><button type="button" aria-label="이전 자료">←</button><button type="button" aria-label="다음 자료">→</button></div></div></div>';
+document.body.append(viewer);
+let activeProject,activeFile=0;
+const viewerImage=viewer.querySelector('img'),viewerLabel=viewer.querySelector('.kocca-viewer-meta span');
+const renderFile=()=>{const file=activeProject.files[activeFile];viewerImage.src=file.src;viewerImage.alt=file.label;viewerLabel.textContent=activeProject.title+' · '+file.label+'  '+(activeFile+1)+' / '+activeProject.files.length;};
+const openViewer=project=>{activeProject=project;activeFile=0;renderFile();viewer.classList.add('is-open');};
+viewer.querySelector('.kocca-viewer-close').addEventListener('click',()=>viewer.classList.remove('is-open'));
+viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.classList.remove('is-open');});
+viewer.querySelector('.kocca-viewer-controls button:first-child').addEventListener('click',()=>{activeFile=(activeFile+activeProject.files.length-1)%activeProject.files.length;renderFile();});
+viewer.querySelector('.kocca-viewer-controls button:last-child').addEventListener('click',()=>{activeFile=(activeFile+1)%activeProject.files.length;renderFile();});
+koccaProjects.forEach(project=>{const cover=document.createElement('img');cover.className='kocca-cover';cover.src=project.cover;cover.alt=project.title+' 대표 이미지';project.card.querySelector('.kocca-roles').before(cover);const button=document.createElement('button');button.type='button';button.className='kocca-file-button';button.textContent='PROJECT FILE 보기 →';button.addEventListener('click',()=>openViewer(project));project.card.append(button);});
 document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('active'))return;if(e.key==='ArrowRight')lbMove(1);if(e.key==='ArrowLeft')lbMove(-1);if(e.key==='Escape')lbClose();});
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
 </script>
