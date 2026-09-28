@@ -1027,6 +1027,7 @@ if(awards){
 }
 const ppt=document.getElementById('ppt');
 ppt.innerHTML='<p class="sl">KOCCA PROJECTS</p><h2 class="st">한국콘텐츠진흥원 제작지원</h2><div class="awards-grid reveal"><article class="award-card"><p class="award-year">2025</p><p class="award-name">레이디보스 리턴</p><p class="award-sub">KOCCA 신진창작자 데뷔지원 선정<br>과제책임자</p><div class="kocca-roles"><span class="kocca-role">지원서 작성</span><span class="kocca-role">작품 경쟁력 정리</span><span class="kocca-role">PT</span><span class="kocca-role">제작 계획</span><span class="kocca-role">예산 계획</span><span class="kocca-role">유통 전략</span><span class="kocca-role">마케팅 전략</span><span class="kocca-role">IP 확장 전략</span></div></article><article class="award-card"><p class="award-year">2026</p><p class="award-name">제국의 여왕은 침노가 필요해</p><p class="award-sub">KOCCA 신진창작자 데뷔지원 선정<br>과제책임자</p><div class="kocca-roles"><span class="kocca-role">지원서 작성</span><span class="kocca-role">작품 경쟁력 정리</span><span class="kocca-role">PT</span><span class="kocca-role">제작 계획</span><span class="kocca-role">예산 계획</span><span class="kocca-role">유통 전략</span><span class="kocca-role">마케팅 전략</span><span class="kocca-role">IP 확장 전략</span></div></article></div>';
+ppt.querySelector('.awards-grid').classList.remove('reveal');
 document.querySelector('a[href="#ppt"]')?.replaceChildren('KOCCA');
 const koccaProjects=[
   {card:ppt.querySelectorAll('.award-card')[0],cover:'images/kocca/2025-cover.png',title:'레이디보스 리턴',files:[
