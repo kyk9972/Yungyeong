@@ -2,8 +2,9 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>김윤경 | Drama Planning PD · AI Content Creator</title>
+<title>김윤경 | AI Content Creator</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -66,6 +67,21 @@
   #aiworks .poster-list{grid-template-columns:repeat(auto-fill,minmax(480px,1fr));}
   #aiworks .poster-img-wrap{height:auto;aspect-ratio:16/9;}
   #aiworks .poster-img-wrap iframe{width:100%;height:100%;display:block;}
+  .video-external-link{position:absolute;right:0.75rem;bottom:0.75rem;z-index:2;padding:0.42rem 0.65rem;background:rgba(24,24,22,0.82);border:1px solid rgba(255,255,255,0.38);color:var(--cream);font-size:0.68rem;letter-spacing:0.04em;text-decoration:none;}
+  .video-external-link:hover{border-color:var(--gold);color:var(--gold);}
+  /* ── AI CREDENTIALS ── */
+  .ai-credentials-intro{max-width:700px;color:var(--muted);font-size:.88rem;line-height:1.9;margin-top:-1.55rem;margin-bottom:2rem;}
+  .ai-proof-grid,.ai-selected-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+  .ai-proof-card,.ai-selected-project{border:1px solid var(--border);background:var(--bg2);padding:1.45rem;}
+  .ai-proof-no{display:block;color:var(--gold);font-family:'DM Serif Display',serif;font-size:.86rem;margin-bottom:1.8rem;}
+  .ai-proof-card h3,.ai-selected-project h3{font-family:'Noto Serif KR',serif;color:var(--cream);font-size:1.05rem;font-weight:400;line-height:1.5;margin-bottom:.7rem;}
+  .ai-proof-card p,.ai-selected-project p{color:var(--muted);font-size:.75rem;line-height:1.8;}
+  .ai-selected-projects{margin-top:1rem;}
+  .ai-selected-project small{display:block;color:var(--gold);font-size:.62rem;letter-spacing:.11em;line-height:1.6;margin-bottom:.7rem;}
+  .ai-career-summary{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:1.1rem;margin-top:1rem;padding:1.25rem 1.4rem;border:1px solid var(--border);background:rgba(99,107,47,.06);}
+  .ai-career-summary>span{color:var(--gold);font-size:.66rem;letter-spacing:.15em;}
+  .ai-career-summary p{color:var(--muted);font-size:.72rem;line-height:1.7;}.ai-career-summary p strong{color:var(--cream);font-weight:500;}
+  .ai-career-summary a{color:var(--gold);font-size:.7rem;letter-spacing:.04em;text-decoration:none;white-space:nowrap;}.ai-career-summary a:hover{text-decoration:underline;}
 
   /* ── COMFYUI SECTION ── */
   #comfyui .poster-list{grid-template-columns:1fr;gap:8rem;}
@@ -298,37 +314,10 @@
   .home-choice{display:block;padding:1.25rem 1.4rem;border:1px solid var(--border2);background:var(--bg2);color:var(--cream);text-decoration:none;transition:transform .25s,border-color .25s;}
   .home-choice:hover{transform:translateY(-4px);border-color:var(--gold);}.home-choice small{display:block;color:var(--gold);font-size:.64rem;letter-spacing:.15em;margin-bottom:.45rem;}.home-choice strong{display:block;font-family:'Noto Serif KR',serif;font-size:1.1rem;font-weight:400;}.home-choice span{display:block;margin-top:.55rem;color:var(--muted);font-size:.75rem;}
   .kocca-intro{font-size:.86rem;color:var(--muted);max-width:680px;margin-top:-1.6rem;margin-bottom:2rem;}.kocca-roles{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem;}.kocca-role{padding:.28rem .58rem;border:1px solid var(--border2);font-size:.67rem;color:var(--gold);}.kocca-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-top:1.15rem;}.kocca-gallery figure{margin:0;cursor:zoom-in;}.kocca-gallery img{width:100%;aspect-ratio:1/.78;object-fit:cover;object-position:top;border:1px solid var(--border);display:block;}.kocca-gallery figcaption{font-size:.58rem;color:var(--muted);line-height:1.4;margin-top:.28rem;}.kocca-document{display:none;margin-top:1rem;color:var(--gold);font-size:.68rem;letter-spacing:.1em;text-decoration:none;border-bottom:1px solid var(--gold);}body.drama-view #ppt .awards-grid.reveal{opacity:1;transform:none;}
-  @media(max-width:700px){body.home-portal nav{padding:1rem 1.25rem;}body.home-portal .nav-links li{display:none;}body.home-portal .nav-links li:nth-child(-n+3){display:block;}.home-choices{grid-template-columns:1fr;}.profile-info-bar{display:none;}}
-  /* KOCCA material viewer */
-  body.drama-view .sd:has(+ #awards){display:none;}
-  .kocca-slider{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:.8rem;border:0;background:#fff;}
-  .kocca-slider::-webkit-scrollbar{display:none;}
-  .kocca-slider figure{flex:0 0 100%;scroll-snap-align:start;margin:0;cursor:zoom-in;}
-  .kocca-slider img{display:block;width:100%;height:auto;object-fit:contain;background:#fff;}
-  .kocca-slider figcaption{display:none;}
-  .kocca-slider-controls{display:flex;align-items:center;justify-content:flex-end;gap:.6rem;margin-top:.6rem;}
-  .kocca-slider-controls button{width:2rem;height:2rem;border:1px solid var(--border2);background:transparent;color:var(--cream);cursor:pointer;font-size:1rem;}
-  .kocca-slider-controls button:hover{border-color:var(--gold);color:var(--gold);}
-  .kocca-slider-count{font-size:.62rem;letter-spacing:.1em;color:var(--muted);min-width:2.5rem;text-align:center;}
-  @media(max-width:600px){.kocca-slider-controls{justify-content:center;}}
-  /* Drama layout rhythm: sections are separated by space, not rules. */
-  body.drama-view .sd{display:none;}
-  body.drama-view .nav-links li:not(:nth-child(2)){display:none;}
-  body.drama-view .hero{min-height:0;padding:8rem 4rem 3rem;}
-  body.drama-view #career{padding-top:2rem;}
-  body.drama-view .sw{padding:4.5rem 4rem;}
-  body.drama-view .st{margin-bottom:2.25rem;padding-bottom:0;border-bottom:0;}
-  .kocca-cover{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;object-position:center;background:#fff;margin:1.1rem 0;border:0;}
-  .kocca-file-button{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;padding:.72rem .9rem;border:1px solid var(--gold);background:transparent;color:var(--cream);font-size:.64rem;letter-spacing:.1em;cursor:pointer;}
-  .kocca-file-button:hover{background:var(--gold);color:var(--bg);}
-  .kocca-viewer{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(11,11,10,.82);}
-  .kocca-viewer.is-open{display:flex;}.kocca-viewer-panel{position:relative;width:min(960px,100%);max-height:92vh;background:#fff;padding:1rem;overflow:auto;}
-  .kocca-viewer img{display:block;width:100%;height:auto;background:#fff;}.kocca-viewer-meta{display:flex;justify-content:space-between;align-items:center;color:#222;padding:.7rem .1rem 0;font-size:.68rem;letter-spacing:.08em;}
-  .kocca-viewer-controls{display:flex;gap:.45rem;}.kocca-viewer button{border:1px solid #bbb;background:#fff;color:#222;padding:.45rem .65rem;cursor:pointer;}.kocca-viewer-close{position:absolute;right:1rem;top:1rem;z-index:1;}
-  @media(max-width:600px){body.drama-view .hero{padding:7rem 1.5rem 2rem;}body.drama-view #career{padding-top:1.5rem;}body.drama-view .sw{padding:3.5rem 1.5rem;}.kocca-viewer{padding:.6rem;}.kocca-viewer-panel{padding:.55rem;}.kocca-cover{margin:.9rem 0;}}
+  @media(max-width:700px){body.home-portal nav{padding:1rem 1.25rem;}body.home-portal .nav-links li{display:none;}body.home-portal .nav-links li:nth-child(-n+3){display:block;}.home-choices,.ai-proof-grid,.ai-selected-projects{grid-template-columns:1fr;}.ai-career-summary{grid-template-columns:1fr;gap:.55rem;}.profile-info-bar{display:none;}}
 </style>
 </head>
-<body class="home-portal">
+<body class="ai-view">
 <script>
   (function(){
     const view=new URLSearchParams(location.search).get('view');
@@ -358,9 +347,9 @@
         <span class="pib-item">경희대학교 언론정보학과 졸업</span>
       </div>
     </div>
-    <p class="hero-eyebrow">Drama Planning PD · AI Content Creator</p>
-    <h1 class="hero-title">이야기를 기획하고 제작 가능한 형태로 실현하며,<br>AI 영상으로 확장하는 콘텐츠 프로듀서 김윤경입니다.</h1>
-    <p class="hero-desc">드라마 기획 PD와 AI 콘텐츠 크리에이터, 두 역할의 작업을 직무별로 소개합니다.</p>
+    <p class="hero-eyebrow">AI Content Creator · Story IP Producer</p>
+    <h1 class="hero-title">드라마 기획 경험을 바탕으로,<br>이야기의 의도를 AI 영상으로 구현하는<br>AI 콘텐츠 프로듀서 김윤경입니다.</h1>
+    <p class="hero-desc">기획부터 이미지·영상 생성, 음악·사운드, 편집까지<br>이야기를 일관된 영상 경험으로 완성합니다.</p>
     <div class="home-choices"><a class="home-choice" href="./drama/"><small>DRAMA PLANNING PD</small><strong>VIEW DRAMA PORTFOLIO →</strong><span>스토리 개발 · IP 각색 · 대본 개발</span></a><a class="home-choice" href="./ai/"><small>AI CONTENT CREATOR</small><strong>VIEW AI PORTFOLIO →</strong><span>이미지 · 영상 · 연출 · 편집</span></a></div>
   </div>
 </div>
@@ -435,25 +424,23 @@
   <h2 class="st">Skills</h2>
   <div class="skills-grid reveal">
     <div>
-      <p class="sg-label">드라마 기획 · 개발</p>
+      <p class="sg-label">스토리 기획 · 연출</p>
       <p class="si">드라마 기획안 작성</p>
       <p class="si">대본 개발 및 작가 피드백</p>
       <p class="si">원작 IP 발굴 및 각색 기획</p>
       <p class="si">기획안 제작 (PPT·한글)</p>
     </div>
     <div>
-      <p class="sg-label">프로젝트 관리</p>
-      <p class="si">정부지원사업 지원 및 운영</p>
-      <p class="si">작가 계약 및 일정 관리</p>
-      <p class="si">감독·작가 회의 운영</p>
-      <p class="si">제작사·플랫폼 커뮤니케이션</p>
+      <p class="sg-label">AI 프로덕션</p>
+      <p class="si">GPT Image 2 · Midjourney</p>
+      <p class="si">Kling AI · Higgsfield · ComfyUI</p>
+      <p class="si">Suno · ElevenLabs</p>
+      <p class="si">이미지·영상 스타일 가이드 설계</p>
     </div>
     <div>
-      <p class="sg-label">툴 · AI</p>
-      <p class="si">Midjourney · GPT Image 2</p>
-      <p class="si">Kling AI · Higgsfield · ComfyUI</p>
-      <p class="si">ChatGPT / Gemini / Claude code</p>
+      <p class="sg-label">편집 · 협업</p>
       <p class="si">DaVinci Resolve · Premiere Pro</p>
+      <p class="si">ChatGPT · Gemini · Claude</p>
       <p class="si">Notion</p>
     </div>
   </div>
@@ -697,9 +684,9 @@
 
 
 <div class="sw" id="aiworks">
-  <p class="sl">AI Works</p>
-  <h2 class="st">AI Creative Works</h2>
-  <p style="font-size:0.82rem;color:var(--muted);margin-top:-1.5rem;margin-bottom:2rem;">각 작업을 클릭하면 구상 과정과 씬리스트, 느낀 점을 볼 수 있습니다.</p>
+  <p class="sl">Selected AI Work</p>
+  <h2 class="st">대표 AI 영상</h2>
+  <p style="font-size:0.82rem;color:var(--muted);margin-top:-1.5rem;margin-bottom:2rem;">완성 영상과 함께, 기획 의도·연출 설계·제작 범위를 확인할 수 있습니다.</p>
 
   <div class="poster-list reveal">
 
@@ -707,8 +694,9 @@
     <div class="poster-item" id="aiw-byeoljong">
       <div class="poster-header" onclick="togglePoster('aiw-byeoljong')">
         <div class="poster-img-wrap">
-          <iframe src="https://www.youtube.com/embed/ze0q5ixDj_0?origin=https://kyk9972.github.io" title="별종 트레일러" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="width:100%;height:100%;display:block;"></iframe>
+          <iframe src="https://www.youtube.com/embed/ze0q5ixDj_0?rel=0&amp;modestbranding=1" title="별종 트레일러" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="width:100%;height:100%;display:block;"></iframe>
         </div>
+        <a class="video-external-link" href="https://www.youtube.com/watch?v=ze0q5ixDj_0" target="_blank" rel="noopener" onclick="event.stopPropagation()">YouTube에서 보기 ↗</a>
         <div class="poster-info-bar">
           <div class="poster-badges-row">
             <span class="pbadge gold">AI 애니메이션</span>
@@ -791,15 +779,16 @@
     <div class="poster-item" id="aiw-naver">
       <div class="poster-header" onclick="togglePoster('aiw-naver')">
         <div class="poster-img-wrap">
-          <iframe src="https://www.youtube.com/embed/T5T1x9yysBs?origin=https://kyk9972.github.io" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="width:100%;height:100%;display:block;"></iframe>
+          <iframe src="https://www.youtube.com/embed/T5T1x9yysBs?rel=0&amp;modestbranding=1" title="네이버 웹툰 운동회 팬 무비" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="width:100%;height:100%;display:block;"></iframe>
         </div>
+        <a class="video-external-link" href="https://www.youtube.com/watch?v=T5T1x9yysBs" target="_blank" rel="noopener" onclick="event.stopPropagation()">YouTube에서 보기 ↗</a>
         <div class="poster-info-bar">
           <div class="poster-badges-row">
             <span class="pbadge gold">AI 애니메이션</span>
-            <span class="pbadge silver">Teaser</span>
+            <span class="pbadge silver">Fan Movie</span>
             <span class="pbadge" style="background:rgba(0,200,100,0.15);color:#00C864;border:1px solid rgba(0,200,100,0.4);">제작완료</span>
           </div>
-          <p class="poster-name">네이버 웹툰 운동회</p>
+          <p class="poster-name">네이버 웹툰 운동회 · 팬 무비</p>
           <p class="poster-genre">ChatGPT Image · Kling · DaVinci Resolve · Suno</p>
         </div>
       </div>
@@ -861,7 +850,7 @@
                 <p style="font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.5rem;">영상 제작 &nbsp;—&nbsp; Kling</p>
                 <p style="font-size:0.73rem;line-height:1.85;color:var(--muted);">
                   캐릭터 동작 및 카메라 무빙 구현<br>
-                  컷별 샷/앵글/카메라 앵글 지정 
+                  컷별 샷/앵글/카메라 앵글 지정
                 </p>
               </div>
               <div style="border-left:2px solid rgba(37,99,235,0.6);padding:0.85rem 1rem;background:rgba(37,99,235,0.03);">
@@ -1037,16 +1026,13 @@ function lbOpen(k,i){lbKey=k;lbIdx=i;lbUpdate();document.getElementById('lb').cl
 function lbClose(){document.getElementById('lb').classList.remove('active');document.body.style.overflow='';}
 function lbMove(d){const s=lbData[lbKey];lbIdx=(lbIdx+d+s.length)%s.length;lbUpdate();}
 function lbUpdate(){const s=lbData[lbKey];document.getElementById('lb-img').src='data:image/jpeg;base64,'+s[lbIdx];document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+s.length;}
-// Keep AI Works as the final portfolio section, immediately before contact.
+// Lead with the finished AI work so AI hiring teams see it before the career history.
 const aiWorks=document.getElementById('aiworks');
 const aiDivider=aiWorks.previousElementSibling;
-document.getElementById('ppt').after(aiDivider,aiWorks);
-const shortDrama=document.getElementById('shortdrama');
-const shortDramaDivider=shortDrama.previousElementSibling;
-aiWorks.after(shortDramaDivider,shortDrama);
+document.getElementById('hero').after(aiDivider,aiWorks);
 document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('active'))return;if(e.key==='ArrowRight')lbMove(1);if(e.key==='ArrowLeft')lbMove(-1);if(e.key==='Escape')lbClose();});
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
-const portfolioView=new URLSearchParams(location.search).get('view');
+const portfolioView='ai';
 if(portfolioView==='drama'||portfolioView==='ai'){
   const isDrama=portfolioView==='drama';
   document.querySelector('.hero-eyebrow').textContent='Content Planner · 기획자';
@@ -1056,77 +1042,24 @@ if(portfolioView==='drama'||portfolioView==='ai'){
   heroBadges.className='hero-badges';
   heroBadges.innerHTML='<div class="badge">🏆 2026 KOCCA 신진창작자 데뷔지원 선정</div><div class="badge">🏆 2025 KOCCA 신진창작자 데뷔지원 선정</div>';
   document.querySelector('.hero-desc').after(heroBadges);
+  if(!isDrama){
+    document.querySelector('.hero-eyebrow').textContent='AI Content Creator · Story IP Producer';
+    document.querySelector('.hero-title').innerHTML='드라마 기획 경험을 바탕으로,<br>스토리를 AI 영상으로 구현하는<br>AI 콘텐츠 프로듀서 김윤경입니다.';
+    document.querySelector('.hero-desc').innerHTML='기획부터 이미지·영상 생성, 음악·사운드, 편집까지<br>이야기를 일관된 영상 경험으로 완성합니다.';
+    heroBadges.innerHTML='<div class="badge">STORY PLANNING 3YR 6MO</div><div class="badge">KOCCA 과제책임자 2년 연속</div>';
+    const credentialsDivider=document.createElement('div');
+    credentialsDivider.className='sd';
+    const credentials=document.createElement('section');
+    credentials.className='sw';
+    credentials.id='ai-credentials';
+    credentials.innerHTML='<p class="sl">Story &amp; Industry Experience</p><h2 class="st">AI 영상에 기획의 근거를 더합니다</h2><p class="ai-credentials-intro">드라마 기획 PD로 쌓은 스토리 설계와 제작 경험이 AI 작업의 출발점입니다. 작품의 목적과 팬이 반응할 장면을 먼저 설계하고, 그에 맞는 영상 언어로 구현합니다.</p><div class="ai-proof-grid"><article class="ai-proof-card"><span class="ai-proof-no">01</span><h3>3년 6개월</h3><p>드라마 기획·대본 개발 경험. 이야기의 핵심을 정리하고, 캐릭터와 장면의 흐름을 설계해 왔습니다.</p></article><article class="ai-proof-card"><span class="ai-proof-no">02</span><h3>KOCCA 2년 연속</h3><p>2025·2026 신진창작자 데뷔지원 선정 과제책임자. 기획안부터 제작·유통 전략까지 프로젝트를 이끌었습니다.</p></article><article class="ai-proof-card"><span class="ai-proof-no">03</span><h3>Kanta 인기순위 1위</h3><p>기획·대본 개발에 참여한 작품이 플랫폼 인기순위 1위를 기록했습니다.</p></article></div><div class="ai-selected-projects"><article class="ai-selected-project"><small>DRAMA PLANNING · SHORTFORM</small><h3>전자두뇌 정과장</h3><p>Kanta 인기순위 1위 · 2분 × 30화<br>아이템 기획 · 전체 시놉시스·줄거리 · 외부 배포용 기획안 · 대본 디벨롭</p></article><article class="ai-selected-project"><small>KOCCA 2025 · SHORTFORM</small><h3>레이디보스 리턴</h3><p>신진창작자 데뷔지원 선정 · Kanta 인기순위 1위<br>과제책임자 · 아이템 기획 · 시놉시스·줄거리 · 대본 디벨롭</p></article><article class="ai-selected-project"><small>ON-AIR · MIDFORM</small><h3>아주르 스프링</h3><p>MBN · TVING · Wavve 방영 · 30분 × 6화<br>웹툰 원작 각색 · 캐릭터·줄거리 · 회별 줄거리 · 대본 디벨롭</p></article></div><div class="ai-career-summary"><span>CAREER</span><p><strong>스튜디오달</strong> · 기획 PD · 2024.07–2026.04<br><strong>베티앤크리에이터스</strong> · 기획 PD · 2022.03–2023.10</p><a href="../drama/">드라마 기획 포트폴리오 전체 보기 →</a></div>';
+    aiWorks.after(credentialsDivider,credentials);
+  }
   if(isDrama){
     const ppt=document.getElementById('ppt');
     ppt.innerHTML='<p class="sl">KOCCA PROJECTS</p><h2 class="st">한국콘텐츠진흥원 제작지원</h2><p class="kocca-intro">작품의 재미를 기획하는 데서 그치지 않고, 제작 계획과 예산, 유통·마케팅, IP 확장까지 실제 제작 프로젝트로 설계했습니다.</p><div class="awards-grid reveal"><article class="award-card"><p class="award-year">2025</p><p class="award-name">레이디보스 리턴</p><p class="award-sub">KOCCA 신진창작자 데뷔지원 선정<br>과제책임자</p><div class="kocca-roles"><span class="kocca-role">지원서 작성</span><span class="kocca-role">작품 경쟁력 정리</span><span class="kocca-role">PT</span><span class="kocca-role">제작 계획</span><span class="kocca-role">예산 계획</span><span class="kocca-role">유통 전략</span><span class="kocca-role">마케팅 전략</span><span class="kocca-role">IP 확장 전략</span></div><a class="kocca-document" data-document="documents/kocca/2025/project-plan.pdf" target="_blank" rel="noopener">VIEW DOCUMENT →</a></article><article class="award-card"><p class="award-year">2026</p><p class="award-name">제국의 여왕은 침노가 필요해</p><p class="award-sub">KOCCA 신진창작자 데뷔지원 선정<br>과제책임자</p><div class="kocca-roles"><span class="kocca-role">지원서 작성</span><span class="kocca-role">작품 경쟁력 정리</span><span class="kocca-role">PT</span><span class="kocca-role">제작 계획</span><span class="kocca-role">예산 계획</span><span class="kocca-role">유통 전략</span><span class="kocca-role">마케팅 전략</span><span class="kocca-role">IP 확장 전략</span></div><div class="kocca-gallery"><figure onclick="window.open(this.querySelector(\'img\').src,\'_blank\')"><img src="images/kocca/2026-application-team.png" alt="지원서 참여인력 구성"><figcaption>지원서 · 참여인력 구성</figcaption></figure><figure onclick="window.open(this.querySelector(\'img\').src,\'_blank\')"><img src="images/kocca/2026-planning-points.png" alt="기획안 기획 포인트"><figcaption>작품 내용 · 기획 포인트</figcaption></figure><figure onclick="window.open(this.querySelector(\'img\').src,\'_blank\')"><img src="images/kocca/2026-distribution-strategy.png" alt="발표자료 유통 전략"><figcaption>2차 PT · 유통 전략</figcaption></figure></div><a class="kocca-document" data-document="documents/kocca/2026/project-plan.pdf" target="_blank" rel="noopener">VIEW DOCUMENT →</a></article></div>';
-    ppt.querySelector('.kocca-intro').remove();
-    const ladyCard=ppt.querySelectorAll('.award-card')[0];
-    const ladyGallery=document.createElement('div');
-    ladyGallery.className='kocca-slider';
-    ladyGallery.innerHTML=''
-      +'<figure><img src="images/kocca/2025-cover.png" alt="레이디보스 리턴 대표 이미지"><figcaption>레이디보스 리턴</figcaption></figure>'
-      +'<figure><img src="images/kocca/2025-application-form.png" alt="1차 지원서 사업신청서"><figcaption>1차 지원서 · 사업신청서</figcaption></figure>'
-      +'<figure><img src="images/kocca/2025-production-plan.png" alt="1차 지원서 제작계획서"><figcaption>1차 지원서 · 제작계획서</figcaption></figure>'
-      +'<figure><img src="images/kocca/2025-presentation-overview.png" alt="2차 발표 자료 구성 미리보기"><figcaption>2차 발표 자료 · 구성 미리보기</figcaption></figure>';
-    ladyCard.querySelector('.kocca-document').before(ladyGallery);
-    const ladyControls=document.createElement('div');
-    ladyControls.className='kocca-slider-controls';
-    ladyControls.innerHTML='<button type="button" aria-label="레이디보스 이전 자료">←</button><span class="kocca-slider-count">1 / 4</span><button type="button" aria-label="레이디보스 다음 자료">→</button>';
-    ladyGallery.after(ladyControls);
-    const ladySlides=[...ladyGallery.querySelectorAll('figure')];
-    let ladyIndex=0;
-    const ladyCount=ladyControls.querySelector('.kocca-slider-count');
-    const showLady=(index)=>{ladyIndex=(index+ladySlides.length)%ladySlides.length;ladyGallery.scrollTo({left:ladySlides[ladyIndex].offsetLeft,behavior:'smooth'});ladyCount.textContent=(ladyIndex+1)+' / '+ladySlides.length;};
-    ladyControls.querySelector('button:first-child').addEventListener('click',()=>showLady(ladyIndex-1));
-    ladyControls.querySelector('button:last-child').addEventListener('click',()=>showLady(ladyIndex+1));
-    ladyGallery.addEventListener('scroll',()=>{const nextIndex=Math.round(ladyGallery.scrollLeft/ladyGallery.clientWidth);if(nextIndex!==ladyIndex){ladyIndex=nextIndex;ladyCount.textContent=(ladyIndex+1)+' / '+ladySlides.length;}});
-    const materialGallery=ppt.querySelector('.kocca-gallery');
-    materialGallery.className='kocca-slider';
-    materialGallery.innerHTML=''
-      +'<figure><img src="images/kocca/2026-cover.png" alt="제국의 여왕은 침노가 필요해 대표 이미지"><figcaption>제국의 여왕은 침노가 필요해</figcaption></figure>'
-      +'<figure><img src="images/kocca/2026-application-form.png" alt="1차 지원서 사업신청서"><figcaption>1차 지원서 · 사업신청서</figcaption></figure>'
-      +'<figure><img src="images/kocca/2026-production-plan.png" alt="1차 지원서 제작계획서"><figcaption>1차 지원서 · 제작계획서</figcaption></figure>'
-      +'<figure><img src="images/kocca/2026-work-content.png" alt="1차 지원서 작품 기획안"><figcaption>1차 지원서 · 작품 기획안</figcaption></figure>'
-      +'<figure><img src="images/kocca/2026-presentation-overview.png" alt="2차 발표 자료 구성 미리보기"><figcaption>2차 발표 자료 · 구성 미리보기</figcaption></figure>';
-    const materialControls=document.createElement('div');
-    materialControls.className='kocca-slider-controls';
-    materialControls.innerHTML='<button type="button" aria-label="이전 자료">←</button><span class="kocca-slider-count">1 / 5</span><button type="button" aria-label="다음 자료">→</button>';
-    materialGallery.after(materialControls);
-    const materialSlides=[...materialGallery.querySelectorAll('figure')];
-    let materialIndex=0;
-    const materialCount=materialControls.querySelector('.kocca-slider-count');
-    const showMaterial=(index)=>{materialIndex=(index+materialSlides.length)%materialSlides.length;materialGallery.scrollTo({left:materialSlides[materialIndex].offsetLeft,behavior:'smooth'});materialCount.textContent=(materialIndex+1)+' / '+materialSlides.length;};
-    materialControls.querySelector('button:first-child').addEventListener('click',()=>showMaterial(materialIndex-1));
-    materialControls.querySelector('button:last-child').addEventListener('click',()=>showMaterial(materialIndex+1));
-    materialGallery.addEventListener('scroll',()=>{const nextIndex=Math.round(materialGallery.scrollLeft/materialGallery.clientWidth);if(nextIndex!==materialIndex){materialIndex=nextIndex;materialCount.textContent=(materialIndex+1)+' / '+materialSlides.length;}});
-    [...ppt.querySelectorAll('.kocca-slider,.kocca-slider-controls,.kocca-document')].forEach(element=>element.remove());
-    const koccaProjects=[
-      {card:ladyCard,cover:'images/kocca/2025-cover.png',title:'레이디보스 리턴',files:[
-        {src:'images/kocca/2025-application-form.png',label:'1차 지원서 · 사업신청서'},
-        {src:'images/kocca/2025-production-plan.png',label:'1차 지원서 · 제작계획서'},
-        {src:'images/kocca/2025-presentation-overview.png',label:'2차 발표자료 · 구성 미리보기'}]},
-      {card:ppt.querySelectorAll('.award-card')[1],cover:'images/kocca/2026-cover.png',title:'제국의 여왕은 침노가 필요해',files:[
-        {src:'images/kocca/2026-application-form.png',label:'1차 지원서 · 사업신청서'},
-        {src:'images/kocca/2026-production-plan.png',label:'1차 지원서 · 제작계획서'},
-        {src:'images/kocca/2026-work-content.png',label:'1차 지원서 · 작품 기획안'},
-        {src:'images/kocca/2026-presentation-overview.png',label:'2차 발표자료 · 구성 미리보기'}]}
-    ];
-    const viewer=document.createElement('div');
-    viewer.className='kocca-viewer';
-    viewer.innerHTML='<div class="kocca-viewer-panel"><button class="kocca-viewer-close" aria-label="자료 닫기">×</button><img alt="기획 자료"><div class="kocca-viewer-meta"><span></span><div class="kocca-viewer-controls"><button type="button" aria-label="이전 자료">←</button><button type="button" aria-label="다음 자료">→</button></div></div></div>';
-    document.body.append(viewer);
-    let activeProject,activeFile=0;
-    const viewerImage=viewer.querySelector('img'),viewerLabel=viewer.querySelector('.kocca-viewer-meta span');
-    const renderFile=()=>{const file=activeProject.files[activeFile];viewerImage.src=file.src;viewerImage.alt=file.label;viewerLabel.textContent=activeProject.title+' · '+file.label+'  '+(activeFile+1)+' / '+activeProject.files.length;};
-    const openViewer=project=>{activeProject=project;activeFile=0;renderFile();viewer.classList.add('is-open');};
-    viewer.querySelector('.kocca-viewer-close').addEventListener('click',()=>viewer.classList.remove('is-open'));
-    viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.classList.remove('is-open');});
-    viewer.querySelector('.kocca-viewer-controls button:first-child').addEventListener('click',()=>{activeFile=(activeFile+activeProject.files.length-1)%activeProject.files.length;renderFile();});
-    viewer.querySelector('.kocca-viewer-controls button:last-child').addEventListener('click',()=>{activeFile=(activeFile+1)%activeProject.files.length;renderFile();});
-    koccaProjects.forEach(project=>{const cover=document.createElement('img');cover.className='kocca-cover';cover.src=project.cover;cover.alt=project.title+' 대표 이미지';project.card.querySelector('.kocca-roles').before(cover);const button=document.createElement('button');button.type='button';button.className='kocca-file-button';button.textContent='PROJECT FILE 보기 →';button.addEventListener('click',()=>openViewer(project));project.card.append(button);});
+    ppt.querySelector('.kocca-intro').textContent='기획뿐만 아니라 제작 계획과 예산, 유통·마케팅, IP 확장까지 실제 제작 프로젝트로 설계했습니다.';
   }
-  const viewPath=new URL(portfolioView+'/',location.href).pathname;
-  history.replaceState(null,'',viewPath);
   const siteRoot=new URL('../',location.href);
   const navLinks=document.querySelectorAll('.nav-links a');
   navLinks[0].href=siteRoot.href;
