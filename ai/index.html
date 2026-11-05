@@ -266,7 +266,8 @@
   .making-ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;}.making-ref-grid img{height:185px;object-fit:cover;}.making-ref-grid img:last-child{grid-column:1 / -1;height:190px;}
   .shot-list{display:grid;gap:.42rem;margin-top:.8rem;}.shot-list div{display:grid;grid-template-columns:2.3rem 1fr;gap:.55rem;padding:.55rem .65rem;border-left:2px solid var(--gold);background:rgba(99,107,47,.07);color:var(--muted);font-size:.68rem;line-height:1.55;}.shot-list b{color:var(--gold);font-weight:500;}
   .prompt-excerpt{margin-top:.85rem;padding:1rem;border:1px solid var(--border);background:#e9e9e2;color:#4d4f46;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.64rem;line-height:1.75;white-space:pre-line;}
-  @media(max-width:700px){.making-flow{grid-template-columns:1fr;gap:.35rem;}.making-step{min-height:0;}.making-step:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-.62rem;transform:translateX(-50%);}.making-board{grid-template-columns:1fr;}.making-ref-grid img{height:150px;}.making-ref-grid img:last-child{height:150px;}.making-card.full{grid-column:auto;}}
+  .prompt-rules{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin-top:.9rem;}.prompt-rule{padding:.7rem;border:1px solid var(--border);background:rgba(99,107,47,.06);}.prompt-rule b{display:block;color:var(--gold);font-family:'DM Serif Display',serif;font-size:.66rem;font-weight:400;margin-bottom:.32rem;}.prompt-rule span{display:block;color:var(--muted);font-size:.64rem;line-height:1.55;}
+  @media(max-width:700px){.making-flow{grid-template-columns:1fr;gap:.35rem;}.making-step{min-height:0;}.making-step:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-.62rem;transform:translateX(-50%);}.making-board,.prompt-rules{grid-template-columns:1fr;}.making-ref-grid img{height:150px;}.making-ref-grid img:last-child{height:150px;}.making-card.full{grid-column:auto;}}
 
   /* ── IMAGE SECTIONS ── */
   .img-section-label{font-size:0.6rem;letter-spacing:0.2em;color:var(--gold);margin:1.2rem 0 0.5rem;text-transform:uppercase;}
@@ -768,13 +769,13 @@
           <div class="aiw-section">
             <p class="aiw-num">02</p>
             <p class="dtl">AI 제작 과정 · 친밀해지는 몽타주</p>
-            <p class="making-intro">직접 작성한 각본에서 ‘세이와 정민이 친해지는 과정’을 하나의 시퀀스로 설정했습니다. 이를 씬과 쇼트로 분해한 뒤, 캐릭터·공간 레퍼런스를 고정하고 Seedance 이미지-투-비디오 프롬프트로 구현했습니다.</p>
+            <p class="making-intro">직접 작성한 각본에서 ‘세이와 정민이 친해지는 과정’을 하나의 시퀀스로 설정했습니다. 생성에 앞서 GPT를 <strong>Seedance 이미지-투-비디오 프롬프트 엔지니어</strong>로 세팅하고, 모든 장면에 적용할 제작 규칙을 만들었습니다. 이후 씬과 쇼트로 분해한 뒤 캐릭터·공간 레퍼런스를 고정해 구현했습니다.</p>
 
             <div class="making-flow" aria-label="별종 AI 제작 프로세스">
               <div class="making-step"><b>01</b><span>Screenplay<br>각본 작성</span></div>
               <div class="making-step"><b>02</b><span>Sequence / Scene<br>서사 단위 분해</span></div>
               <div class="making-step"><b>03</b><span>Shot Planning<br>GPT와 쇼트 설계</span></div>
-              <div class="making-step"><b>04</b><span>I2V Prompt<br>조건·동작 지시</span></div>
+              <div class="making-step"><b>04</b><span>Prompt System<br>규칙 기반 지시</span></div>
               <div class="making-step"><b>05</b><span>Seedance / Edit<br>생성·수정·편집</span></div>
             </div>
 
@@ -812,6 +813,15 @@
                     <div><b>03</b><span>작업대 클로즈업 — 세이가 정민의 곤충통을 들여다보며 조용히 흥미를 느낀다.</span></div>
                     <div><b>04</b><span>침실 미디엄 — 두 사람이 나란히 앉아 곤충책을 함께 본다.</span></div>
                     <div><b>05</b><span>클로즈업 — 정민이 좋아하는 곤충을 가리키고, 세이는 편안히 곁에 머문다.</span></div>
+                  </div>
+                  <p class="making-kicker" style="margin-top:1.25rem;">Seedance Prompt System</p>
+                  <h4>장면마다 흔들리지 않도록 제작 규칙을 먼저 설계</h4>
+                  <p>GPT에 역할·입력값·출력 순서·수정 방식을 미리 지정해, 각 장면의 프롬프트가 같은 형식과 연속성을 유지하도록 했습니다.</p>
+                  <div class="prompt-rules">
+                    <div class="prompt-rule"><b>ROLE</b><span>Seedance 2.0 이미지-투-비디오 프롬프트 엔지니어</span></div>
+                    <div class="prompt-rule"><b>INPUT</b><span>각본 · 장면 아이디어 · 캐릭터 정보 · 비주얼 스타일</span></div>
+                    <div class="prompt-rule"><b>OUTPUT</b><span>오프닝부터 스타일 태그까지 7단계 구조를 고정</span></div>
+                    <div class="prompt-rule"><b>CONSISTENCY</b><span>환경·캐릭터·스타일 태그는 시퀀스 전체에서 동일하게 유지</span></div>
                   </div>
                   <div class="prompt-excerpt">A cinematic and warmly tender original 2D animated sequence set entirely inside Sei’s overgrown home, focused on Sei and Jeongmin gradually becoming close over a series of summer days.
 
