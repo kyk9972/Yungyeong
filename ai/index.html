@@ -1026,10 +1026,19 @@ function lbOpen(k,i){lbKey=k;lbIdx=i;lbUpdate();document.getElementById('lb').cl
 function lbClose(){document.getElementById('lb').classList.remove('active');document.body.style.overflow='';}
 function lbMove(d){const s=lbData[lbKey];lbIdx=(lbIdx+d+s.length)%s.length;lbUpdate();}
 function lbUpdate(){const s=lbData[lbKey];document.getElementById('lb-img').src='data:image/jpeg;base64,'+s[lbIdx];document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+s.length;}
-// Lead with the finished AI work so AI hiring teams see it before the career history.
+// Keep the producer portfolio sequence while retaining the AI-specific hero statement.
 const aiWorks=document.getElementById('aiworks');
 const aiDivider=aiWorks.previousElementSibling;
-document.getElementById('hero').after(aiDivider,aiWorks);
+document.getElementById('ppt').after(aiDivider,aiWorks);
+const shortDrama=document.getElementById('shortdrama');
+const shortDramaDivider=shortDrama.previousElementSibling;
+aiWorks.after(shortDramaDivider,shortDrama);
+const selectedProjects=document.getElementById('projects');
+const selectedProjectsDivider=selectedProjects.previousElementSibling;
+document.getElementById('hero').after(selectedProjectsDivider,selectedProjects);
+selectedProjects.querySelector('.sl').textContent='Selected Work';
+selectedProjects.querySelector('.st').textContent='대표 프로젝트';
+selectedProjects.querySelector('.poster-list').previousElementSibling.textContent='방영·선정·개발 성과가 확인되는 프로젝트를 중심으로, 담당 범위를 정리했습니다.';
 document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('active'))return;if(e.key==='ArrowRight')lbMove(1);if(e.key==='ArrowLeft')lbMove(-1);if(e.key==='Escape')lbClose();});
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
 const portfolioView='drama';
