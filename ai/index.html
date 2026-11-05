@@ -317,7 +317,7 @@
   @media(max-width:700px){body.home-portal nav{padding:1rem 1.25rem;}body.home-portal .nav-links li{display:none;}body.home-portal .nav-links li:nth-child(-n+3){display:block;}.home-choices,.ai-proof-grid,.ai-selected-projects{grid-template-columns:1fr;}.ai-career-summary{grid-template-columns:1fr;gap:.55rem;}.profile-info-bar{display:none;}}
 </style>
 </head>
-<body class="ai-view">
+<body class="drama-view">
 <script>
   (function(){
     const view=new URLSearchParams(location.search).get('view');
@@ -1032,11 +1032,11 @@ const aiDivider=aiWorks.previousElementSibling;
 document.getElementById('hero').after(aiDivider,aiWorks);
 document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('active'))return;if(e.key==='ArrowRight')lbMove(1);if(e.key==='ArrowLeft')lbMove(-1);if(e.key==='Escape')lbClose();});
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
-const portfolioView='ai';
+const portfolioView='drama';
 if(portfolioView==='drama'||portfolioView==='ai'){
   const isDrama=portfolioView==='drama';
   document.querySelector('.hero-eyebrow').textContent='Content Planner · 기획자';
-  document.querySelector('.hero-title').innerHTML='드라마 기획 PD로 3년 6개월,<br>크리에이트한 감각으로 스토리를 설계하고,<br>스토리가 제작될 수 있도록 실현하는 프로듀서 김윤경입니다.';
+  document.querySelector('.hero-title').innerHTML='드라마 기획 경험을 바탕으로,<br>스토리를 AI 영상으로 구현하는<br>AI 콘텐츠 프로듀서 김윤경입니다.';
   document.querySelector('.hero-desc').innerHTML='미니 시리즈·미드폼·숏폼 드라마 기획·대본 개발 8편 이상,<br>KOCCA 제작지원사업 2년 연속 선정(과제책임자).';
   const heroBadges=document.createElement('div');
   heroBadges.className='hero-badges';
