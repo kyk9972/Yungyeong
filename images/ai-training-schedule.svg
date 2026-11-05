@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">2026년 AI 특화 콘텐츠 창작자 양성 지원사업 교육 일정</title>
+  <desc id="desc">2026년 7월 4일부터 9월 12일까지 진행한 1기 교육 일정</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061728"/><stop offset="1" stop-color="#00101e"/></linearGradient>
+    <style>.k{font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif}.muted{fill:#a9c0d7}.accent{fill:#14c5e8}.white{fill:#f4f8fb}.grid{stroke:#294762;stroke-width:1}</style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="56" y="64" class="k accent" font-size="26" font-weight="700" letter-spacing="9">SCHEDULE</text>
+  <text x="56" y="150" class="k white" font-size="62" font-weight="700">1기 교육 일정</text>
+  <text x="56" y="202" class="k muted" font-size="25">매주 토요일 09:30 — 18:30 · 상암 누리꿈스퀘어 공동제작센터 4층 SBS 교육장</text>
+  <g transform="translate(56 246)">
+    <rect width="1488" height="566" fill="#07192a" stroke="#294762" stroke-width="2"/>
+    <rect width="1488" height="62" fill="#102f4d"/>
+    <g class="grid"><path d="M110 0V566M250 0V566M1175 0V566M0 62H1488M0 109H1488M0 156H1488M0 203H1488M0 250H1488M0 297H1488M0 344H1488M0 391H1488M0 438H1488M0 485H1488M0 532H1488"/></g>
+    <g class="k white" font-size="21" font-weight="700"><text x="38" y="40">주차</text><text x="150" y="40">날짜</text><text x="272" y="40">단계 · 주요 내용</text><text x="1270" y="40">강사</text></g>
+    <g class="k" font-size="19"><g class="accent" font-weight="700"><text x="40" y="94">1주</text><text x="40" y="141">2주</text><text x="40" y="188">3주</text><text x="40" y="235">4주</text><text x="40" y="282">5주</text><text x="40" y="329">6주</text><text x="40" y="423">7주</text><text x="40" y="470">8주</text><text x="40" y="517">9주</text><text x="35" y="564">10주</text></g><g class="white"><text x="164" y="94">7/4</text><text x="164" y="141">7/11</text><text x="164" y="188">7/18</text><text x="164" y="235">7/25</text><text x="164" y="282">8/1</text><text x="164" y="329">8/8</text><text x="164" y="376">8/15</text><text x="164" y="423">8/22</text><text x="164" y="470">8/29</text><text x="164" y="517">9/5</text><text x="164" y="564">9/12</text><text x="272" y="94">콘텐츠 기획 · 스토리텔링 · 이미지 설계/생성</text><text x="272" y="141">AI 활용 트렌드 · 이미지 생성 튜토리얼</text><text x="272" y="188">이미지 생성 심화 · 장면 설계</text><text x="272" y="235">이미지 생성 심화 · 스토리보드</text><text x="272" y="282">AI 코딩 · ComfyUI 워크플로우</text><text x="272" y="329">AI 워크플로우 고도화 · 자동화</text><text x="272" y="376" class="muted">광복절 휴강</text><text x="272" y="423">사운드 생성 · 오디오 완성 · 코칭</text><text x="272" y="470">프로젝트 제작 실습 · 코칭</text><text x="272" y="517">포트폴리오 완성 · 멘토링</text><text x="272" y="564">최종 편집 · 포트폴리오 마무리</text></g></g>
+  </g>
+  <text x="56" y="858" class="k muted" font-size="20">2026년 AI 특화 콘텐츠 창작자 양성 지원사업 · 한국콘텐츠진흥원 / SBS A&amp;T</text>
+</svg>

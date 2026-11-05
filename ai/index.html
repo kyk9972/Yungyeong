@@ -82,6 +82,7 @@
   .ai-career-summary>span{color:var(--gold);font-size:.66rem;letter-spacing:.15em;}
   .ai-career-summary p{color:var(--muted);font-size:.72rem;line-height:1.7;}.ai-career-summary p strong{color:var(--cream);font-weight:500;}
   .ai-career-summary a{color:var(--gold);font-size:.7rem;letter-spacing:.04em;text-decoration:none;white-space:nowrap;}.ai-career-summary a:hover{text-decoration:underline;}
+  .ai-training-summary{display:flex;flex-wrap:wrap;gap:.7rem 1.25rem;align-items:baseline;margin:-1.2rem 0 1.8rem;color:var(--muted);font-size:.84rem;line-height:1.8;}.ai-training-summary strong{color:var(--cream);font-weight:500;}.ai-training-summary time{color:var(--gold);font-size:.75rem;letter-spacing:.08em;}.ai-training-schedule{display:block;width:100%;border:1px solid var(--border);background:#07192a;}
 
   /* ── COMFYUI SECTION ── */
   #comfyui .poster-list{grid-template-columns:1fr;gap:8rem;}
@@ -348,7 +349,7 @@
       </div>
     </div>
     <p class="hero-eyebrow">AI Content Creator · Story IP Producer</p>
-    <h1 class="hero-title">드라마 기획 경험을 바탕으로,<br>이야기의 의도를 AI 영상으로 구현하는<br>AI 콘텐츠 프로듀서 김윤경입니다.</h1>
+    <h1 class="hero-title">드라마 기획 경험을 바탕으로,<br>이야기의 의도를 AI 영상으로 구현하는<br>김윤경입니다.</h1>
     <p class="hero-desc">기획부터 이미지·영상 생성, 음악·사운드, 편집까지<br>이야기를 일관된 영상 경험으로 완성합니다.</p>
     <div class="home-choices"><a class="home-choice" href="./drama/"><small>DRAMA PLANNING PD</small><strong>VIEW DRAMA PORTFOLIO →</strong><span>스토리 개발 · IP 각색 · 대본 개발</span></a><a class="home-choice" href="./ai/"><small>AI CONTENT CREATOR</small><strong>VIEW AI PORTFOLIO →</strong><span>이미지 · 영상 · 연출 · 편집</span></a></div>
   </div>
@@ -1029,23 +1030,27 @@ function lbUpdate(){const s=lbData[lbKey];document.getElementById('lb-img').src=
 // Keep the producer portfolio sequence while retaining the AI-specific hero statement.
 const aiWorks=document.getElementById('aiworks');
 const aiDivider=aiWorks.previousElementSibling;
-document.getElementById('ppt').after(aiDivider,aiWorks);
-const shortDrama=document.getElementById('shortdrama');
-const shortDramaDivider=shortDrama.previousElementSibling;
-aiWorks.after(shortDramaDivider,shortDrama);
 const selectedProjects=document.getElementById('projects');
 const selectedProjectsDivider=selectedProjects.previousElementSibling;
 document.getElementById('hero').after(selectedProjectsDivider,selectedProjects);
 selectedProjects.querySelector('.sl').textContent='Selected Work';
 selectedProjects.querySelector('.st').textContent='대표 프로젝트';
 selectedProjects.querySelector('.poster-list').previousElementSibling.textContent='방영·선정·개발 성과가 확인되는 프로젝트를 중심으로, 담당 범위를 정리했습니다.';
+selectedProjects.querySelector('.poster-list').prepend(document.getElementById('pi-ai'));
+const aiTrainingDivider=document.createElement('div');
+aiTrainingDivider.className='sd';
+const aiTraining=document.createElement('section');
+aiTraining.className='sw';
+aiTraining.id='ai-training';
+aiTraining.innerHTML='<p class="sl">AI Education</p><h2 class="st">AI 특화 콘텐츠 창작자 양성 과정</h2><div class="ai-training-summary"><time>2026.07.04 — 09.12</time><strong>2026년 AI 특화 콘텐츠 창작자 양성 지원사업 과정 수료</strong><span>한국콘텐츠진흥원 / SBS A&amp;T</span></div><img class="ai-training-schedule" src="images/ai-training-schedule.svg" alt="2026년 AI 특화 콘텐츠 창작자 양성 지원사업 1기 교육 일정">';
+document.getElementById('career').after(aiTrainingDivider,aiTraining,aiDivider,aiWorks);
 document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('active'))return;if(e.key==='ArrowRight')lbMove(1);if(e.key==='ArrowLeft')lbMove(-1);if(e.key==='Escape')lbClose();});
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
 const portfolioView='drama';
 if(portfolioView==='drama'||portfolioView==='ai'){
   const isDrama=portfolioView==='drama';
   document.querySelector('.hero-eyebrow').textContent='Content Planner · 기획자';
-  document.querySelector('.hero-title').innerHTML='드라마 기획 경험을 바탕으로,<br>스토리를 AI 영상으로 구현하는<br>AI 콘텐츠 프로듀서 김윤경입니다.';
+  document.querySelector('.hero-title').innerHTML='드라마 기획 경험을 바탕으로,<br>스토리를 AI 영상으로 구현하는<br>김윤경입니다.';
   document.querySelector('.hero-desc').innerHTML='미니 시리즈·미드폼·숏폼 드라마 기획·대본 개발 8편 이상,<br>KOCCA 제작지원사업 2년 연속 선정(과제책임자).';
   const heroBadges=document.createElement('div');
   heroBadges.className='hero-badges';
