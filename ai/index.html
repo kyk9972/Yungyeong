@@ -268,6 +268,7 @@
   .prompt-excerpt{margin-top:.85rem;padding:1rem;border:1px solid var(--border);background:#e9e9e2;color:#4d4f46;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.64rem;line-height:1.75;white-space:pre-line;}
   .prompt-rules{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin-top:.9rem;}.prompt-rule{padding:.7rem;border:1px solid var(--border);background:rgba(99,107,47,.06);}.prompt-rule b{display:block;color:var(--gold);font-family:'DM Serif Display',serif;font-size:.66rem;font-weight:400;margin-bottom:.32rem;}.prompt-rule span{display:block;color:var(--muted);font-size:.64rem;line-height:1.55;}
   .prompt-case{margin-top:1rem;}.prompt-case-title{margin:1.35rem 0 .75rem;padding-top:1.25rem;border-top:1px solid var(--border);color:var(--gold);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;}.prompt-case-title strong{display:block;margin-top:.25rem;color:var(--cream);font-family:'Noto Serif KR',serif;font-size:1.1rem;font-weight:400;letter-spacing:0;text-transform:none;}.prompt-full{display:grid;gap:.45rem;}.prompt-part{border:1px solid var(--border);background:#e9e9e2;padding:.8rem .9rem;}.prompt-part-head{display:flex;align-items:baseline;gap:.55rem;margin-bottom:.48rem;}.prompt-part-no{color:var(--gold);font-family:'DM Serif Display',serif;font-size:.72rem;}.prompt-part-name{color:var(--cream);font-size:.62rem;font-weight:600;letter-spacing:.13em;}.prompt-part pre{margin:0;color:#4d4f46;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.62rem;line-height:1.7;white-space:pre-wrap;word-break:break-word;}
+  .scene-list-copy{margin:0 0 1rem;padding:1rem 1.1rem;border:1px solid var(--border);background:var(--bg3);}.scene-list-meta{display:flex;gap:.8rem;align-items:baseline;color:var(--gold);font-size:.63rem;letter-spacing:.12em;}.scene-list-copy h5{margin:.25rem 0 .75rem;color:var(--cream);font-family:'Noto Serif KR',serif;font-size:1rem;font-weight:400;}.scene-list-copy ol{margin:0;padding-left:1.35rem;color:var(--text);font-size:.73rem;line-height:1.85;}.scene-list-copy li+li{margin-top:.2rem;}
   @media(max-width:700px){.making-flow{grid-template-columns:1fr;gap:.35rem;}.making-step{min-height:0;}.making-step:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-.62rem;transform:translateX(-50%);}.making-board,.prompt-rules{grid-template-columns:1fr;}.making-ref-grid img{height:150px;}.making-ref-grid img:last-child{height:150px;}.making-card.full{grid-column:auto;}}
 
   /* ── IMAGE SECTIONS ── */
@@ -821,7 +822,16 @@
 
                   <div class="prompt-case">
                     <p class="prompt-case-title">Case Study<strong>세이와 정민이 친밀해지는 몽타주</strong></p>
-                    <figure style="margin:0 0 1rem;"><img src="images/byeoljong-process/scene-list.png" alt="별종 12 D 집 안 세이와 정민이 친밀해지는 몽타주 실제 씬리스트" style="display:block;width:100%;border:1px solid var(--border);"></figure>
+                    <div class="scene-list-copy">
+                      <p class="scene-list-meta">12 D <span>·</span> 집 안</p>
+                      <h5>세이와 정민이 친밀해지는 몽타주</h5>
+                      <ol>
+                        <li>세이는 식물을 다듬고 정민은 곤충을 잡는다. 세이의 얼굴이 채집기에 잡힌다.</li>
+                        <li>정민이 곤충을 잡다가 가지를 실수로 꺾는다. 세이 눈치를 보는 정민. 밤에 보면, 가지에 테이프가 붙어있다. 그걸 보고 미소짓는 세이.</li>
+                        <li>함께 곤충책을 보는 세이와 정민. 정민이 한 곤충을 가리킨다. 제일 좋아하는 모양이다.</li>
+                        <li>세이의 집에 곤충들의 집이 생긴다. 그 밖에도 정민의 물건이 쌓이고.</li>
+                      </ol>
+                    </div>
                     <div class="prompt-full" aria-label="몽타주 실제 프롬프트 전문">
                       <article class="prompt-part"><div class="prompt-part-head"><span class="prompt-part-no">01</span><span class="prompt-part-name">OPENING DECLARATION</span></div><pre>&lt;&lt;&lt;664d0ab6-cfa6-4af5-bf82-227d9d769c51&gt;&gt;&gt; &lt;&lt;&lt;ca27a75d-8f65-47af-8436-78089f6941af&gt;&gt;&gt; &lt;&lt;&lt;308d1a07-1fbd-4425-8078-18dd0539844a&gt;&gt;&gt;
 
