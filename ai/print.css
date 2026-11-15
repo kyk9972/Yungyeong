@@ -90,3 +90,18 @@
 @media print {
   .training-work { break-before: page; margin-top: 0; }
 }
+/* Two complete project cards per A4 sheet, preserving the original order. */
+@media print {
+  #projects .poster-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 5mm; align-items: start; }
+  #projects .poster-item { min-width: 0; margin: 0; break-inside: avoid; }
+  #projects .poster-img-wrap img { max-height: 50mm; }
+  #projects .pdf-video img { max-height: 32mm; }
+  #projects .poster-info-bar { padding: .7rem 1rem; }
+  #projects .poster-detail-inner { padding: .8rem 1rem; }
+  #projects .poster-name { font-size: 1.15rem; }
+  #projects .dmeta-row { gap: .4rem; }
+  #projects .pdf-video span { padding: .45rem .5rem; font-size: .67rem; }
+  #projects .poster-img-placeholder { height: 28mm; }
+  #projects .st { margin-bottom: 1rem; }
+  #skills, #ppt { break-before: auto; }
+}
