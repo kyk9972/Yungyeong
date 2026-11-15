@@ -1,0 +1,92 @@
+/* Only these added controls affect the screen. Portfolio rules stay untouched. */
+.pdf-only { display: none; }
+.pdf-download {
+  position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 210;
+  padding: .7rem 1.1rem; border: 1px solid var(--border2);
+  background: var(--bg2); color: var(--gold); text-decoration: none;
+  font: 500 .8rem 'Noto Sans KR', sans-serif; box-shadow: 0 3px 14px #0001;
+}
+.pdf-download:hover, .pdf-download:focus-visible { border-color: var(--gold); }
+@page { size: A4 portrait; margin: 12mm; }
+@media print {
+  html { font-size: 14px; scroll-behavior: auto; }
+  html, body { overflow: visible !important; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal, .hero-inner > * { opacity: 1 !important; transform: none !important; }
+  nav, .pdf-download, .lb-overlay, .poster-toggle, .training-controls { display: none !important; }
+  .pdf-only { display: block; }
+  .hero { min-height: 265mm; padding: 20mm 6mm; break-after: page; overflow: visible; }
+  .hero-title { font-size: 2.6rem; }
+  .profile-info-bar { display: flex; }
+  .pdf-source { margin-top: 2.5rem; font-size: .85rem; color: var(--gold); }
+  .pdf-source a { color: inherit; overflow-wrap: anywhere; }
+  .sw { width: 100%; max-width: none; padding: 8mm 0; break-before: page; }
+  .sd { display: none; }
+  .st { break-after: avoid; margin-bottom: 1.8rem; }
+  h2, h3, h4, h5, .dtl, .img-section-label, .img-sublabel, .prompt-case-title { break-after: avoid; }
+  p, li, pre { orphans: 3; widows: 3; }
+  img { max-width: 100%; }
+  img, figure, .pdf-video, .award-card, .career-item, .sg, .making-step,
+  .prompt-part, .prompt-rule, .scene-list-copy, .dmeta-row, .aiw-flow, .roles { break-inside: avoid; }
+  .poster-list, #aiworks .poster-list { display: block; }
+  .poster-item { display: block; overflow: visible; margin-bottom: 8mm; break-inside: avoid; }
+  #aiworks .poster-item { break-inside: auto; break-before: page; }
+  #aiworks .poster-item:first-child { break-before: auto; }
+  .poster-header { overflow: visible; break-inside: avoid; break-after: avoid; }
+  .poster-img-wrap { height: auto; }
+  .poster-img-wrap img { height: auto; max-height: 105mm; object-fit: contain; }
+  .poster-img-placeholder { height: 35mm; }
+  .poster-detail, .poster-item.open .poster-detail { max-height: none !important; overflow: visible !important; }
+  .poster-detail-inner { padding: 1.5rem 1.8rem; }
+  .scn-detail { display: block !important; }
+  .scn-card { break-inside: avoid; break-after: avoid; }
+  .scn-card::after { display: none; }
+  .poster-item, .poster-detail-inner { box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .career-item { grid-template-columns: 155px 1fr; gap: 1.8rem; }
+  .awards-grid { grid-template-columns: 1fr 1fr; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .training-carousel { overflow: visible; border: 0; background: transparent; }
+  .training-track { display: block; transform: none !important; }
+  .training-slide { margin-bottom: 8mm; border: 1px solid var(--border); background: var(--bg2); break-inside: avoid; }
+  .training-slide img { height: auto; max-height: 165mm; object-fit: contain; }
+  .training-work-title { break-after: avoid; }
+  .ai-training-schedule { break-inside: avoid; }
+  .making-board { display: block; }
+  .making-card { margin: 1rem 0; break-inside: avoid; overflow: visible; }
+  .making-card.full { break-inside: auto; }
+  .making-copy { box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .making-card img { max-height: 115mm; object-fit: contain; }
+  .making-ref-grid img, .making-ref-grid img:last-child { height: 55mm; }
+  .making-ref-grid img:last-child { height: 65mm; }
+  .making-flow { grid-template-columns: repeat(3,1fr); break-inside: avoid; }
+  .making-step:nth-child(3)::after { display: none; }
+  .prompt-rules { grid-template-columns: repeat(2,1fr); }
+  .prompt-full { display: block; }
+  .prompt-part { margin-bottom: .5rem; }
+  .prompt-part pre { overflow-wrap: anywhere; }
+  .aiw-section { break-inside: auto; }
+  .img-grid-2, .img-grid-4, .kocca-gallery { break-inside: avoid; }
+  .kocca-gallery img { aspect-ratio: auto; object-fit: contain; }
+  video, iframe { display: none !important; }
+  .pdf-video { color: var(--gold); text-decoration: none; background: var(--bg3); }
+  .pdf-video img { width: 100%; height: auto; max-height: 110mm; object-fit: contain; display: block; }
+  .pdf-video span { display: block; padding: .55rem .85rem; font-size: .75rem; border-top: 1px solid var(--border); }
+  #aiworks .poster-img-wrap { aspect-ratio: auto; }
+  .video-external-link { display: none; }
+  footer { break-inside: avoid; padding: 12mm 0; }
+}
+@media print {
+  /* A complete project, including its trailer and copy, fits on one A4 page. */
+  #projects .poster-img-wrap img { max-height: 68mm; }
+  #projects .pdf-video img { max-height: 48mm; }
+  #projects .poster-info-bar { padding: .8rem 1.8rem; }
+  #projects .poster-detail-inner { padding: 1rem 1.8rem; }
+  #projects .dtl { margin-top: .85rem; margin-bottom: .35rem; }
+  .training-slide img { max-height: 85mm; }
+  .training-slide .pdf-video img { max-height: 85mm; }
+  .prompt-case { break-before: page; }
+}
+@media print {
+  .training-work { break-before: page; margin-top: 0; }
+}

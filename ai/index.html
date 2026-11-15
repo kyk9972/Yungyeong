@@ -338,6 +338,7 @@
   .kocca-intro{font-size:.86rem;color:var(--muted);max-width:680px;margin-top:-1.6rem;margin-bottom:2rem;}.kocca-roles{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem;}.kocca-role{padding:.28rem .58rem;border:1px solid var(--border2);font-size:.67rem;color:var(--gold);}.kocca-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-top:1.15rem;}.kocca-gallery figure{margin:0;cursor:zoom-in;}.kocca-gallery img{width:100%;aspect-ratio:1/.78;object-fit:cover;object-position:top;border:1px solid var(--border);display:block;}.kocca-gallery figcaption{font-size:.58rem;color:var(--muted);line-height:1.4;margin-top:.28rem;}.kocca-document{display:none;margin-top:1rem;color:var(--gold);font-size:.68rem;letter-spacing:.1em;text-decoration:none;border-bottom:1px solid var(--gold);}body.drama-view #ppt .awards-grid.reveal{opacity:1;transform:none;}
   @media(max-width:700px){body.home-portal nav{padding:1rem 1.25rem;}body.home-portal .nav-links li{display:none;}body.home-portal .nav-links li:nth-child(-n+3){display:block;}.home-choices,.ai-proof-grid,.ai-selected-projects{grid-template-columns:1fr;}.ai-career-summary{grid-template-columns:1fr;gap:.55rem;}.profile-info-bar{display:none;}}
 </style>
+<link rel="stylesheet" href="ai/print.css">
 </head>
 <body class="drama-view">
 <script>
@@ -1203,5 +1204,6 @@ if(portfolioView==='drama'||portfolioView==='ai'){
   document.querySelectorAll('[data-document]').forEach(link=>{const url=new URL(link.dataset.document,siteRoot);fetch(url,{method:'HEAD'}).then(response=>{if(response.ok){link.href=url.href;link.style.display='inline-block'}}).catch(()=>{})});
 }
 </script>
+<script src="ai/pdf.js"></script>
 </body>
 </html>
