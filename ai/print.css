@@ -7,101 +7,173 @@
   font: 500 .8rem 'Noto Sans KR', sans-serif; box-shadow: 0 3px 14px #0001;
 }
 .pdf-download:hover, .pdf-download:focus-visible { border-color: var(--gold); }
-@page { size: A4 portrait; margin: 12mm; }
+@page { size: A4 portrait; margin: 10mm; }
 @media print {
-  html { font-size: 14px; scroll-behavior: auto; }
+  html { font-size: 12px; scroll-behavior: auto; }
   html, body { overflow: visible !important; }
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal, .hero-inner > * { opacity: 1 !important; transform: none !important; }
-  nav, .pdf-download, .lb-overlay, .poster-toggle, .training-controls { display: none !important; }
+  nav, .pdf-download, .lb-overlay, .poster-toggle, .training-controls, .video-external-link { display: none !important; }
   .pdf-only { display: block; }
-  .hero { min-height: 265mm; padding: 20mm 6mm; break-after: page; overflow: visible; }
+  .hero { min-height: 265mm; padding: 18mm 6mm; break-after: page; overflow: visible; }
   .hero-title { font-size: 2.6rem; }
   .profile-info-bar { display: flex; }
-  .pdf-source { margin-top: 2.5rem; font-size: .85rem; color: var(--gold); }
+  .pdf-source { margin-top: 2rem; font-size: .85rem; color: var(--gold); }
   .pdf-source a { color: inherit; overflow-wrap: anywhere; }
-  .sw { width: 100%; max-width: none; padding: 8mm 0; break-before: page; }
+  .sw { width: 100%; max-width: none; padding: 5mm 0; }
   .sd { display: none; }
-  .st { break-after: avoid; margin-bottom: 1.8rem; }
-  h2, h3, h4, h5, .dtl, .img-section-label, .img-sublabel, .prompt-case-title { break-after: avoid; }
+  .st { margin-bottom: 1rem; padding-bottom: .7rem; break-after: avoid; }
+  h2, h3, h4, h5, .dtl, .img-section-label, .img-sublabel, .training-work-label, .prompt-case-title { break-after: avoid; }
   p, li, pre { orphans: 3; widows: 3; }
   img { max-width: 100%; }
-  img, figure, .pdf-video, .award-card, .career-item, .sg, .making-step,
-  .prompt-part, .prompt-rule, .scene-list-copy, .dmeta-row, .aiw-flow, .roles { break-inside: avoid; }
+  img, figure, .pdf-video, .award-card, .career-item, .making-step, .prompt-part,
+  .prompt-rule, .scene-list-copy, .dmeta-row, .aiw-flow, .roles { break-inside: avoid; }
   .poster-list, #aiworks .poster-list { display: block; }
-  .poster-item { display: block; overflow: visible; margin-bottom: 8mm; break-inside: avoid; }
-  #aiworks .poster-item { break-inside: auto; break-before: page; }
-  #aiworks .poster-item:first-child { break-before: auto; }
+  .poster-item { display: block; overflow: visible; margin-bottom: 4mm; }
   .poster-header { overflow: visible; break-inside: avoid; break-after: avoid; }
   .poster-img-wrap { height: auto; }
-  .poster-img-wrap img { height: auto; max-height: 105mm; object-fit: contain; }
-  .poster-img-placeholder { height: 35mm; }
+  .poster-img-wrap img { height: auto; object-fit: contain; }
   .poster-detail, .poster-item.open .poster-detail { max-height: none !important; overflow: visible !important; }
-  .poster-detail-inner { padding: 1.5rem 1.8rem; }
+  .poster-detail-inner { padding: 1rem; }
+  .poster-info-bar { padding: .8rem 1rem; }
   .scn-detail { display: block !important; }
   .scn-card { break-inside: avoid; break-after: avoid; }
   .scn-card::after { display: none; }
-  .poster-item, .poster-detail-inner { box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-  .career-item { grid-template-columns: 155px 1fr; gap: 1.8rem; }
-  .awards-grid { grid-template-columns: 1fr 1fr; }
-  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .poster-item, .poster-detail-inner, .making-copy { box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  /* Each pair is stacked vertically; media and copy share each full-width card. */
+  #projects { break-before: page; }
+  #projects .poster-list { display: block; }
+  #projects .poster-item { display: grid; grid-template-columns: 44mm minmax(0,1fr); gap: 0; break-inside: avoid; min-height: 100mm; }
+  #projects .poster-item:nth-child(2n + 3) { break-before: page; }
+  #projects .poster-img-wrap img { max-height: 59mm; }
+  #projects .poster-img-placeholder { height: 36mm; }
+  #projects .poster-name { font-size: 1.15rem; }
+  #projects .poster-info-bar { padding: .7rem; }
+  #projects .poster-detail-inner { padding: .8rem 1rem; }
+  #projects .dtl { margin-top: .7rem; margin-bottom: .3rem; }
+  #projects .dmeta { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem .7rem; }
+  #projects .dmeta-row { gap: .35rem; }
+  #projects .pdf-video img { max-height: 28mm; }
+  #projects .pdf-video span { font-size: .68rem; padding: .3rem .5rem; }
+  .career-item { grid-template-columns: 125px 1fr; gap: 1.5rem; padding: 1.3rem 0; }
+  #career { break-before: page; }
+  .awards-grid, .skills-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .award-card { padding: 1rem; }
+  .skills-grid .sg-label { margin-bottom: .6rem; }
+  .si { margin-bottom: .25rem; }
+  .training-work { margin-top: 1rem; }
+  .training-work-title { margin-bottom: .6rem; }
+  .ai-training-summary { margin: 0 0 .7rem; font-size: .8rem; }
+  .ai-training-schedule { width: auto; max-width: 100%; max-height: 66mm; object-fit: contain; }
   .training-carousel { overflow: visible; border: 0; background: transparent; }
-  .training-track { display: block; transform: none !important; }
-  .training-slide { margin-bottom: 8mm; border: 1px solid var(--border); background: var(--bg2); break-inside: avoid; }
-  .training-slide img { height: auto; max-height: 165mm; object-fit: contain; }
-  .training-work-title { break-after: avoid; }
-  .ai-training-schedule { break-inside: avoid; }
+  .training-track { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; transform: none !important; }
+  .training-slide { margin: 0; border: 1px solid var(--border); background: var(--bg2); break-inside: avoid; }
+  .training-slide img, .training-slide .pdf-video img { height: 42mm; max-height: 42mm; object-fit: contain; }
+  .training-slide figcaption { padding: .5rem .7rem; }
+  .training-slide figcaption strong { font-size: .85rem; }
+  #aiworks { break-before: page; }
+  #aiworks .poster-item { break-inside: auto; }
+  #aiworks .poster-img-wrap { aspect-ratio: auto; }
+  #aiworks .poster-header .pdf-video img { max-height: 55mm; }
+  #aiworks .poster-header { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; }
+  .aiw-section { margin-bottom: 1rem; }
+  .aiw-meta { margin-bottom: .8rem; padding-bottom: .5rem; }
   .making-board { display: block; }
-  .making-card { margin: 1rem 0; break-inside: avoid; overflow: visible; }
+  .making-card { margin: .6rem 0; break-inside: avoid; overflow: visible; }
   .making-card.full { break-inside: auto; }
-  .making-copy { box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-  .making-card img { max-height: 115mm; object-fit: contain; }
-  .making-ref-grid img, .making-ref-grid img:last-child { height: 55mm; }
-  .making-ref-grid img:last-child { height: 65mm; }
-  .making-flow { grid-template-columns: repeat(3,1fr); break-inside: avoid; }
-  .making-step:nth-child(3)::after { display: none; }
-  .prompt-rules { grid-template-columns: repeat(2,1fr); }
+  .making-card:not(.full) { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+  .making-copy { padding: .7rem .9rem; }
+  .making-card img { max-height: 65mm; object-fit: contain; }
+  .making-ref-grid img, .making-ref-grid img:last-child { height: 30mm; }
+  .making-ref-grid img:last-child { height: 35mm; }
+  .making-flow { grid-template-columns: repeat(6,1fr); margin: .7rem 0; break-inside: avoid; }
+  .making-step { min-height: 0; padding: .5rem; }
+  .prompt-rules { grid-template-columns: repeat(4,1fr); }
   .prompt-full { display: block; }
-  .prompt-part { margin-bottom: .5rem; }
-  .prompt-part pre { overflow-wrap: anywhere; }
-  .aiw-section { break-inside: auto; }
+  .prompt-part { margin-bottom: .4rem; padding: .6rem .7rem; }
+  .prompt-part pre { overflow-wrap: anywhere; font-size: .72rem; line-height: 1.55; }
+  .prompt-case-title { margin: .7rem 0; padding-top: .7rem; }
+  .scene-list-copy { padding: .7rem .9rem; margin-bottom: .7rem; }
   .img-grid-2, .img-grid-4, .kocca-gallery { break-inside: avoid; }
-  .kocca-gallery img { aspect-ratio: auto; object-fit: contain; }
+  .kocca-gallery img { aspect-ratio: auto; max-height: 48mm; object-fit: contain; }
   video, iframe { display: none !important; }
   .pdf-video { color: var(--gold); text-decoration: none; background: var(--bg3); }
-  .pdf-video img { width: 100%; height: auto; max-height: 110mm; object-fit: contain; display: block; }
-  .pdf-video span { display: block; padding: .55rem .85rem; font-size: .75rem; border-top: 1px solid var(--border); }
-  #aiworks .poster-img-wrap { aspect-ratio: auto; }
-  .video-external-link { display: none; }
-  footer { break-inside: avoid; padding: 12mm 0; }
+  .pdf-video img { width: 100%; height: auto; max-height: 55mm; object-fit: contain; display: block; }
+  .pdf-video span { display: block; padding: .35rem .6rem; font-size: .7rem; border-top: 1px solid var(--border); }
+  footer { break-inside: avoid; padding: 5mm 0; }
 }
 @media print {
-  /* A complete project, including its trailer and copy, fits on one A4 page. */
-  #projects .poster-img-wrap img { max-height: 68mm; }
-  #projects .pdf-video img { max-height: 48mm; }
-  #projects .poster-info-bar { padding: .8rem 1.8rem; }
-  #projects .poster-detail-inner { padding: 1rem 1.8rem; }
-  #projects .dtl { margin-top: .85rem; margin-bottom: .35rem; }
-  .training-slide img { max-height: 85mm; }
-  .training-slide .pdf-video img { max-height: 85mm; }
-  .prompt-case { break-before: page; }
+  /* Compact introduction shares the first sheet with its two project cards. */
+  .hero { min-height: 0; padding: 5mm 0 3mm; break-after: auto; }
+  .profile-info-bar { margin-bottom: .8rem; }
+  .hero-eyebrow { margin-bottom: .7rem; }
+  .hero-title { font-size: 2.1rem; margin-bottom: .8rem; }
+  .hero-desc { margin-bottom: .8rem; line-height: 1.7; }
+  .hero-badges { gap: .5rem; }
+  .badge { padding: .3rem .6rem; }
+  .pdf-source { margin-top: .7rem; }
+  #projects { break-before: auto; }
+  #projects .poster-item { min-height: 76mm; }
+  #projects .poster-img-wrap img { max-height: 44mm; }
+  #projects .poster-img-placeholder { height: 18mm; }
+  #projects .st { font-size: 1.6rem; margin-bottom: .6rem; }
+  #projects .poster-list > .poster-item { margin-bottom: 3mm; }
+  #skills .skills-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  #skills, #ppt { padding: 3mm 0; }
+  #skills .st, #ppt .st { font-size: 1.6rem; margin-bottom: .8rem; }
+  .kocca-intro { margin: 0 0 .7rem; }
+  .kocca-roles { gap: .3rem; margin-top: .6rem; }
+  .kocca-role { padding: .15rem .35rem; }
+  .kocca-gallery { margin-top: .6rem; }
+  footer .fn { font-size: 1.5rem; margin-bottom: .3rem; }
 }
 @media print {
-  .training-work { break-before: page; margin-top: 0; }
+  .hero { min-height: 265mm; padding: 18mm 6mm; break-after: page; }
+  #projects { break-before: page; }
+  #projects .poster-item { min-height: 100mm; }
+  #career { padding-top: 2mm; padding-bottom: 2mm; }
+  .career-item { padding: .8rem 0; }
+  .cb { gap: .25rem; }
+  #ai-training { padding-top: 2mm; padding-bottom: 2mm; }
+  .ai-training-schedule { max-height: 45mm; }
+  .training-track { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .training-slide img, .training-slide .pdf-video img { height: 30mm; max-height: 30mm; }
+  .training-slide figcaption { font-size: .68rem; line-height: 1.45; padding: .35rem .5rem; }
+  .training-slide figcaption strong { font-size: .75rem; }
+  .training-slide .pdf-video span { font-size: .6rem; padding: .25rem .4rem; }
+  #aiworks .poster-detail-inner { padding: .7rem 1rem; }
+  #aiworks .dtl { margin-top: .7rem; margin-bottom: .35rem; }
+  #aiworks .dtxt { line-height: 1.65; }
+  #aiworks .aiw-section { margin-bottom: .6rem; }
+  #aiworks .aiw-num { font-size: 1.4rem; }
+  #aiworks .poster-header .pdf-video img { max-height: 40mm; }
+  #aiworks .poster-info-bar { padding: .6rem .8rem; }
+  #aiworks .aiw-status { margin-top: .3rem; }
+  .making-card img { max-height: 45mm; }
+  .making-ref-grid img, .making-ref-grid img:last-child { height: 23mm; }
+  .making-ref-grid img:last-child { height: 25mm; }
+  .making-copy { padding: .5rem .7rem; }
+  .making-copy p { line-height: 1.6; }
+  .making-flow { margin: .5rem 0; }
+  .prompt-part { padding: .4rem .6rem; }
+  .prompt-part pre { font-size: .7rem; line-height: 1.4; }
+  .prompt-part-head { margin-bottom: .25rem; }
+  #skills .sg-label { margin-bottom: .35rem; }
+  #skills .si { font-size: .8rem; margin-bottom: .15rem; }
+  #ppt .kocca-gallery img { max-height: 28mm; }
+  #ppt .award-card { padding: .7rem; }
 }
-/* Two complete project cards per A4 sheet, preserving the original order. */
 @media print {
-  #projects .poster-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 5mm; align-items: start; }
-  #projects .poster-item { min-width: 0; margin: 0; break-inside: avoid; }
-  #projects .poster-img-wrap img { max-height: 50mm; }
-  #projects .pdf-video img { max-height: 32mm; }
-  #projects .poster-info-bar { padding: .7rem 1rem; }
-  #projects .poster-detail-inner { padding: .8rem 1rem; }
-  #projects .poster-name { font-size: 1.15rem; }
-  #projects .dmeta-row { gap: .4rem; }
-  #projects .pdf-video span { padding: .45rem .5rem; font-size: .67rem; }
-  #projects .poster-img-placeholder { height: 28mm; }
-  #projects .st { margin-bottom: 1rem; }
-  #skills, #ppt { break-before: auto; }
+  #ai-training { display: grid; grid-template-columns: 52mm minmax(0,1fr); gap: 2mm 4mm; align-items: start; break-inside: avoid; }
+  #ai-training > .sl, #ai-training > .st, #ai-training > .ai-training-summary { grid-column: 1 / -1; }
+  #ai-training > .st { margin-bottom: .4rem; }
+  #ai-training > .ai-training-schedule { width: 100%; max-height: 70mm; }
+  #ai-training > .training-work { margin-top: 0; }
+  .training-slide img, .training-slide .pdf-video img { height: 24mm; max-height: 24mm; }
+}
+@media print {
+  .hero-title { font-size: 3rem; }
+  #ppt { break-inside: avoid; }
+  #aiworks .poster-item:last-child { break-inside: avoid; }
 }
