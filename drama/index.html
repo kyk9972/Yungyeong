@@ -350,7 +350,7 @@
   .kocca-viewer-controls{display:flex;gap:.45rem;}.kocca-viewer button{border:1px solid #bbb;background:#fff;color:#222;padding:.45rem .65rem;cursor:pointer;}.kocca-viewer-close{position:absolute;right:1rem;top:1rem;z-index:1;}
   @media(max-width:600px){body.drama-view .hero{padding:7rem 1.5rem 2rem;}body.drama-view #career{padding-top:1.5rem;}body.drama-view .sw{padding:3.5rem 1.5rem;}.kocca-viewer{padding:.6rem;}.kocca-viewer-panel{padding:.55rem;}.kocca-cover{margin:.9rem 0;}}
   /* Planning cards: swipe or use arrows, then click any slide to enlarge. */
-  #ppt .planning-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;}
+  #ppt .planning-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;grid-auto-rows:1fr;}
   .planning-card{min-width:0;padding:1.5rem;}.planning-card:hover{transform:none;}
   .planning-card .award-name{font-weight:400;min-height:3.4em;}
   .planning-card .award-sub{min-height:3.6em;}
@@ -1170,7 +1170,10 @@ function lbOpen(k,i){lbKey=k;lbIdx=i;lbUpdate();document.getElementById('lb').cl
 function lbClose(){document.getElementById('lb').classList.remove('active');document.body.style.overflow='';}
 function lbMove(d){const s=lbData[lbKey];lbIdx=(lbIdx+d+s.length)%s.length;lbUpdate();}
 function lbUpdate(){const s=lbData[lbKey];document.getElementById('lb-img').src='data:image/jpeg;base64,'+s[lbIdx];document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+s.length;}
-// AI production follows the core drama portfolio as the final content section.
+// Script samples close the portfolio after the AI production projects.
+const shortDrama=document.getElementById('shortdrama');
+const shortDramaDivider=shortDrama.previousElementSibling;
+document.getElementById('aiworks').after(shortDramaDivider,shortDrama);
 const selectedProjects=document.getElementById('projects');
 const selectedProjectsDivider=selectedProjects.previousElementSibling;
 document.getElementById('hero').after(selectedProjectsDivider,selectedProjects);
@@ -1213,7 +1216,7 @@ if(portfolioView==='drama'||portfolioView==='ai'){
          {src:'images/kocca/2026-production-plan.png',label:'1차 지원서 · 제작계획서'},
          {src:'images/kocca/2026-work-content.png',label:'1차 지원서 · 작품 기획안'},
          {src:'images/kocca/2026-presentation-overview.png',label:'2차 발표자료 · 구성 미리보기'}]},
-      {title:'그 외 기획안',year:'OTHER PROJECTS',subtitle:'총을 든 여자 · 무사 데뷔합니다',roles:['기획안','기획의도','캐릭터'],
+      {title:'캐스팅·편성용 기획안',year:'CASTING & PROGRAMMING',subtitle:'총을 든 여자 · 무사 데뷔합니다',roles:['기획안','기획의도','캐릭터'],
        slides:[
          {src:'images/planning/woman-cover.png',label:'총을 든 여자 · 표지'},
          {src:'images/planning/woman-intention.png',label:'총을 든 여자 · 기획의도'},
